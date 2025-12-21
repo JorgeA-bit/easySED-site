@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>easySED — Track sea days. Export HMRC-ready evidence.</title>
+  <meta name="description" content="easySED helps UK seafarers track UK vs non-UK days using the UK-midnight rule, store evidence, and export HMRC-ready documents." />
+  <link rel="icon" type="image/png" href="assets/images/sitelogo.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <div class="brand">
+        <a href="index.html">
+          <img src="assets/images/sitelogo.png" alt="easySED" class="logo" />
+        </a>
+      </div>
+      <div class="links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <section class="heroSplit">
+      <div class="heroLeft">
+        <p class="kicker">SED tracking for UK seafarers</p>
+        <h1>Take the guesswork out of your SED claim.</h1>
+        <p class="lead">
+          Track UK vs non-UK days with the UK-midnight rule, keep evidence organised, and export HMRC-ready documents when you hit day 365.
+        </p>
+
+        <p style="margin: 24px 0 16px; font-size: 18px; font-weight: 600; color: var(--text);">Download easySED for free.</p>
+
+        <div class="ctaRow">
+          <a href="#" aria-disabled="true" class="store-badge">
+            <img src="assets/images/apple_store.png" alt="Download on the App Store" />
+          </a>
+          <a href="#" aria-disabled="true" class="store-badge">
+            <img src="assets/images/google_play.png" alt="Get it on Google Play" />
+          </a>
+        </div>
+      </div>
+
+      <div class="heroRight">
+        <img src="assets/images/screenshot_1.png" alt="easySED app screenshot" style="width: 75%; height: auto; border-radius: 16px;" />
+      </div>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Accurate day counts</h3>
+        <p>Log trips once. easySED calculates UK vs non-UK days using the UK-midnight rule, so totals stay consistent.</p>
+      </div>
+      <div class="card">
+        <h3>Audit-ready evidence</h3>
+        <p>Store travel proof and generate exportable “evidence packs” to support your SED position if HMRC asks.</p>
+      </div>
+      <div class="card">
+        <h3>365-day progress</h3>
+        <p>See how far you are through your qualifying period, days remaining, and your projected day-365 date.</p>
+      </div>
+      <div class="card">
+        <h3>HMRC-ready exports</h3>
+        <p>Auto-populate official templates (e.g., HMRC HS205-style supporting docs) with your tracked data.</p>
+      </div>
+    </div>
+
+    <p class="footer">© <span id="y"></span> easySED. Built for clarity, compliance, and speed.</p>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

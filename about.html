@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — easySED</title>
+  <meta name="description" content="What easySED does and who it is for." />
+  <link rel="icon" type="image/png" href="assets/images/sitelogo.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <div class="brand">
+        <a href="index.html">
+          <img src="assets/images/sitelogo.png" alt="easySED" class="logo" />
+        </a>
+      </div>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1 style="margin-top: 0;">A simple way to track eligibility and evidence for SED.</h1>
+      <p class="lead">
+        easySED is built for UK seafarers who need confidence in their day counts and paperwork. It's designed to keep your records consistent and exportable.
+      </p>
+    </section>
+
+    <div class="grid" style="margin-top: 40px;">
+      <div class="card">
+        <h3>Designed around real rules</h3>
+        <p>Tracks UK vs non-UK days using the "outside the UK at midnight" approach, and supports the typical qualifying-period workflow.</p>
+      </div>
+      <div class="card">
+        <h3>Built for documentation</h3>
+        <p>Evidence is not an afterthought. The goal is to keep your supporting info organised from day one.</p>
+      </div>
+      <div class="card">
+        <h3>Accurate calculations</h3>
+        <p>Automatically calculates your qualifying days using HMRC's UK-midnight rule, eliminating manual counting errors.</p>
+      </div>
+      <div class="card">
+        <h3>Export-ready reports</h3>
+        <p>Generate HMRC-ready documentation and evidence packs when you reach your 365-day qualifying period.</p>
+      </div>
+    </div>
+
+    <section class="hero" style="margin-top: 60px;">
+      <h2>Who is easySED for?</h2>
+      <p class="lead" style="margin-bottom: 32px;">
+        easySED is designed for UK seafarers who need to track their days outside the UK for Seafarers' Earnings Deduction (SED) tax relief. Whether you're working on cruise ships, cargo vessels, or offshore platforms, easySED helps you maintain accurate records.
+      </p>
+    </section>
+
+    <p class="small" style="margin-top: 40px; padding: 24px; background: var(--primary-light); border-radius: var(--radius-sm); border: 1px solid rgba(45, 156, 219, 0.2);">
+      <strong>Important:</strong> easySED is not tax advice. It's a record-keeping and document-generation tool. Always consult with a qualified tax advisor for specific tax guidance.
+    </p>
+
+    <p class="footer">© <span id="y"></span> easySED.</p>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

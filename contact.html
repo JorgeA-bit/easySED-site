@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — easySED</title>
+  <meta name="description" content="Contact easySED." />
+  <link rel="icon" type="image/png" href="assets/images/sitelogo.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <div class="brand">
+        <a href="index.html">
+          <img src="assets/images/sitelogo.png" alt="easySED" class="logo" />
+        </a>
+      </div>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1 style="margin-top: 0;">Questions, feedback, or early access?</h1>
+      <p class="lead">We'd love to hear from you. Choose how you'd like to reach out below.</p>
+    </section>
+
+    <div class="grid" style="margin-top: 40px;">
+      <div class="card">
+        <h3>📧 Support</h3>
+        <p>Need help with easySED or have a technical question? Our support team is here to assist you.</p>
+        <a href="mailto:support@easySED.co.uk" class="btn" style="margin-top: 16px; display: inline-block;">
+          support@easySED.co.uk
+        </a>
+      </div>
+      <div class="card">
+        <h3>💬 Feedback</h3>
+        <p>Share your thoughts, suggestions, or request early access to new features.</p>
+        <a href="mailto:feedback@easySED.co.uk" class="btn" style="margin-top: 16px; display: inline-block;">
+          feedback@easySED.co.uk
+        </a>
+      </div>
+    </div>
+
+    <section class="hero" style="margin-top: 60px;">
+      <h2>Send us a message</h2>
+      <p class="lead" style="margin-bottom: 32px;">Fill out the form below and we'll get back to you as soon as possible.</p>
+
+      <!-- Netlify form -->
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact" />
+
+        <label>
+          Your email
+          <input type="email" name="email" placeholder="your.email@example.com" required />
+        </label>
+
+        <label>
+          Subject
+          <input type="text" name="subject" placeholder="What's this about?" />
+        </label>
+
+        <label>
+          Message
+          <textarea name="message" placeholder="Tell us what's on your mind..." required></textarea>
+        </label>
+
+        <button class="btn primary" type="submit">Send message</button>
+      </form>
+    </section>
+
+    <p class="footer">© <span id="y"></span> easySED.</p>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
