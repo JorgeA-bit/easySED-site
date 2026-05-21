@@ -1,77 +1,511 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>easySED — Track sea days. Export HMRC-ready evidence.</title>
-  <meta name="description" content="easySED helps UK seafarers track UK vs non-UK days using the UK-midnight rule, store evidence, and export HMRC-ready documents." />
-  <link rel="icon" type="image/png" href="assets/images/sitelogo.png" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body>
-  <div class="container">
-    <nav class="nav">
-      <div class="brand">
-        <a href="index.html">
-          <img src="assets/images/sitelogo.png" alt="easySED" class="logo" />
-        </a>
-      </div>
-      <div class="links">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </nav>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>easySED — SED Compliance Made Easy</title>
 
-    <section class="heroSplit">
-      <div class="heroLeft">
-        <p class="kicker">SED tracking for UK seafarers</p>
-        <h1>Take the guesswork out of your SED claim.</h1>
-        <p class="lead">
-          Track UK vs non-UK days with the UK-midnight rule, keep evidence organised, and export HMRC-ready documents when you hit day 365.
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #06153a;
+      color: #fff;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 48px 6%;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 80% 70%, rgba(255, 160, 60, 0.28), transparent 28%),
+        radial-gradient(circle at 75% 30%, rgba(0, 180, 255, 0.25), transparent 30%),
+        linear-gradient(135deg, #04102c 0%, #063b91 55%, #08245c 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: 1250px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 34px;
+    }
+
+    .app-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 26px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+
+    .brand {
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 800;
+      letter-spacing: -4px;
+    }
+
+    .brand span {
+      color: #21a8ff;
+    }
+
+    h1 {
+      font-size: clamp(40px, 5vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 28px;
+    }
+
+    h1 span {
+      color: #ffae2b;
+    }
+
+    .sub {
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.5;
+      color: #dce9ff;
+      max-width: 640px;
+      margin-bottom: 34px;
+    }
+
+    .features {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 38px;
+    }
+
+    .feature {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      color: #eaf3ff;
+      font-size: 18px;
+    }
+
+    .feature strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+
+    .feature-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: #18c76f;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      font-weight: 800;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .store-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 22px;
+      border-radius: 16px;
+      background: #050b1d;
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .store-button:hover {
+      transform: translateY(-2px);
+      background: #0a1635;
+    }
+
+    .store-button small {
+      display: block;
+      font-size: 12px;
+      opacity: 0.8;
+      line-height: 1;
+    }
+
+    .store-button span {
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .secondary-button {
+      color: #dce9ff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 14px 4px;
+    }
+
+    .phone-wrap {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .phone {
+      width: min(390px, 90vw);
+      border-radius: 46px;
+      padding: 14px;
+      background: #071020;
+      box-shadow: 0 35px 90px rgba(0,0,0,0.55);
+      transform: rotate(5deg);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .screen {
+      border-radius: 36px;
+      background: linear-gradient(180deg, #315af4 0%, #061348 100%);
+      padding: 28px 22px 24px;
+      min-height: 720px;
+      overflow: hidden;
+    }
+
+    .screen-top {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      margin-bottom: 48px;
+    }
+
+    .app-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 36px;
+    }
+
+    .status-card,
+    .checks-card {
+      background: #e9ecf8;
+      color: #1d2230;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 34px;
+    }
+
+    .pill {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      font-size: 14px;
+      background: #ecfff3;
+      color: #11813b;
+      border: 1px solid #a7efbf;
+    }
+
+    .pill.location {
+      color: #57327b;
+      background: #f8f1ff;
+      border-color: #d7b8ef;
+    }
+
+    .days {
+      text-align: center;
+      font-size: 72px;
+      color: #149646;
+      line-height: 1;
+    }
+
+    .days-label {
+      text-align: center;
+      color: #5e5e66;
+      font-size: 28px;
+      margin: 8px 0 28px;
+    }
+
+    .iqp {
+      display: flex;
+      justify-content: space-between;
+      font-size: 23px;
+      color: #555;
+      border-top: 1px solid #ddd;
+      padding-top: 18px;
+      margin-bottom: 14px;
+    }
+
+    .progress {
+      height: 10px;
+      background: #f2efe8;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress div {
+      width: 74%;
+      height: 100%;
+      background: #8657b8;
+      border-radius: 999px;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      margin: 28px 0;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .dot.active {
+      width: 34px;
+      background: white;
+    }
+
+    .checks-card h2 {
+      font-size: 30px;
+      margin-bottom: 22px;
+    }
+
+    .check-item {
+      background: #effff5;
+      border: 1px solid #9cf0b9;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+
+    .check-item.warning {
+      background: #fffaf0;
+      border-color: #ffd45d;
+    }
+
+    .check-title {
+      color: #666;
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .check-value {
+      color: #149646;
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .warning .check-value {
+      color: #c46314;
+    }
+
+    .cta-card {
+      margin-top: 34px;
+      padding: 22px 26px;
+      max-width: 560px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #dce9ff;
+      font-size: 19px;
+    }
+
+    .cta-card span {
+      color: #20c8ff;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding: 34px 22px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .phone {
+        transform: none;
+      }
+
+      .features {
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="hero">
+    <div class="hero-inner">
+
+      <section>
+        <div class="logo-row">
+          <img class="app-icon" src="app-icon.png" alt="easySED app icon" />
+          <div class="brand">easy<span>SED</span></div>
+        </div>
+
+        <h1>
+          SED compliance made <span>easy.</span><br />
+          Stay compliant. Stay prepared.
+        </h1>
+
+        <p class="sub">
+          Track your UK and non-UK days, follow HMRC rules, attach evidence,
+          and build your audit trail automatically.
         </p>
 
-        <p style="margin: 24px 0 16px; font-size: 18px; font-weight: 600; color: var(--text);">Download easySED for free.</p>
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">✓</div>
+            <div>
+              <strong>Always know where you stand</strong>
+              Real-time days in hand and rule checks.
+            </div>
+          </div>
 
-        <div class="ctaRow">
-          <a href="#" aria-disabled="true" class="store-badge">
-            <img src="assets/images/apple_store.png" alt="Download on the App Store" />
-          </a>
-          <a href="#" aria-disabled="true" class="store-badge">
-            <img src="assets/images/google_play.png" alt="Get it on Google Play" />
-          </a>
+          <div class="feature">
+            <div class="feature-icon">✓</div>
+            <div>
+              <strong>Built around HMRC’s rules</strong>
+              Half-Day Rule, 182-Day Rule and IQP tracking.
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">✓</div>
+            <div>
+              <strong>Complete audit trail</strong>
+              Attach evidence and generate HS205 and audit packs.
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">✓</div>
+            <div>
+              <strong>Works offline</strong>
+              Your data stays on your device. No account. No subscription.
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="heroRight">
-        <img src="assets/images/screenshot_1.png" alt="easySED app screenshot" style="width: 75%; height: auto; border-radius: 16px;" />
-      </div>
-    </section>
+        <div class="buttons">
+          <a class="store-button" href="#" aria-label="Get it on Google Play">
+            <div style="font-size:28px;">▶</div>
+            <div>
+              <small>GET IT ON</small>
+              <span>Google Play</span>
+            </div>
+          </a>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Accurate day counts</h3>
-        <p>Log trips once. easySED calculates UK vs non-UK days using the UK-midnight rule, so totals stay consistent.</p>
-      </div>
-      <div class="card">
-        <h3>Audit-ready evidence</h3>
-        <p>Store travel proof and generate exportable “evidence packs” to support your SED position if HMRC asks.</p>
-      </div>
-      <div class="card">
-        <h3>365-day progress</h3>
-        <p>See how far you are through your qualifying period, days remaining, and your projected day-365 date.</p>
-      </div>
-      <div class="card">
-        <h3>HMRC-ready exports</h3>
-        <p>Auto-populate official templates (e.g., HMRC HS205-style supporting docs) with your tracked data.</p>
-      </div>
+          <a class="secondary-button" href="#features">Learn more →</a>
+        </div>
+
+        <div class="cta-card">
+          Take control of your SED compliance. Be prepared.
+          <span>Sail with confidence.</span>
+        </div>
+      </section>
+
+      <section class="phone-wrap" aria-label="easySED dashboard preview">
+        <div class="phone">
+          <div class="screen">
+            <div class="screen-top">
+              <span>15:06</span>
+              <span>●  Wi-Fi  ▰</span>
+            </div>
+
+            <div class="app-title">easySED</div>
+
+            <div class="status-card">
+              <div class="status-row">
+                <div class="pill">COMPLIANT</div>
+                <div class="pill location">⌖ IN UK</div>
+              </div>
+
+              <div class="days">+97</div>
+              <div class="days-label">Days in Hand</div>
+
+              <div class="iqp">
+                <span>Initial Qualifying Period</span>
+                <strong>271/365</strong>
+              </div>
+
+              <div class="progress">
+                <div></div>
+              </div>
+            </div>
+
+            <div class="dots">
+              <div class="dot active"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+
+            <div class="checks-card">
+              <h2>Compliance Checks</h2>
+
+              <div class="check-item">
+                <div class="check-title">Half-Day Rule</div>
+                <div class="check-value">32% UK</div>
+              </div>
+
+              <div class="check-item">
+                <div class="check-title">182-Day Rule</div>
+                <div class="check-value">52/182</div>
+              </div>
+
+              <div class="check-item warning">
+                <div class="check-title">Port Call Evidence</div>
+                <div class="check-value">Needed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
-
-    <p class="footer">© <span id="y"></span> easySED. Built for clarity, compliance, and speed.</p>
-  </div>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  </main>
 </body>
 </html>
