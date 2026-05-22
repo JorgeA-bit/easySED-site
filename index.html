@@ -1,22 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easySED — SED Compliance Made Easy</title>
+  <title>easySED — Free SED Compliance App</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: #06153a;
-      color: #fff;
+      background: #06123a;
+      color: white;
     }
 
     .hero {
@@ -25,487 +20,278 @@
       display: flex;
       align-items: center;
       background:
-        radial-gradient(circle at 80% 70%, rgba(255, 160, 60, 0.28), transparent 28%),
-        radial-gradient(circle at 75% 30%, rgba(0, 180, 255, 0.25), transparent 30%),
-        linear-gradient(135deg, #04102c 0%, #063b91 55%, #08245c 100%);
+        radial-gradient(circle at 80% 70%, rgba(255,166,52,.35), transparent 25%),
+        radial-gradient(circle at 75% 25%, rgba(0,176,255,.25), transparent 30%),
+        linear-gradient(135deg, #030b24 0%, #093ca3 55%, #06123a 100%);
       overflow: hidden;
-      position: relative;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: 0.18;
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      width: 100%;
+    .wrap {
       max-width: 1250px;
-      margin: 0 auto;
+      width: 100%;
+      margin: auto;
       display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      gap: 56px;
+      grid-template-columns: 1.05fr .8fr;
+      gap: 60px;
       align-items: center;
-      position: relative;
-      z-index: 1;
     }
 
     .logo-row {
       display: flex;
       align-items: center;
-      gap: 22px;
-      margin-bottom: 34px;
-    }
-
-    .app-icon {
-      width: 96px;
-      height: 96px;
-      border-radius: 26px;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
-    }
-
-    .brand {
-      font-size: clamp(48px, 7vw, 88px);
-      font-weight: 800;
-      letter-spacing: -4px;
-    }
-
-    .brand span {
-      color: #21a8ff;
-    }
-
-    h1 {
-      font-size: clamp(40px, 5vw, 68px);
-      line-height: 1.05;
-      letter-spacing: -2px;
+      gap: 18px;
       margin-bottom: 28px;
     }
 
-    h1 span {
-      color: #ffae2b;
+    .logo-row img {
+      width: 82px;
+      height: 82px;
+      border-radius: 22px;
+      box-shadow: 0 20px 45px rgba(0,0,0,.35);
     }
 
+    .brand {
+      font-size: clamp(46px, 7vw, 82px);
+      font-weight: 850;
+      letter-spacing: -4px;
+    }
+
+    .brand span { color: #21a8ff; }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 22px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      color: #dcecff;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(42px, 5.4vw, 72px);
+      line-height: 1.04;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    h1 span { color: #ffae2b; }
+
     .sub {
+      max-width: 660px;
       font-size: clamp(18px, 2vw, 24px);
-      line-height: 1.5;
-      color: #dce9ff;
-      max-width: 640px;
-      margin-bottom: 34px;
+      line-height: 1.45;
+      color: #dce8ff;
+      margin-bottom: 30px;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .timebox {
+      min-width: 88px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .timebox strong {
+      display: block;
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .timebox small {
+      color: #bad2ff;
+      font-weight: 700;
+    }
+
+    .signup {
+      max-width: 560px;
+      display: flex;
+      gap: 12px;
+      padding: 8px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      margin-bottom: 18px;
+    }
+
+    .signup input {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 16px;
+    }
+
+    .signup button {
+      border: none;
+      border-radius: 14px;
+      padding: 0 22px;
+      background: #19b85b;
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .note {
+      color: #b8ccf5;
+      font-size: 15px;
+      margin-bottom: 32px;
     }
 
     .features {
       display: grid;
-      gap: 18px;
-      margin-bottom: 38px;
+      gap: 14px;
+      color: #eaf2ff;
     }
 
     .feature {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       align-items: flex-start;
-      color: #eaf3ff;
-      font-size: 18px;
+      font-size: 17px;
     }
 
-    .feature strong {
-      display: block;
-      color: #fff;
-      margin-bottom: 3px;
-    }
-
-    .feature-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      background: #18c76f;
+    .tick {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #19c66d;
       display: grid;
       place-items: center;
       flex: 0 0 auto;
-      font-weight: 800;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .store-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 22px;
-      border-radius: 16px;
-      background: #050b1d;
-      color: #fff;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .store-button:hover {
-      transform: translateY(-2px);
-      background: #0a1635;
-    }
-
-    .store-button small {
-      display: block;
-      font-size: 12px;
-      opacity: 0.8;
-      line-height: 1;
-    }
-
-    .store-button span {
-      display: block;
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.1;
-    }
-
-    .secondary-button {
-      color: #dce9ff;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 14px 4px;
-    }
-
-    .phone-wrap {
-      display: flex;
-      justify-content: center;
-      position: relative;
+      font-weight: 900;
     }
 
     .phone {
-      width: min(390px, 90vw);
-      border-radius: 46px;
+      width: min(370px, 86vw);
+      margin: auto;
       padding: 14px;
-      background: #071020;
-      box-shadow: 0 35px 90px rgba(0,0,0,0.55);
-      transform: rotate(5deg);
-      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 46px;
+      background: #06101f;
+      box-shadow: 0 40px 100px rgba(0,0,0,.6);
+      transform: rotate(4deg);
+      border: 1px solid rgba(255,255,255,.22);
     }
 
-    .screen {
-      border-radius: 36px;
-      background: linear-gradient(180deg, #315af4 0%, #061348 100%);
-      padding: 28px 22px 24px;
-      min-height: 720px;
+    .phone-screen {
+      width: 100%;
+      aspect-ratio: 9 / 19.5;
+      border-radius: 34px;
       overflow: hidden;
+      background: #10206a;
     }
 
-    .screen-top {
-      display: flex;
-      justify-content: space-between;
-      font-weight: 700;
-      margin-bottom: 48px;
-    }
-
-    .app-title {
-      text-align: center;
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 36px;
-    }
-
-    .status-card,
-    .checks-card {
-      background: #e9ecf8;
-      color: #1d2230;
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
-    }
-
-    .status-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 34px;
-    }
-
-    .pill {
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      font-size: 14px;
-      background: #ecfff3;
-      color: #11813b;
-      border: 1px solid #a7efbf;
-    }
-
-    .pill.location {
-      color: #57327b;
-      background: #f8f1ff;
-      border-color: #d7b8ef;
-    }
-
-    .days {
-      text-align: center;
-      font-size: 72px;
-      color: #149646;
-      line-height: 1;
-    }
-
-    .days-label {
-      text-align: center;
-      color: #5e5e66;
-      font-size: 28px;
-      margin: 8px 0 28px;
-    }
-
-    .iqp {
-      display: flex;
-      justify-content: space-between;
-      font-size: 23px;
-      color: #555;
-      border-top: 1px solid #ddd;
-      padding-top: 18px;
-      margin-bottom: 14px;
-    }
-
-    .progress {
-      height: 10px;
-      background: #f2efe8;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .progress div {
-      width: 74%;
+    .phone-screen img {
+      width: 100%;
       height: 100%;
-      background: #8657b8;
-      border-radius: 999px;
-    }
-
-    .dots {
-      display: flex;
-      justify-content: center;
-      gap: 9px;
-      margin: 28px 0;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.35);
-    }
-
-    .dot.active {
-      width: 34px;
-      background: white;
-    }
-
-    .checks-card h2 {
-      font-size: 30px;
-      margin-bottom: 22px;
-    }
-
-    .check-item {
-      background: #effff5;
-      border: 1px solid #9cf0b9;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 14px;
-    }
-
-    .check-item.warning {
-      background: #fffaf0;
-      border-color: #ffd45d;
-    }
-
-    .check-title {
-      color: #666;
-      font-size: 20px;
-      margin-bottom: 6px;
-    }
-
-    .check-value {
-      color: #149646;
-      font-size: 30px;
-      font-weight: 800;
-    }
-
-    .warning .check-value {
-      color: #c46314;
-    }
-
-    .cta-card {
-      margin-top: 34px;
-      padding: 22px 26px;
-      max-width: 560px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      color: #dce9ff;
-      font-size: 19px;
-    }
-
-    .cta-card span {
-      color: #20c8ff;
-      font-weight: 700;
+      object-fit: contain;
+      display: block;
+      background: #10206a;
     }
 
     @media (max-width: 900px) {
-      .hero {
-        padding: 34px 22px;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 44px;
-      }
-
-      .phone {
-        transform: none;
-      }
-
-      .features {
-        gap: 14px;
-      }
+      .hero { padding: 34px 22px; }
+      .wrap { grid-template-columns: 1fr; gap: 44px; }
+      .phone { transform: none; }
+      .signup { flex-direction: column; }
+      .signup button { padding: 16px; }
     }
   </style>
 </head>
 
 <body>
   <main class="hero">
-    <div class="hero-inner">
+    <div class="wrap">
 
       <section>
         <div class="logo-row">
-          <img class="app-icon" src="app-icon.png" alt="easySED app icon" />
+          <img src="app-icon.png" alt="easySED logo">
           <div class="brand">easy<span>SED</span></div>
         </div>
 
+        <div class="badge">Free app launching in 30 days</div>
+
         <h1>
-          SED compliance made <span>easy.</span><br />
-          Stay compliant. Stay prepared.
+          SED compliance made <span>easy.</span><br>
+          Built for seafarers.
         </h1>
 
         <p class="sub">
-          Track your UK and non-UK days, follow HMRC rules, attach evidence,
-          and build your audit trail automatically.
+          Track your days, follow HMRC rules, attach evidence and build your audit trail automatically.
+          No spreadsheets. No stress. No subscription.
         </p>
 
+        <div class="countdown">
+          <div class="timebox"><strong id="days">30</strong><small>Days</small></div>
+          <div class="timebox"><strong id="hours">00</strong><small>Hours</small></div>
+          <div class="timebox"><strong id="mins">00</strong><small>Minutes</small></div>
+          <div class="timebox"><strong id="secs">00</strong><small>Seconds</small></div>
+        </div>
+
+        <form class="signup" name="early-access" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="early-access">
+          <input type="email" name="email" placeholder="Enter your email for free access" required>
+          <button type="submit">Get free access</button>
+        </form>
+
+        <p class="note">Join the early access list and we’ll email you when easySED is ready.</p>
+
         <div class="features">
-          <div class="feature">
-            <div class="feature-icon">✓</div>
-            <div>
-              <strong>Always know where you stand</strong>
-              Real-time days in hand and rule checks.
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">✓</div>
-            <div>
-              <strong>Built around HMRC’s rules</strong>
-              Half-Day Rule, 182-Day Rule and IQP tracking.
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">✓</div>
-            <div>
-              <strong>Complete audit trail</strong>
-              Attach evidence and generate HS205 and audit packs.
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">✓</div>
-            <div>
-              <strong>Works offline</strong>
-              Your data stays on your device. No account. No subscription.
-            </div>
-          </div>
-        </div>
-
-        <div class="buttons">
-          <a class="store-button" href="#" aria-label="Get it on Google Play">
-            <div style="font-size:28px;">▶</div>
-            <div>
-              <small>GET IT ON</small>
-              <span>Google Play</span>
-            </div>
-          </a>
-
-          <a class="secondary-button" href="#features">Learn more →</a>
-        </div>
-
-        <div class="cta-card">
-          Take control of your SED compliance. Be prepared.
-          <span>Sail with confidence.</span>
+          <div class="feature"><div class="tick">✓</div><div>Half-Day Rule, 182-Day Rule and IQP tracking</div></div>
+          <div class="feature"><div class="tick">✓</div><div>Evidence capture for trips, port calls and audit records</div></div>
+          <div class="feature"><div class="tick">✓</div><div>HS205 and audit pack export support</div></div>
+          <div class="feature"><div class="tick">✓</div><div>Works offline — your data stays on your device</div></div>
         </div>
       </section>
 
-      <section class="phone-wrap" aria-label="easySED dashboard preview">
+      <section>
         <div class="phone">
-          <div class="screen">
-            <div class="screen-top">
-              <span>15:06</span>
-              <span>●  Wi-Fi  ▰</span>
-            </div>
-
-            <div class="app-title">easySED</div>
-
-            <div class="status-card">
-              <div class="status-row">
-                <div class="pill">COMPLIANT</div>
-                <div class="pill location">⌖ IN UK</div>
-              </div>
-
-              <div class="days">+97</div>
-              <div class="days-label">Days in Hand</div>
-
-              <div class="iqp">
-                <span>Initial Qualifying Period</span>
-                <strong>271/365</strong>
-              </div>
-
-              <div class="progress">
-                <div></div>
-              </div>
-            </div>
-
-            <div class="dots">
-              <div class="dot active"></div>
-              <div class="dot"></div>
-              <div class="dot"></div>
-            </div>
-
-            <div class="checks-card">
-              <h2>Compliance Checks</h2>
-
-              <div class="check-item">
-                <div class="check-title">Half-Day Rule</div>
-                <div class="check-value">32% UK</div>
-              </div>
-
-              <div class="check-item">
-                <div class="check-title">182-Day Rule</div>
-                <div class="check-value">52/182</div>
-              </div>
-
-              <div class="check-item warning">
-                <div class="check-title">Port Call Evidence</div>
-                <div class="check-value">Needed</div>
-              </div>
-            </div>
+          <div class="phone-screen">
+            <img src="dashboard-screenshot.png" alt="easySED dashboard screenshot">
           </div>
         </div>
       </section>
 
     </div>
   </main>
+
+  <script>
+    const launchDate = new Date();
+    launchDate.setDate(launchDate.getDate() + 30);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = launchDate - now;
+
+      if (diff <= 0) return;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("mins").textContent = String(mins).padStart(2, "0");
+      document.getElementById("secs").textContent = String(secs).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
