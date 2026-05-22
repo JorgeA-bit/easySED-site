@@ -783,3 +783,70 @@ form .btn {
 .card:nth-child(2) { animation-delay: 0.2s; }
 .card:nth-child(3) { animation-delay: 0.3s; }
 .card:nth-child(4) { animation-delay: 0.4s; }
+
+.sib-form {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+#sib-form-container {
+  max-width: 560px;
+}
+
+#sib-container {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 22px !important;
+  padding: 24px !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+.sib-form-block {
+  color: #ffffff !important;
+}
+
+.sib-form-block p,
+.sib-text-form-block p {
+  color: #dce8ff !important;
+}
+
+.sib-form-block:first-child p {
+  color: #ffffff !important;
+  font-size: 30px !important;
+  line-height: 1.1 !important;
+}
+
+.entry__field {
+  border-radius: 16px !important;
+  border: none !important;
+  overflow: hidden;
+}
+
+.entry__field input {
+  border-radius: 16px !important;
+  padding: 16px !important;
+  font-size: 16px !important;
+}
+
+.entry__choice label {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.entry__choice p {
+  margin: 0 !important;
+  color: #dce8ff !important;
+}
+
+.sib-form-block__button {
+  width: 100%;
+  text-align: center !important;
+  justify-content: center;
+  border-radius: 16px !important;
+  padding: 16px 22px !important;
+  background: #19b85b !important;
+  color: white !important;
+  font-size: 17px !important;
+  font-weight: 800 !important;
+}

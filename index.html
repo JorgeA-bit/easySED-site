@@ -3,15 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>easySED — Free SED Compliance App</title>
+
+  <title>easySED — SED Compliance Made Easy</title>
+
+  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #06123a;
       color: white;
+      overflow-x: hidden;
     }
 
     .hero {
@@ -19,19 +27,20 @@
       padding: 48px 6%;
       display: flex;
       align-items: center;
+
       background:
         radial-gradient(circle at 80% 70%, rgba(255,166,52,.35), transparent 25%),
         radial-gradient(circle at 75% 25%, rgba(0,176,255,.25), transparent 30%),
         linear-gradient(135deg, #030b24 0%, #093ca3 55%, #06123a 100%);
-      overflow: hidden;
     }
 
     .wrap {
       max-width: 1250px;
-      width: 100%;
       margin: auto;
+      width: 100%;
+
       display: grid;
-      grid-template-columns: 1.05fr .8fr;
+      grid-template-columns: 1.1fr .9fr;
       gap: 60px;
       align-items: center;
     }
@@ -40,7 +49,7 @@
       display: flex;
       align-items: center;
       gap: 18px;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
     .logo-row img {
@@ -51,54 +60,64 @@
     }
 
     .brand {
-      font-size: clamp(46px, 7vw, 82px);
+      font-size: clamp(48px, 7vw, 82px);
       font-weight: 850;
       letter-spacing: -4px;
     }
 
-    .brand span { color: #21a8ff; }
+    .brand span {
+      color: #21a8ff;
+    }
 
     .badge {
       display: inline-block;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
       padding: 10px 16px;
       border-radius: 999px;
+
       background: rgba(255,255,255,.12);
       border: 1px solid rgba(255,255,255,.22);
+
       color: #dcecff;
       font-weight: 700;
     }
 
     h1 {
       font-size: clamp(42px, 5.4vw, 72px);
-      line-height: 1.04;
+      line-height: 1.02;
       letter-spacing: -2px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
-    h1 span { color: #ffae2b; }
+    h1 span {
+      color: #ffae2b;
+    }
 
     .sub {
-      max-width: 660px;
+      max-width: 650px;
       font-size: clamp(18px, 2vw, 24px);
       line-height: 1.45;
       color: #dce8ff;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
     }
 
     .countdown {
       display: flex;
       gap: 12px;
-      margin-bottom: 32px;
+      margin-bottom: 34px;
       flex-wrap: wrap;
     }
 
     .timebox {
       min-width: 88px;
+
       padding: 16px;
+
       border-radius: 18px;
+
       background: rgba(255,255,255,.1);
       border: 1px solid rgba(255,255,255,.18);
+
       text-align: center;
       backdrop-filter: blur(10px);
     }
@@ -114,54 +133,17 @@
       font-weight: 700;
     }
 
-    .signup {
-      max-width: 560px;
-      display: flex;
-      gap: 12px;
-      padding: 8px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.22);
-      margin-bottom: 18px;
-    }
-
-    .signup input {
-      flex: 1;
-      min-width: 0;
-      border: none;
-      outline: none;
-      border-radius: 14px;
-      padding: 16px;
-      font-size: 16px;
-    }
-
-    .signup button {
-      border: none;
-      border-radius: 14px;
-      padding: 0 22px;
-      background: #19b85b;
-      color: white;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .note {
-      color: #b8ccf5;
-      font-size: 15px;
-      margin-bottom: 32px;
-    }
-
     .features {
       display: grid;
       gap: 14px;
-      color: #eaf2ff;
+      margin-top: 30px;
     }
 
     .feature {
       display: flex;
       gap: 12px;
       align-items: flex-start;
+      color: #eaf2ff;
       font-size: 17px;
     }
 
@@ -170,28 +152,40 @@
       height: 28px;
       border-radius: 50%;
       background: #19c66d;
+
       display: grid;
       place-items: center;
+
       flex: 0 0 auto;
+
       font-weight: 900;
     }
 
     .phone {
-      width: min(370px, 86vw);
+      width: min(380px, 86vw);
       margin: auto;
+
       padding: 14px;
+
       border-radius: 46px;
+
       background: #06101f;
+
       box-shadow: 0 40px 100px rgba(0,0,0,.6);
+
       transform: rotate(4deg);
+
       border: 1px solid rgba(255,255,255,.22);
     }
 
     .phone-screen {
       width: 100%;
       aspect-ratio: 9 / 19.5;
+
       border-radius: 34px;
+
       overflow: hidden;
+
       background: #10206a;
     }
 
@@ -200,30 +194,123 @@
       height: 100%;
       object-fit: contain;
       display: block;
-      background: #10206a;
     }
 
-    @media (max-width: 900px) {
-      .hero { padding: 34px 22px; }
-      .wrap { grid-template-columns: 1fr; gap: 44px; }
-      .phone { transform: none; }
-      .signup { flex-direction: column; }
-      .signup button { padding: 16px; }
+    /* ========================= */
+    /* BREVO FORM STYLING */
+    /* ========================= */
+
+    .sib-form {
+      background: transparent !important;
+      padding: 0 !important;
+    }
+
+    #sib-form-container {
+      max-width: 560px;
+    }
+
+    #sib-container {
+      background: rgba(255,255,255,.12) !important;
+
+      border: 1px solid rgba(255,255,255,.22) !important;
+
+      border-radius: 22px !important;
+
+      padding: 24px !important;
+
+      box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    }
+
+    .sib-form-block {
+      color: white !important;
+    }
+
+    .sib-form-block p,
+    .sib-text-form-block p {
+      color: #dce8ff !important;
+    }
+
+    .entry__field {
+      border-radius: 16px !important;
+      overflow: hidden;
+    }
+
+    .entry__field input {
+      border-radius: 16px !important;
+      padding: 16px !important;
+      font-size: 16px !important;
+      border: none !important;
+    }
+
+    .entry__choice label {
+      display: flex !important;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .entry__choice p {
+      margin: 0 !important;
+      color: #dce8ff !important;
+    }
+
+    .sib-form-block__button {
+      width: 100% !important;
+
+      display: flex !important;
+      justify-content: center !important;
+
+      border-radius: 16px !important;
+
+      padding: 16px 22px !important;
+
+      background: #19b85b !important;
+
+      color: white !important;
+
+      font-size: 17px !important;
+      font-weight: 800 !important;
+    }
+
+    .note {
+      margin-top: 14px;
+      color: #b8ccf5;
+      font-size: 14px;
+    }
+
+    @media (max-width: 950px) {
+      .wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 36px 22px;
+      }
+
+      .phone {
+        transform: none;
+      }
     }
   </style>
 </head>
 
 <body>
+
   <main class="hero">
+
     <div class="wrap">
 
+      <!-- LEFT -->
+
       <section>
+
         <div class="logo-row">
           <img src="/assets/images/app-icon.png" alt="easySED logo">
           <div class="brand">easy<span>SED</span></div>
         </div>
 
-        <div class="badge">Free app launching in 30 days</div>
+        <div class="badge">
+          Free app launching in 30 days
+        </div>
 
         <h1>
           SED compliance made <span>easy.</span><br>
@@ -231,42 +318,194 @@
         </h1>
 
         <p class="sub">
-          Track your days, follow HMRC rules, attach evidence and build your audit trail automatically.
-          No spreadsheets. No stress. No subscription.
+          Track your UK and non-UK days, follow HMRC rules,
+          attach evidence and build your audit trail automatically.
+          No spreadsheets. No stress.
         </p>
 
+        <!-- COUNTDOWN -->
+
         <div class="countdown">
-          <div class="timebox"><strong id="days">30</strong><small>Days</small></div>
-          <div class="timebox"><strong id="hours">00</strong><small>Hours</small></div>
-          <div class="timebox"><strong id="mins">00</strong><small>Minutes</small></div>
-          <div class="timebox"><strong id="secs">00</strong><small>Seconds</small></div>
-        </div>
+          <div class="timebox">
+            <strong id="days">30</strong>
+            <small>Days</small>
+          </div>
 
-        <form class="signup" name="early-access" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="early-access">
-          <input type="email" name="email" placeholder="Enter your email for free access" required>
-          <button type="submit">Get free access</button>
-        </form>
+          <div class="timebox">
+            <strong id="hours">00</strong>
+            <small>Hours</small>
+          </div>
 
-        <p class="note">Join the early access list and we’ll email you when easySED is ready.</p>
+          <div class="timebox">
+            <strong id="mins">00</strong>
+            <small>Minutes</small>
+          </div>
 
-        <div class="features">
-          <div class="feature"><div class="tick">✓</div><div>Half-Day Rule, 182-Day Rule and IQP tracking</div></div>
-          <div class="feature"><div class="tick">✓</div><div>Evidence capture for trips, port calls and audit records</div></div>
-          <div class="feature"><div class="tick">✓</div><div>HS205 and audit pack export support</div></div>
-          <div class="feature"><div class="tick">✓</div><div>Works offline — your data stays on your device</div></div>
-        </div>
-      </section>
-
-      <section>
-        <div class="phone">
-          <div class="phone-screen">
-            <img src="/assets/images/dashboard-screenshot.png" alt="easySED dashboard screenshot">
+          <div class="timebox">
+            <strong id="secs">00</strong>
+            <small>Seconds</small>
           </div>
         </div>
+
+        <!-- BREVO FORM -->
+
+        <div class="sib-form" style="text-align: left; background-color: transparent;">
+          <div id="sib-form-container" class="sib-form-container">
+
+            <div id="sib-container"
+              class="sib-container--large sib-container--vertical">
+
+              <form id="sib-form"
+                method="POST"
+                action="https://d9eb8d2a.sibforms.com/serve/MUIFAG8GKCDULRWAmds6ZkUUpUhrzqd5oXvpDxgC6nR3G3gbFAzx_3sBzL-8j5_V8rqmfp6Gx4ZPwE3IZG6DjdIhloQibC8aOxsnArDh59KlD38izcIAqiGsjJp7Q27_OBZkxiu3c0i0-9AB4EQd8Qb7UIxKHNwTrTVLMCIiu11UBAxp_tbg-zGM-_Od4JQbPlyBZfW5iBO8tOVnTQ==">
+
+                <div class="sib-form-block">
+                  <p style="font-size:32px; font-weight:700;">
+                    Join the easySED Early Access List
+                  </p>
+                </div>
+
+                <div class="sib-form-block" style="margin-top:12px;">
+                  <p>
+                    The first 50 seafarers get free lifetime access.
+                  </p>
+                </div>
+
+                <div style="margin-top:20px;">
+
+                  <div class="sib-input sib-form-block">
+                    <div class="form__entry entry_block">
+
+                      <div class="entry__field">
+                        <input
+                          class="input"
+                          type="email"
+                          id="EMAIL"
+                          name="EMAIL"
+                          autocomplete="off"
+                          placeholder="Enter your email"
+                          required
+                        />
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+
+                <div style="margin-top:18px;">
+
+                  <div class="sib-optin sib-form-block">
+
+                    <div class="form__entry entry_mcq">
+
+                      <div class="entry__choice">
+
+                        <label>
+
+                          <input
+                            type="checkbox"
+                            class="input_replaced"
+                            value="1"
+                            id="MARKETING_CONSENT"
+                            name="MARKETING_CONSENT"
+                            required
+                          />
+
+                          <span class="checkbox checkbox_tick_positive"></span>
+
+                          <span>
+                            <p>
+                              I agree to receive easySED launch updates and early access information.
+                            </p>
+                          </span>
+
+                        </label>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div style="margin-top:20px;">
+
+                  <button
+                    class="sib-form-block__button sib-form-block__button-with-loader"
+                    form="sib-form"
+                    type="submit">
+
+                    Get Free Access
+
+                  </button>
+
+                </div>
+
+                <input type="hidden" name="locale" value="en">
+                <input type="hidden" name="html_type" value="simple">
+
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+
+        <p class="note">
+          Join the launch list and we’ll email you when easySED goes live.
+        </p>
+
+        <!-- FEATURES -->
+
+        <div class="features">
+
+          <div class="feature">
+            <div class="tick">✓</div>
+            <div>Half-Day Rule, 182-Day Rule and IQP tracking</div>
+          </div>
+
+          <div class="feature">
+            <div class="tick">✓</div>
+            <div>Evidence capture for trips, port calls and audit records</div>
+          </div>
+
+          <div class="feature">
+            <div class="tick">✓</div>
+            <div>HS205 and audit pack export support</div>
+          </div>
+
+          <div class="feature">
+            <div class="tick">✓</div>
+            <div>Works offline — your data stays on your device</div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- RIGHT -->
+
+      <section>
+
+        <div class="phone">
+
+          <div class="phone-screen">
+
+            <img
+              src="/assets/images/dashboard-screenshot.png"
+              alt="easySED dashboard screenshot"
+            >
+
+          </div>
+
+        </div>
+
       </section>
 
     </div>
+
   </main>
 
   <script>
@@ -274,6 +513,7 @@
     launchDate.setDate(launchDate.getDate() + 30);
 
     function updateCountdown() {
+
       const now = new Date();
       const diff = launchDate - now;
 
@@ -291,7 +531,9 @@
     }
 
     updateCountdown();
+
     setInterval(updateCountdown, 1000);
   </script>
+
 </body>
 </html>
