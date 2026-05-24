@@ -1,58 +1,223 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — easySED</title>
-  <meta name="description" content="Contact easySED." />
+  <meta name="description" content="Get in touch with the easySED team. Questions, feedback or early access requests — we'd love to hear from you." />
   <link rel="icon" type="image/png" href="assets/images/sitelogo.png" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #030b1e;
+      --surface: rgba(255,255,255,.07);
+      --border: rgba(255,255,255,.11);
+      --border-strong: rgba(255,255,255,.22);
+      --blue: #3b9eff;
+      --gold: #ffb830;
+      --green: #1dbd6b;
+      --muted: #a8bdd8;
+      --font: 'Manrope', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg); color: #fff;
+      overflow-x: hidden; min-height: 100vh;
+    }
+
+    .bg-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .bg-canvas::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13,80,220,.2), transparent),
+        radial-gradient(ellipse 50% 50% at 90% 50%, rgba(0,120,255,.12), transparent);
+    }
+    .bg-canvas::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.09) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse 100% 60% at 50% 0%, black 20%, transparent 80%);
+    }
+
+    /* Nav */
+    nav {
+      position: relative; z-index: 10;
+      max-width: 1200px; margin: 0 auto;
+      padding: 20px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { width: 42px; height: 42px; border-radius: 11px; box-shadow: 0 6px 20px rgba(0,0,0,.4); }
+    .nav-brand { font-size: 21px; font-weight: 800; letter-spacing: -0.5px; color: white; }
+    .nav-brand span { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-link {
+      padding: 9px 14px; border-radius: 50px; color: var(--muted);
+      font-size: 14px; font-weight: 600; text-decoration: none; transition: color .2s;
+    }
+    .nav-link:hover { color: white; }
+    .nav-link.active { color: white; }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border-radius: 50px;
+      background: rgba(255,255,255,.1); border: 1px solid var(--border-strong);
+      color: white; font-size: 13px; font-weight: 600;
+      text-decoration: none; transition: background .2s;
+    }
+    .nav-cta:hover { background: rgba(255,255,255,.16); }
+
+    /* Page header */
+    .page-header {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 56px 5% 48px;
+      text-align: center;
+    }
+    .page-eyebrow {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 16px;
+    }
+    .page-title {
+      font-size: clamp(36px, 4.5vw, 58px); font-weight: 800;
+      letter-spacing: -2px; line-height: 1.05; margin-bottom: 18px;
+    }
+    .page-sub {
+      font-size: clamp(15px, 1.3vw, 18px); line-height: 1.65;
+      color: var(--muted); max-width: 520px; margin: 0 auto;
+    }
+
+    /* Content */
+    .content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 5% 80px;
+    }
+
+    /* Contact cards */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .contact-card {
+      padding: 28px; border-radius: 20px;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+    }
+
+    .contact-icon {
+      width: 40px; height: 40px; border-radius: 11px;
+      display: grid; place-items: center; margin-bottom: 16px;
+    }
+    .contact-icon.blue { background: rgba(59,158,255,.14); border: 1px solid rgba(59,158,255,.2); color: var(--blue); }
+    .contact-icon.green { background: rgba(29,189,107,.14); border: 1px solid rgba(29,189,107,.2); color: var(--green); }
+    .contact-icon svg { width: 20px; height: 20px; }
+
+    .contact-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .contact-card p { font-size: 14px; line-height: 1.6; color: var(--muted); flex: 1; margin-bottom: 20px; }
+
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 18px; border-radius: 11px;
+      background: rgba(255,255,255,.08); border: 1px solid var(--border-strong);
+      color: white; font-size: 13px; font-weight: 600;
+      text-decoration: none; transition: background .2s; width: fit-content;
+    }
+    .contact-btn:hover { background: rgba(255,255,255,.14); }
+    .contact-btn svg { width: 15px; height: 15px; color: var(--muted); }
+
+    /* Footer */
+    footer {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 24px 5% 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .footer-brand { font-size: 14px; color: var(--muted); }
+    .footer-brand strong { color: white; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: white; }
+
+    @media (max-width: 720px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-card { padding: 24px 18px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <nav class="nav">
-      <div class="brand">
-        <a href="index.html">
-          <img src="assets/images/sitelogo.png" alt="easySED" class="logo" />
-        </a>
-      </div>
-      <div class="links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html" class="active">Contact</a>
-      </div>
-    </nav>
-    <section class="hero">
-      <h1 style="margin-top: 0;">Questions, feedback, or early access?</h1>
-      <p class="lead">We'd love to hear from you. Choose how you'd like to reach out below.</p>
-    </section>
-    <div class="grid" style="margin-top: 40px;">
-      <div class="card">
-        <h3>📧 Support</h3>
+  <div class="bg-canvas"></div>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="assets/images/app-icon.png" alt="easySED logo" />
+      <span class="nav-brand">easy<span>SED</span></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link active" href="contact.html">Contact</a>
+      <a class="nav-cta" href="index.html#signup">Get Early Access</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <span class="page-eyebrow">Get in touch</span>
+    <h1 class="page-title">Questions, feedback,<br>or early access?</h1>
+    <p class="page-sub">We'd love to hear from you. Choose how you'd like to reach out below.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- Email cards -->
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </div>
+        <h3>Support</h3>
         <p>Need help with easySED or have a technical question? Our support team is here to assist you.</p>
-        <a href="mailto:support@easySED.co.uk" class="btn" style="margin-top: 16px; display: inline-block;">
+        <a class="contact-btn" href="mailto:support@easySED.co.uk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           support@easySED.co.uk
         </a>
       </div>
-      <div class="card">
-        <h3>💬 Feedback</h3>
+      <div class="contact-card">
+        <div class="contact-icon green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Feedback</h3>
         <p>Share your thoughts, suggestions, or request early access to new features.</p>
-        <a href="mailto:feedback@easySED.co.uk" class="btn" style="margin-top: 16px; display: inline-block;">
+        <a class="contact-btn" href="mailto:feedback@easySED.co.uk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           feedback@easySED.co.uk
         </a>
       </div>
     </div>
-    <section class="hero" style="margin-top: 60px;">
-      <h2>Get in touch</h2>
-      <p class="lead" style="margin-bottom: 32px;">Click below and we'll get back to you as soon as possible.</p>
-      <a href="mailto:hello@easysed.co.uk?subject=easySED%20Enquiry" class="btn primary">
-        Send us a message
-      </a>
-    </section>
-    <p class="footer">© <span id="y"></span> easySED.</p>
+
   </div>
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+
+  <footer>
+    <p class="footer-brand">© <span id="y"></span> <strong>easySED.</strong> Built for clarity, compliance, and speed.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
