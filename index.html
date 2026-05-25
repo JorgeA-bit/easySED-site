@@ -446,7 +446,7 @@
     .mobile-nav a { font-size: 22px; font-weight: 700; color: var(--muted); text-decoration: none; padding: 14px 32px; border-radius: 14px; transition: color .2s, background .2s; width: 240px; text-align: center; }
     .mobile-nav a:hover, .mobile-nav a.active { color: white; background: rgba(255,255,255,.08); }
     .mobile-nav .mobile-cta { margin-top: 12px; font-size: 16px; font-weight: 800; background: linear-gradient(135deg, #1dbd6b, #12a55c) !important; color: white !important; box-shadow: 0 6px 20px rgba(29,189,107,.3); }
-    @media (max-width: 640px) { .nav-links { display: none; } .burger { display: flex; } }
+    @media (max-width: 640px) { .nav-links { display: none !important; } .burger { display: flex !important; } }
 
     /* ── Animations ── */
     @keyframes fadeUp {
@@ -461,11 +461,6 @@
       .form-col  { position: static; }
       .phone-mockup { max-width: 280px; }
       .features-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      .nav-links { display: none !important; }
-      .burger { display: flex !important; }
     }
 
     @media (max-width: 600px) {
