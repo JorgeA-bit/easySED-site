@@ -80,7 +80,7 @@
     .icard p { font-size: 13px; line-height: 1.65; color: var(--muted); }
 
     /* Feature steps */
-    .feature-step { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 72px; }
+    .feature-step { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; margin-bottom: 72px; }
     .feature-step.reverse { direction: rtl; }
     .feature-step.reverse > * { direction: ltr; }
 
@@ -105,6 +105,33 @@
     .step-bullets li::before {
       content: ''; width: 6px; height: 6px; border-radius: 50%;
       background: var(--green); flex: 0 0 auto; margin-top: 7px;
+    }
+
+    /* Step media */
+    .step-media {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-strong);
+      box-shadow: 0 16px 40px rgba(0,0,0,.4);
+      background: #000;
+      position: relative;
+      width: 220px;
+      flex-shrink: 0;
+    }
+    .step-media img {
+      width: 100%; height: auto; display: block;
+    }
+    .step-media video {
+      width: 100%; display: block; object-fit: cover;
+    }
+    .step-media.portrait {
+      width: 160px;
+      border-radius: 24px;
+      border: 3px solid rgba(255,255,255,.15);
+      box-shadow: 0 20px 50px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06);
+    }
+    .step-media.portrait video {
+      width: 100%; display: block;
     }
 
     /* Visual placeholder */
@@ -181,6 +208,8 @@
       .intro-grid { grid-template-columns: 1fr; }
       .feature-step { grid-template-columns: 1fr; gap: 28px; }
       .feature-step.reverse { direction: ltr; }
+      .step-media { width: 100%; max-width: 320px; margin: 0 auto; }
+      .step-media.portrait { width: 160px; }
       .callout { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 16px; text-align: center; }
     }
@@ -265,9 +294,8 @@
           <li>Time zones handled for you</li>
         </ul>
       </div>
-      <div class="visual-placeholder">
-        <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <p><strong>Screenshot coming soon</strong><br/>Home screen with "Leave UK" button and IN THE UK status</p>
+      <div class="step-media portrait">
+        <video src="assets/video/log-your-movements.mp4" autoplay loop muted playsinline></video>
       </div>
     </div>
 
@@ -286,9 +314,8 @@
           <li>Auditable paper trail as you travel</li>
         </ul>
       </div>
-      <div class="visual-placeholder">
-        <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></div>
-        <p><strong>Screenshot coming soon</strong><br/>Camera scanning a boarding pass with "Attached to Trip" badge</p>
+      <div class="step-media">
+        <img src="assets/images/capture-evidence.png" alt="easySED evidence capture screen showing attached documents" />
       </div>
     </div>
 
@@ -307,9 +334,8 @@
           <li>UK vs. Outside UK day totals at a glance</li>
         </ul>
       </div>
-      <div class="visual-placeholder">
-        <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <p><strong>Screenshot coming soon</strong><br/>Dashboard with progress ring, day totals and "Low Risk" status</p>
+      <div class="step-media">
+        <img src="assets/images/monitor-eligibility.png" alt="easySED dashboard showing eligibility progress and day count" />
       </div>
     </div>
 
@@ -328,9 +354,8 @@
           <li>Export or share anytime</li>
         </ul>
       </div>
-      <div class="visual-placeholder">
-        <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <p><strong>Screenshot coming soon</strong><br/>Tax Vault with archived periods and "Download HMRC PDF" button</p>
+      <div class="step-media">
+        <img src="assets/images/export-your-claim.png" alt="easySED Tax Vault showing completed periods and export options" />
       </div>
     </div>
 

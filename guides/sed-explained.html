@@ -3,293 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What is Seafarers' Earnings Deduction (SED)? A Plain-English Guide | easySED</title>
-  <meta name="description" content="Seafarers' Earnings Deduction (SED) lets UK seafarers pay zero tax on their earnings. Find out who qualifies, how to claim, what records you need and how the NT tax code works." />
+  <title>What is Seafarers' Earnings Deduction (SED)? | easySED</title>
+  <meta name="description" content="SED lets eligible UK seafarers pay zero tax on their earnings. Find out what it is, who qualifies and what counts as a ship — in plain English." />
   <link rel="canonical" href="https://www.easysed.co.uk/guides/sed-explained.html" />
-
-  <!-- Open Graph -->
   <meta property="og:title" content="What is Seafarers' Earnings Deduction (SED)?" />
-  <meta property="og:description" content="A plain-English guide to SED — who qualifies, how to claim, the NT tax code and what records HMRC want to see." />
+  <meta property="og:description" content="A plain-English intro to SED — who qualifies, who can't claim, and what actually counts as a ship." />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://www.easysed.co.uk/guides/sed-explained.html" />
-
   <link rel="icon" type="image/png" href="../assets/images/sitelogo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- Schema.org Article markup for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "What is Seafarers' Earnings Deduction (SED)?",
-    "description": "A plain-English guide to Seafarers' Earnings Deduction — who qualifies, how to claim, the NT tax code and what records HMRC want to see.",
-    "author": { "@type": "Organization", "name": "easySED" },
-    "publisher": { "@type": "Organization", "name": "easySED", "url": "https://www.easysed.co.uk" },
-    "mainEntityOfPage": "https://www.easysed.co.uk/guides/sed-explained.html"
-  }
-  </script>
-
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What is Seafarers' Earnings Deduction (SED)?","author":{"@type":"Organization","name":"easySED"},"publisher":{"@type":"Organization","name":"easySED","url":"https://www.easysed.co.uk"}}</script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --bg: #081630;
-      --surface: rgba(255,255,255,.07);
-      --border: rgba(255,255,255,.11);
-      --border-strong: rgba(255,255,255,.22);
-      --blue: #3b9eff;
-      --gold: #ffb830;
-      --green: #1dbd6b;
-      --red: #ff6b6b;
-      --muted: #a8bdd8;
-      --text: #dce8ff;
-      --font: 'Manrope', sans-serif;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font); background: var(--bg); color: #fff; overflow-x: hidden; min-height: 100vh; }
-
-    .bg-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .bg-canvas::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13,80,220,.18), transparent),
-        radial-gradient(ellipse 40% 40% at 90% 30%, rgba(0,120,255,.1), transparent);
-    }
-    .bg-canvas::after {
-      content: ''; position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,.08) 1px, transparent 1px);
-      background-size: 36px 36px;
-      mask-image: radial-gradient(ellipse 100% 50% at 50% 0%, black 20%, transparent 80%);
-    }
-
-    /* Nav */
-    nav { position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; padding: 20px 5%; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo img { width: 42px; height: 42px; border-radius: 11px; box-shadow: 0 6px 20px rgba(0,0,0,.4); }
-    .nav-brand { font-size: 21px; font-weight: 800; letter-spacing: -0.5px; color: white; }
-    .nav-brand span { color: var(--blue); }
-    .nav-links { display: flex; align-items: center; gap: 4px; }
-    .nav-link { padding: 9px 14px; border-radius: 50px; color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none; transition: color .2s; }
-    .nav-link:hover, .nav-link.active { color: white; }
-
-    .burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; padding: 8px; border-radius: 10px; border: 1px solid var(--border-strong); background: rgba(255,255,255,.08); cursor: pointer; z-index: 100; flex-shrink: 0; }
-    .burger span { display: block; height: 2px; border-radius: 2px; background: white; transition: transform .3s, opacity .3s, width .3s; }
-    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .burger.open span:nth-child(2) { opacity: 0; width: 0; }
-    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-nav { display: none; position: fixed; inset: 0; z-index: 50; background: rgba(3,11,30,.97); backdrop-filter: blur(16px); flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a { font-size: 22px; font-weight: 700; color: var(--muted); text-decoration: none; padding: 14px 32px; border-radius: 14px; transition: color .2s, background .2s; width: 240px; text-align: center; }
-    .mobile-nav a:hover, .mobile-nav a.active { color: white; background: rgba(255,255,255,.08); }
-    .mobile-nav .mobile-cta { margin-top: 12px; font-size: 16px; font-weight: 800; background: linear-gradient(135deg, #1dbd6b, #12a55c) !important; color: white !important; box-shadow: 0 6px 20px rgba(29,189,107,.3); }
-    @media (max-width: 640px) { .nav-links { display: none; } .burger { display: flex; } }
-
-    /* Layout */
-    .page-wrap {
-      position: relative; z-index: 2;
-      max-width: 1200px; margin: 0 auto;
-      padding: 48px 5% 80px;
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 64px;
-      align-items: start;
-    }
-
-    /* ── Article ── */
-    article { min-width: 0; }
-
-    /* Breadcrumb */
-    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 28px; flex-wrap: wrap; }
-    .breadcrumb a { color: var(--muted); text-decoration: none; transition: color .2s; }
-    .breadcrumb a:hover { color: white; }
-    .breadcrumb svg { width: 12px; height: 12px; color: #3a5070; flex: 0 0 auto; }
-
-    /* Article header */
-    .article-tag {
-      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; padding: 5px 12px; border-radius: 20px;
-      background: rgba(59,158,255,.15); color: var(--blue);
-      margin-bottom: 18px;
-    }
-    h1 {
-      font-size: clamp(30px, 4vw, 46px); font-weight: 800;
-      letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 18px;
-    }
-
-    .article-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
-    .meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
-    .meta-item svg { width: 14px; height: 14px; }
-
-    /* Lead paragraph */
-    .lead { font-size: 18px; line-height: 1.7; color: var(--text); margin-bottom: 32px; font-weight: 500; }
-
-    /* Body copy */
-    .article-body h2 {
-      font-size: clamp(20px, 2.5vw, 26px); font-weight: 800;
-      letter-spacing: -0.6px; margin: 48px 0 14px; color: white;
-      padding-top: 48px; border-top: 1px solid var(--border);
-    }
-    .article-body h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
-
-    .article-body h3 { font-size: 18px; font-weight: 700; margin: 28px 0 10px; color: white; letter-spacing: -0.3px; }
-
-    .article-body p { font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 16px; }
-
-    .article-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
-    .article-body a:hover { color: white; }
-
-    /* Lists */
-    .article-body ul, .article-body ol { margin: 0 0 20px 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .article-body ul li, .article-body ol li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.65; color: var(--text); }
-    .article-body ul li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex: 0 0 auto; margin-top: 8px; }
-    .article-body ol { counter-reset: ol-counter; }
-    .article-body ol li::before { counter-increment: ol-counter; content: counter(ol-counter); width: 22px; height: 22px; border-radius: 50%; background: rgba(59,158,255,.15); border: 1px solid rgba(59,158,255,.25); display: grid; place-items: center; font-size: 11px; font-weight: 800; color: var(--blue); flex: 0 0 auto; margin-top: 2px; }
-
-    /* Callout boxes */
-    .callout { padding: 20px 24px; border-radius: 14px; margin: 24px 0; font-size: 15px; line-height: 1.7; }
-    .callout-blue { background: rgba(59,158,255,.08); border: 1px solid rgba(59,158,255,.2); color: var(--text); }
-    .callout-green { background: rgba(29,189,107,.08); border: 1px solid rgba(29,189,107,.2); color: var(--text); }
-    .callout-gold { background: rgba(255,184,48,.07); border: 1px solid rgba(255,184,48,.2); color: var(--text); }
-    .callout-red { background: rgba(255,107,107,.07); border: 1px solid rgba(255,107,107,.2); color: var(--text); }
-    .callout strong { color: white; }
-    .callout-title { display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 8px; }
-    .callout-title svg { width: 16px; height: 16px; flex: 0 0 auto; }
-
-    /* Qualifier checklist */
-    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
-    .check-card { padding: 18px 20px; border-radius: 14px; }
-    .check-card.yes { background: rgba(29,189,107,.08); border: 1px solid rgba(29,189,107,.2); }
-    .check-card.no  { background: rgba(255,107,107,.07); border: 1px solid rgba(255,107,107,.2); }
-    .check-card-title { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; }
-    .check-card.yes .check-card-title { color: var(--green); }
-    .check-card.no  .check-card-title { color: var(--red); }
-    .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
-    .check-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; line-height: 1.5; color: var(--text); }
-    .check-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; flex: 0 0 auto; margin-top: 7px; }
-    .check-card.yes .check-list li::before { background: var(--green); }
-    .check-card.no  .check-list li::before { background: var(--red); }
-
-    /* Records table */
-    .records-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 20px 0; }
-    .record-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); font-size: 14px; color: var(--text); line-height: 1.4; }
-    .record-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(59,158,255,.12); border: 1px solid rgba(59,158,255,.2); display: grid; place-items: center; color: var(--blue); flex: 0 0 auto; }
-    .record-icon svg { width: 15px; height: 15px; }
-
-    /* Timeline */
-    .timeline { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
-    .timeline-item { display: flex; gap: 20px; }
-    .timeline-spine { display: flex; flex-direction: column; align-items: center; }
-    .timeline-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--blue); border: 2px solid rgba(59,158,255,.3); flex: 0 0 auto; margin-top: 4px; }
-    .timeline-line { width: 2px; flex: 1; background: var(--border); margin: 4px 0; min-height: 24px; }
-    .timeline-item:last-child .timeline-line { display: none; }
-    .timeline-content { padding-bottom: 20px; }
-    .timeline-title { font-size: 14px; font-weight: 700; color: white; margin-bottom: 4px; }
-    .timeline-body { font-size: 13px; color: var(--muted); line-height: 1.55; }
-
-    /* Time limits table */
-    .limits-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; border-radius: 14px; overflow: hidden; }
-    .limits-table thead tr { background: rgba(59,158,255,.12); }
-    .limits-table th { padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
-    .limits-table td { padding: 12px 16px; color: var(--text); border-bottom: 1px solid var(--border); }
-    .limits-table tr:last-child td { border-bottom: none; }
-    .limits-table tr:nth-child(even) td { background: rgba(255,255,255,.03); }
-
-    /* Article CTA */
-    .article-cta {
-      margin-top: 56px; padding: 32px; border-radius: 20px;
-      background: rgba(29,189,107,.07); border: 1px solid rgba(29,189,107,.2);
-      text-align: center;
-    }
-    .article-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.3px; }
-    .article-cta p { font-size: 14px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
-    .cta-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 24px; border-radius: 12px;
-      background: linear-gradient(135deg, #1dbd6b, #12a55c);
-      color: white; font-size: 14px; font-weight: 700;
-      text-decoration: none; box-shadow: 0 6px 20px rgba(29,189,107,.25);
-      transition: opacity .2s, transform .15s;
-    }
-    .cta-btn:hover { opacity: .9; transform: translateY(-1px); }
-    .cta-btn svg { width: 16px; height: 16px; }
-
-    /* Next / Prev guide navigation */
-    .guide-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
-    .guide-nav-card { padding: 18px 20px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); text-decoration: none; transition: border-color .2s, background .2s; }
-    .guide-nav-card:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); }
-    .guide-nav-card.next { text-align: right; }
-    .gnc-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-    .gnc-title { font-size: 14px; font-weight: 700; color: white; line-height: 1.35; }
-
-    /* ── Sidebar ── */
-    .sidebar { position: sticky; top: 32px; }
-
-    .toc {
-      padding: 24px; border-radius: 18px;
-      background: var(--surface); border: 1px solid var(--border);
-      margin-bottom: 20px;
-    }
-    .toc-title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
-    .toc-list li a {
-      display: block; padding: 7px 10px; border-radius: 8px;
-      font-size: 13px; font-weight: 500; color: var(--muted);
-      text-decoration: none; line-height: 1.4;
-      transition: background .2s, color .2s;
-    }
-    .toc-list li a:hover { background: rgba(255,255,255,.07); color: white; }
-
-    .sidebar-cta {
-      padding: 22px; border-radius: 18px;
-      background: rgba(59,158,255,.08); border: 1px solid rgba(59,158,255,.2);
-      text-align: center;
-    }
-    .sidebar-cta p { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 14px; }
-    .sidebar-cta strong { color: white; }
-    .sidebar-btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 7px; width: 100%;
-      padding: 11px 16px; border-radius: 11px;
-      background: linear-gradient(135deg, #1dbd6b, #12a55c);
-      color: white; font-size: 13px; font-weight: 700;
-      text-decoration: none; box-shadow: 0 4px 16px rgba(29,189,107,.22);
-      transition: opacity .2s;
-    }
-    .sidebar-btn:hover { opacity: .9; }
-
-    /* Footer */
-    footer { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 24px 5% 40px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); }
-    @media (max-width: 640px) { .footer-links { display: none; } }
-    .footer-brand { font-size: 14px; color: var(--muted); }
-    .footer-brand strong { color: white; }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: white; }
-
-    @media (max-width: 640px) { .nav-links { display: none !important; } .burger { display: flex !important; } .footer-links { display: none !important; } }
-
-    @media (max-width: 900px) {
-      .page-wrap { grid-template-columns: 1fr; gap: 40px; }
-      .sidebar { position: static; }
-      .check-grid { grid-template-columns: 1fr; }
-      .records-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .guide-nav { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 16px; text-align: center; }
-      .limits-table { font-size: 12px; }
-      .limits-table th, .limits-table td { padding: 10px 12px; }
-    }
+    :root { --bg:#081630; --surface:rgba(255,255,255,.07); --border:rgba(255,255,255,.11); --border-strong:rgba(255,255,255,.22); --blue:#3b9eff; --gold:#ffb830; --green:#1dbd6b; --red:#ff6b6b; --muted:#a8bdd8; --text:#dce8ff; --font:'Manrope',sans-serif; }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--font); background:var(--bg); color:#fff; overflow-x:hidden; min-height:100vh; }
+    .bg-canvas { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+    .bg-canvas::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(13,80,220,.18),transparent),radial-gradient(ellipse 40% 40% at 90% 30%,rgba(0,120,255,.1),transparent); }
+    .bg-canvas::after { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1px); background-size:36px 36px; mask-image:radial-gradient(ellipse 100% 50% at 50% 0%,black 20%,transparent 80%); }
+    nav { position:relative; z-index:10; max-width:1200px; margin:0 auto; padding:20px 5%; display:flex; align-items:center; justify-content:space-between; }
+    .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-logo img { width:42px; height:42px; border-radius:11px; box-shadow:0 6px 20px rgba(0,0,0,.4); }
+    .nav-brand { font-size:21px; font-weight:800; letter-spacing:-0.5px; color:white; }
+    .nav-brand span { color:var(--blue); }
+    .nav-links { display:flex; align-items:center; gap:4px; }
+    .nav-link { padding:9px 14px; border-radius:50px; color:var(--muted); font-size:14px; font-weight:600; text-decoration:none; transition:color .2s; }
+    .nav-link:hover, .nav-link.active { color:white; }
+    .burger { display:none; flex-direction:column; justify-content:center; gap:5px; width:40px; height:40px; padding:8px; border-radius:10px; border:1px solid var(--border-strong); background:rgba(255,255,255,.08); cursor:pointer; z-index:100; flex-shrink:0; }
+    .burger span { display:block; height:2px; border-radius:2px; background:white; transition:transform .3s,opacity .3s,width .3s; }
+    .burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity:0; width:0; }
+    .burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .mobile-nav { display:none; position:fixed; inset:0; z-index:50; background:rgba(3,11,30,.97); backdrop-filter:blur(16px); flex-direction:column; align-items:center; justify-content:center; gap:8px; }
+    .mobile-nav.open { display:flex; }
+    .mobile-nav a { font-size:22px; font-weight:700; color:var(--muted); text-decoration:none; padding:14px 32px; border-radius:14px; transition:color .2s,background .2s; width:240px; text-align:center; }
+    .mobile-nav a:hover, .mobile-nav a.active { color:white; background:rgba(255,255,255,.08); }
+    .mobile-nav .mobile-cta { margin-top:12px; font-size:16px; font-weight:800; background:linear-gradient(135deg,#1dbd6b,#12a55c) !important; color:white !important; box-shadow:0 6px 20px rgba(29,189,107,.3); }
+    @media (max-width:640px) { .nav-links { display:none !important; } .burger { display:flex !important; } .footer-links { display:none !important; } }
+    .page-wrap { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:48px 5% 80px; display:grid; grid-template-columns:1fr 280px; gap:64px; align-items:start; }
+    article { min-width:0; }
+    .breadcrumb { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); margin-bottom:28px; flex-wrap:wrap; }
+    .breadcrumb a { color:var(--muted); text-decoration:none; }
+    .breadcrumb a:hover { color:white; }
+    .breadcrumb svg { width:12px; height:12px; color:#3a5070; flex:0 0 auto; }
+    .article-tag { display:inline-block; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:5px 12px; border-radius:20px; background:rgba(59,158,255,.15); color:var(--blue); margin-bottom:18px; }
+    h1 { font-size:clamp(28px,4vw,44px); font-weight:800; letter-spacing:-1.5px; line-height:1.08; margin-bottom:18px; }
+    .article-meta { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:32px; padding-bottom:28px; border-bottom:1px solid var(--border); }
+    .meta-item { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--muted); }
+    .meta-item svg { width:14px; height:14px; }
+    .lead { font-size:17px; line-height:1.7; color:var(--text); margin-bottom:32px; font-weight:500; }
+    .article-body h2 { font-size:clamp(18px,2.5vw,24px); font-weight:800; letter-spacing:-0.5px; margin:40px 0 12px; color:white; padding-top:40px; border-top:1px solid var(--border); }
+    .article-body h2:first-child { margin-top:0; padding-top:0; border-top:none; }
+    .article-body h3 { font-size:17px; font-weight:700; margin:24px 0 10px; color:white; }
+    .article-body p { font-size:15px; line-height:1.8; color:var(--text); margin-bottom:16px; }
+    .article-body a { color:var(--blue); text-decoration:underline; text-underline-offset:3px; }
+    .article-body .cta-btn { color:white !important; text-decoration:none !important; }
+    .article-body ul { margin:0 0 20px; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .article-body ul li { display:flex; align-items:flex-start; gap:12px; font-size:15px; line-height:1.65; color:var(--text); }
+    .article-body ul li::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--green); flex:0 0 auto; margin-top:8px; }
+    .callout { padding:18px 22px; border-radius:14px; margin:20px 0; font-size:14px; line-height:1.7; }
+    .callout-blue { background:rgba(59,158,255,.08); border:1px solid rgba(59,158,255,.2); color:var(--text); }
+    .callout-gold { background:rgba(255,184,48,.07); border:1px solid rgba(255,184,48,.2); color:var(--text); }
+    .callout-red  { background:rgba(255,107,107,.07); border:1px solid rgba(255,107,107,.2); color:var(--text); }
+    .callout strong { color:white; }
+    .callout-title { display:flex; align-items:center; gap:8px; font-weight:700; margin-bottom:6px; }
+    .callout-title svg { width:15px; height:15px; flex:0 0 auto; }
+    .check-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:20px 0; }
+    .check-card { padding:18px 20px; border-radius:14px; }
+    .check-card.yes { background:rgba(29,189,107,.08); border:1px solid rgba(29,189,107,.2); }
+    .check-card.no  { background:rgba(255,107,107,.07); border:1px solid rgba(255,107,107,.2); }
+    .check-card-title { font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px; }
+    .check-card.yes .check-card-title { color:var(--green); }
+    .check-card.no  .check-card-title { color:var(--red); }
+    .check-list { list-style:none; padding:0; display:flex; flex-direction:column; gap:7px; }
+    .check-list li { display:flex; align-items:flex-start; gap:9px; font-size:13px; line-height:1.5; color:var(--text); }
+    .check-list li::before { content:''; width:5px; height:5px; border-radius:50%; flex:0 0 auto; margin-top:7px; }
+    .check-card.yes .check-list li::before { background:var(--green); }
+    .check-card.no  .check-list li::before { background:var(--red); }
+    .article-cta { margin-top:48px; padding:28px; border-radius:20px; background:rgba(29,189,107,.07); border:1px solid rgba(29,189,107,.2); text-align:center; }
+    .article-cta h3 { font-size:19px; font-weight:800; margin-bottom:8px; }
+    .article-cta p { font-size:14px; color:var(--muted); margin-bottom:18px; line-height:1.6; }
+    .cta-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:12px; background:linear-gradient(135deg,#1dbd6b,#12a55c); color:white; font-size:14px; font-weight:700; text-decoration:none; box-shadow:0 6px 20px rgba(29,189,107,.25); transition:opacity .2s,transform .15s; }
+    .cta-btn:hover { opacity:.9; transform:translateY(-1px); }
+    .cta-btn svg { width:15px; height:15px; }
+    .guide-nav { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:36px; }
+    .guide-nav-card { padding:16px 20px; border-radius:14px; background:var(--surface); border:1px solid var(--border); text-decoration:none; transition:border-color .2s,background .2s; }
+    .guide-nav-card:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.2); }
+    .guide-nav-card.next { text-align:right; }
+    .gnc-label { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+    .gnc-title { font-size:13px; font-weight:700; color:white; line-height:1.35; }
+    .sidebar { position:sticky; top:32px; }
+    .toc { padding:22px; border-radius:18px; background:var(--surface); border:1px solid var(--border); margin-bottom:18px; }
+    .toc-title { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+    .toc-list { list-style:none; display:flex; flex-direction:column; gap:2px; }
+    .toc-list li a { display:block; padding:7px 10px; border-radius:8px; font-size:13px; font-weight:500; color:var(--muted); text-decoration:none; line-height:1.4; transition:background .2s,color .2s; }
+    .toc-list li a:hover { background:rgba(255,255,255,.07); color:white; }
+    .sidebar-cta { padding:20px; border-radius:18px; background:rgba(59,158,255,.08); border:1px solid rgba(59,158,255,.2); text-align:center; }
+    .sidebar-cta p { font-size:13px; color:var(--muted); line-height:1.55; margin-bottom:14px; }
+    .sidebar-cta strong { color:white; }
+    .sidebar-btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; width:100%; padding:11px 16px; border-radius:11px; background:linear-gradient(135deg,#1dbd6b,#12a55c); color:white; font-size:13px; font-weight:700; text-decoration:none; box-shadow:0 4px 16px rgba(29,189,107,.22); transition:opacity .2s; }
+    .sidebar-btn:hover { opacity:.9; }
+    footer { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:24px 5% 40px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--border); }
+    .footer-brand { font-size:14px; color:var(--muted); }
+    .footer-brand strong { color:white; }
+    .footer-links { display:flex; gap:20px; }
+    .footer-links a { font-size:13px; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .footer-links a:hover { color:white; }
+    @media (max-width:900px) { .page-wrap { grid-template-columns:1fr; gap:40px; } .sidebar { position:static; } .check-grid { grid-template-columns:1fr; } }
+    @media (max-width:600px) { .guide-nav { grid-template-columns:1fr; } footer { flex-direction:column; gap:16px; text-align:center; } }
   </style>
 </head>
 <body>
   <div class="bg-canvas"></div>
-
   <nav>
-    <a class="nav-logo" href="../index.html">
-      <img src="../assets/images/app-icon.png" alt="easySED logo" />
-      <span class="nav-brand">easy<span>SED</span></span>
-    </a>
+    <a class="nav-logo" href="../index.html"><img src="../assets/images/app-icon.png" alt="easySED logo" /><span class="nav-brand">easy<span>SED</span></span></a>
     <div class="nav-links">
       <a class="nav-link" href="../index.html">Home</a>
       <a class="nav-link" href="../about.html">About</a>
@@ -298,7 +126,6 @@
     </div>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
-
   <div class="mobile-nav" id="mobile-nav">
     <a href="../index.html">Home</a>
     <a href="../about.html">About</a>
@@ -308,10 +135,7 @@
   </div>
 
   <div class="page-wrap">
-
-    <!-- ═══ ARTICLE ═══ -->
     <article>
-
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../index.html">Home</a>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
@@ -321,252 +145,103 @@
       </nav>
 
       <span class="article-tag">The Basics</span>
-
       <h1>What is Seafarers' Earnings Deduction (SED)?</h1>
-
       <div class="article-meta">
-        <span class="meta-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          5 min read
-        </span>
-        <span class="meta-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          Based on official HMRC guidance
-        </span>
+        <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3 min read</span>
+        <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Based on HMRC guidance</span>
       </div>
 
-      <p class="lead">If you work at sea and spend most of your time outside the UK, you could legally pay zero tax on your seafaring income. That's what Seafarers' Earnings Deduction — or SED — is all about. Here's everything you need to know, in plain English.</p>
+      <p class="lead">If you work at sea and spend most of your time outside the UK, you could legally pay zero income tax on your seafaring earnings. That's SED — and this guide explains what it is and whether you qualify.</p>
 
       <div class="article-body">
 
-        <!-- Section 1 -->
-        <h2 id="what-is-sed">What is SED in plain English?</h2>
-        <p>Seafarers' Earnings Deduction is a UK tax relief that allows eligible seafarers to deduct 100% of their seafaring earnings from their taxable income. In practice, this means you pay <strong>no income tax</strong> on the money you earn while working at sea — as long as you qualify.</p>
-        <p>It's one of the most generous tax reliefs available to any group of workers in the UK. A seafarer earning £50,000 a year who qualifies for SED could save over £10,000 in tax annually.</p>
+        <h2 id="what-is-sed">What is SED?</h2>
+        <p>Seafarers' Earnings Deduction is a UK tax relief that lets eligible seafarers deduct 100% of their seafaring income from their taxable earnings. In plain terms: <strong>you pay no income tax</strong> on money earned at sea, as long as you qualify.</p>
+        <p>It's one of the most valuable tax reliefs available to any group of UK workers. A seafarer earning £50,000 a year who qualifies could save over £10,000 annually.</p>
 
         <div class="callout callout-blue">
-          <div class="callout-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--blue)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <strong>Important note</strong>
-          </div>
-          SED is a deduction, not an exemption. You still need to file a Self Assessment tax return to claim it — it doesn't apply automatically. easySED helps you build the evidence you need to make that claim confidently.
+          <div class="callout-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--blue)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><strong>SED doesn't apply automatically</strong></div>
+          You still need to file a Self Assessment tax return to claim it each year. easySED builds the evidence trail you need to do that confidently.
         </div>
 
-        <!-- Section 2 -->
-        <h2 id="who-qualifies">Who qualifies for SED?</h2>
-        <p>To claim SED, you must meet <strong>all three</strong> of the following conditions:</p>
-
-        <ol>
-          <li><strong>You work on a ship.</strong> Either all of your duties are performed on a ship, or most of them are — and any duties performed off the ship are directly connected to your work on it.</li>
-          <li><strong>You spend enough time outside the UK.</strong> You need an "eligible period" of at least 365 days, made up mainly of days when you were outside the UK.</li>
-          <li><strong>You are a UK resident</strong> — or a tax resident of an EEA country other than the UK.</li>
-        </ol>
-
-        <h3 id="what-counts-as-ship">What counts as working "on a ship"?</h3>
-        <p>The word "ship" isn't defined in tax law, but HMRC is clear about what <em>doesn't</em> count. If you work on an <strong>offshore installation</strong> — such as an oil rig or production platform — your vessel is not considered a ship for SED purposes, no matter where in the world it is located.</p>
-
-        <p>Offshore installations that <strong>do not qualify</strong> include:</p>
+        <h2 id="who-qualifies">Who qualifies?</h2>
+        <p>You must meet <strong>all three</strong> conditions:</p>
         <ul>
-          <li>Fixed and floating production platforms</li>
-          <li>Floating storage units</li>
-          <li>Floating production storage and offloading (FPSO) vessels</li>
-          <li>Mobile offshore drilling units — including drillships, semi-submersibles and jack-ups</li>
-          <li>Flotels (accommodation vessels attached to offshore installations)</li>
+          <li><strong>You work on a ship.</strong> Either all your duties are on a ship, or most are — and any duties off the ship are directly connected to your onboard work.</li>
+          <li><strong>You spend enough time outside the UK.</strong> You need a qualifying "eligible period" of at least 365 days, made up mainly of days abroad.</li>
+          <li><strong>You are a UK resident</strong> — or a tax resident of an EEA country other than the UK.</li>
         </ul>
+        <p>Having more than one job doesn't disqualify you — you can claim the deduction against your seafaring income only.</p>
 
-        <div class="callout callout-gold">
-          <div class="callout-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            <strong>Offshore workers</strong>
-          </div>
-          This exclusion applies even when an offshore installation is temporarily moving between locations, has changed its use, or has been taken out of service. If the structure exploits mineral resources via a well, it does not qualify — full stop.
-        </div>
-
-        <p>Your employment duties count as being performed "outside the UK" if they are carried out on a vessel engaged in a voyage that begins <em>or</em> ends outside the UK. Note: the UK sector of the North Sea is treated as part of the UK for this purpose.</p>
-
-        <!-- Section 3 -->
-        <h2 id="who-cannot-claim">Who cannot claim SED?</h2>
-
+        <h2 id="who-cannot">Who cannot claim?</h2>
         <div class="check-grid">
           <div class="check-card yes">
-            <p class="check-card-title">✓ You can claim if you are...</p>
+            <p class="check-card-title">✓ Can claim</p>
             <ul class="check-list">
-              <li>A UK-resident seafarer on a qualifying ship</li>
-              <li>An EEA-resident seafarer (non-UK) on a qualifying ship</li>
-              <li>A Royal Fleet Auxiliary employee who meets all other conditions</li>
-              <li>A seafarer with more than one job (you can claim for the seafaring job only)</li>
+              <li>UK-resident seafarers on a qualifying ship</li>
+              <li>EEA-resident seafarers (non-UK)</li>
+              <li>Royal Fleet Auxiliary employees</li>
+              <li>Seafarers with multiple jobs (seafaring portion only)</li>
             </ul>
           </div>
           <div class="check-card no">
-            <p class="check-card-title">✗ You cannot claim if you are...</p>
+            <p class="check-card-title">✗ Cannot claim</p>
             <ul class="check-list">
-              <li>A Crown employee (e.g. Royal Navy)</li>
-              <li>Not a UK resident or EEA state resident</li>
-              <li>Working on an offshore installation</li>
-              <li>Not spending enough days outside the UK</li>
+              <li>Crown employees (e.g. Royal Navy)</li>
+              <li>Non-UK, non-EEA residents</li>
+              <li>Workers on offshore installations</li>
+              <li>Anyone not meeting the 365-day rule</li>
             </ul>
           </div>
         </div>
 
-        <!-- Section 4 -->
-        <h2 id="eligible-period">What is the 365-day eligible period?</h2>
-        <p>To claim SED, you need to build up an "eligible period" of at least 365 consecutive days. This period must be <strong>mainly made up of days when you were outside the UK</strong>.</p>
-
-        <p>You are counted as outside the UK on any day where you are <strong>outside the UK at midnight</strong> at the end of that day. This is called the midnight rule — and it's the foundation of how SED is calculated. Days off spent abroad also count.</p>
-
-        <p>Visits back to the UK during an eligible period are allowed, but with two strict conditions:</p>
+        <h2 id="what-is-a-ship">What counts as a ship?</h2>
+        <p>The word "ship" isn't defined in tax law, but HMRC is very clear about what doesn't count. If you work on an <strong>offshore installation</strong>, your vessel does not qualify — no matter where in the world it is.</p>
+        <p>Offshore installations that <strong>do not qualify</strong> include:</p>
         <ul>
-          <li>No single return visit to the UK can last more than <strong>183 consecutive days</strong></li>
-          <li>The total number of days spent in the UK must not exceed <strong>half</strong> of the total days in your eligible period</li>
+          <li>Fixed and floating production platforms</li>
+          <li>Floating storage units and FPSOs</li>
+          <li>Mobile offshore drilling units — drillships, semi-submersibles, jack-ups</li>
+          <li>Flotels attached to offshore installations</li>
         </ul>
-
-        <div class="callout callout-red">
-          <div class="callout-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--red)"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-            <strong>Common mistake</strong>
-          </div>
-          You cannot count UK days that happen <em>after</em> your last period abroad. For example: 183 days abroad, followed by 182 days in the UK does <strong>not</strong> create a valid eligible period — even though it adds up to 365 days. The period must end on a day abroad.
-        </div>
-
-        <!-- Section 5 -->
-        <h2 id="how-to-claim">How do you actually claim SED?</h2>
-
-        <h3>If you're a UK resident</h3>
-        <p>You need to register for <strong>Self Assessment</strong> and complete a tax return for the year you're claiming. Use the <strong>HS205 working sheet</strong> (available from HMRC) to calculate your eligible period and the amount of the deduction, then enter the figure in box 11 of the Additional Information pages.</p>
-        <p>In the "Any other information" box on your return, include the names of the ships on which you carried out your duties.</p>
-
-        <h3>If you're an EEA resident (not UK)</h3>
-        <p>You can't use a standard Self Assessment return. Instead, submit form <strong>R43M(SED)</strong> — the Repayment Claim form for EEA resident merchant seafarers — to HMRC to reclaim any tax deducted under PAYE.</p>
-
-        <h3 id="nt-code">What is an NT tax code — and should you apply for one?</h3>
-        <p>If you're a UK resident on PAYE, you may be able to ask HMRC for a <strong>tax code NT</strong> (No Tax). This allows your employer to pay your wages without deducting any income tax in the first place — rather than you paying tax upfront and claiming it back later.</p>
-
-        <p>To qualify for an NT code you must:</p>
-        <ul>
-          <li>Be a UK resident in a PAYE employment</li>
-          <li>Work on a vessel that qualifies as a ship for SED purposes</li>
-          <li>File a Self Assessment tax return every year</li>
-          <li>Have a contract of at least 12 months — <em>or</em> have been in continuous employment with the same employer for at least 6 months working outside the UK</li>
-        </ul>
-
         <div class="callout callout-gold">
-          <div class="callout-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            <strong>Important</strong>
-          </div>
-          HMRC will not issue an NT code until <em>after</em> they have processed your first successful SED claim. If your employment changes and you no longer qualify, you must tell HMRC immediately. If it later turns out you weren't entitled to the code, you'll owe all the underpaid tax back in one lump sum. Use form <strong>R44</strong> to request code NT.
+          <div class="callout-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gold)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><strong>Offshore workers</strong></div>
+          This exclusion applies even when the installation is moving between locations or temporarily out of use. If the structure exploits mineral resources via a well, it does not qualify.
         </div>
+        <p>Your duties count as "outside the UK" if they are carried out on a vessel engaged in a voyage that begins <em>or</em> ends outside the UK. Note: the UK sector of the North Sea counts as UK.</p>
 
-        <!-- Section 6 -->
-        <h2 id="records">What records do you need to keep?</h2>
-        <p>HMRC may ask to check your claim at any time. You don't send these documents with your tax return, but you must be able to produce them on request. Keep all of the following:</p>
-
-        <div class="records-grid">
-          <div class="record-item">
-            <div class="record-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-            <div>Completed HS205 working sheet</div>
-          </div>
-          <div class="record-item">
-            <div class="record-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></div>
-            <div>Air tickets and travel vouchers</div>
-          </div>
-          <div class="record-item">
-            <div class="record-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-            <div>Seafarer's discharge book</div>
-          </div>
-          <div class="record-item">
-            <div class="record-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-            <div>Passport and visas</div>
-          </div>
-          <div class="record-item">
-            <div class="record-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-            <div>Hotel bills and receipts</div>
-          </div>
-          <div class="record-item">
-            <div class="record-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-            <div>Freeboard logs of ships you worked on</div>
-          </div>
-        </div>
-
-        <div class="callout callout-blue">
-          <div class="callout-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--blue)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <strong>HMRC can contact your employer</strong>
-          </div>
-          HMRC may reach out to your employer directly to confirm details of your ship's voyage and crew. Make sure the details in your claim match your employment records.
-        </div>
-
-        <!-- Section 7 -->
-        <h2 id="time-limits">Time limits for claiming</h2>
-        <p>You can't claim SED indefinitely — there are strict deadlines. The general rule is that you have <strong>4 years from the end of the tax year</strong> to make a claim. Miss the deadline and the claim is lost.</p>
-
-        <table class="limits-table">
-          <thead>
-            <tr>
-              <th>Tax year</th>
-              <th>Tax year ending</th>
-              <th>Claim by</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>2019 to 2020</td><td>5 April 2020</td><td>5 April 2024</td></tr>
-            <tr><td>2020 to 2021</td><td>5 April 2021</td><td>5 April 2025</td></tr>
-            <tr><td>2021 to 2022</td><td>5 April 2022</td><td>5 April 2026</td></tr>
-            <tr><td>2022 to 2023</td><td>5 April 2023</td><td>5 April 2027</td></tr>
-            <tr><td>2023 to 2024</td><td>5 April 2024</td><td>5 April 2028</td></tr>
-          </tbody>
-        </table>
-
-        <!-- Article CTA -->
         <div class="article-cta">
-          <h3>Stop tracking days on a spreadsheet.</h3>
-          <p>easySED applies the midnight rule automatically, tracks your eligible period in real time, and builds your evidence pack as you go — so your claim is ready the moment you qualify.</p>
-          <a class="cta-btn" href="../index.html#signup">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Get My Free Year
-          </a>
+          <h3>Let easySED track it for you.</h3>
+          <p>Log your movements, capture evidence and know your eligibility status in real time — no spreadsheets needed.</p>
+          <a class="cta-btn" href="../index.html#signup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Get My Free Year</a>
         </div>
 
-        <!-- Guide navigation -->
         <div class="guide-nav">
           <div></div>
-          <a class="guide-nav-card next" href="half-day-rule.html">
+          <a class="guide-nav-card next" href="365-day-rule.html">
             <p class="gnc-label">Next guide →</p>
-            <p class="gnc-title">How the Half-Day Rule works</p>
+            <p class="gnc-title">How the 365-day eligible period works</p>
           </a>
         </div>
 
       </div>
     </article>
 
-    <!-- ═══ SIDEBAR ═══ -->
     <aside class="sidebar">
-
       <div class="toc">
         <p class="toc-title">In this guide</p>
         <ul class="toc-list">
           <li><a href="#what-is-sed">What is SED?</a></li>
           <li><a href="#who-qualifies">Who qualifies?</a></li>
-          <li><a href="#what-counts-as-ship">What counts as a ship?</a></li>
-          <li><a href="#who-cannot-claim">Who cannot claim?</a></li>
-          <li><a href="#eligible-period">The 365-day eligible period</a></li>
-          <li><a href="#how-to-claim">How to claim</a></li>
-          <li><a href="#nt-code">The NT tax code</a></li>
-          <li><a href="#records">Records to keep</a></li>
-          <li><a href="#time-limits">Time limits</a></li>
+          <li><a href="#who-cannot">Who cannot claim?</a></li>
+          <li><a href="#what-is-a-ship">What counts as a ship?</a></li>
         </ul>
       </div>
-
       <div class="sidebar-cta">
-        <p><strong>easySED</strong> tracks your eligible period automatically and builds your HMRC evidence pack as you go.</p>
-        <a class="sidebar-btn" href="../index.html#signup">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Get My Free Year
-        </a>
+        <p><strong>easySED</strong> tracks your eligible period and builds your HMRC evidence pack automatically.</p>
+        <a class="sidebar-btn" href="../index.html#signup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Get My Free Year</a>
       </div>
-
     </aside>
-
   </div>
 
   <footer>

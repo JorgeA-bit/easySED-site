@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How the SED 365-Day Eligible Period Works | easySED</title>
+  <meta name="description" content="Understand the SED 365-day rule — how days are counted, the midnight rule, return visits to the UK, the 183-day limit and common mistakes that break your claim." />
+  <link rel="canonical" href="https://www.easysed.co.uk/guides/365-day-rule.html" />
+  <meta property="og:title" content="How the SED 365-Day Eligible Period Works" />
+  <meta property="og:description" content="The midnight rule, return visits, the 183-day cap — everything you need to know about building a valid eligible period for SED." />
+  <meta property="og:type" content="article" />
+  <link rel="icon" type="image/png" href="../assets/images/sitelogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How the SED 365-Day Eligible Period Works","author":{"@type":"Organization","name":"easySED"},"publisher":{"@type":"Organization","name":"easySED","url":"https://www.easysed.co.uk"}}</script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg:#081630; --surface:rgba(255,255,255,.07); --border:rgba(255,255,255,.11); --border-strong:rgba(255,255,255,.22); --blue:#3b9eff; --gold:#ffb830; --green:#1dbd6b; --red:#ff6b6b; --muted:#a8bdd8; --text:#dce8ff; --font:'Manrope',sans-serif; }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--font); background:var(--bg); color:#fff; overflow-x:hidden; min-height:100vh; }
+    .bg-canvas { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+    .bg-canvas::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(13,80,220,.18),transparent),radial-gradient(ellipse 40% 40% at 90% 30%,rgba(0,120,255,.1),transparent); }
+    .bg-canvas::after { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1px); background-size:36px 36px; mask-image:radial-gradient(ellipse 100% 50% at 50% 0%,black 20%,transparent 80%); }
+    nav { position:relative; z-index:10; max-width:1200px; margin:0 auto; padding:20px 5%; display:flex; align-items:center; justify-content:space-between; }
+    .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-logo img { width:42px; height:42px; border-radius:11px; box-shadow:0 6px 20px rgba(0,0,0,.4); }
+    .nav-brand { font-size:21px; font-weight:800; letter-spacing:-0.5px; color:white; }
+    .nav-brand span { color:var(--blue); }
+    .nav-links { display:flex; align-items:center; gap:4px; }
+    .nav-link { padding:9px 14px; border-radius:50px; color:var(--muted); font-size:14px; font-weight:600; text-decoration:none; transition:color .2s; }
+    .nav-link:hover, .nav-link.active { color:white; }
+    .burger { display:none; flex-direction:column; justify-content:center; gap:5px; width:40px; height:40px; padding:8px; border-radius:10px; border:1px solid var(--border-strong); background:rgba(255,255,255,.08); cursor:pointer; z-index:100; flex-shrink:0; }
+    .burger span { display:block; height:2px; border-radius:2px; background:white; transition:transform .3s,opacity .3s,width .3s; }
+    .burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity:0; width:0; }
+    .burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .mobile-nav { display:none; position:fixed; inset:0; z-index:50; background:rgba(3,11,30,.97); backdrop-filter:blur(16px); flex-direction:column; align-items:center; justify-content:center; gap:8px; }
+    .mobile-nav.open { display:flex; }
+    .mobile-nav a { font-size:22px; font-weight:700; color:var(--muted); text-decoration:none; padding:14px 32px; border-radius:14px; transition:color .2s,background .2s; width:240px; text-align:center; }
+    .mobile-nav a:hover, .mobile-nav a.active { color:white; background:rgba(255,255,255,.08); }
+    .mobile-nav .mobile-cta { margin-top:12px; font-size:16px; font-weight:800; background:linear-gradient(135deg,#1dbd6b,#12a55c) !important; color:white !important; }
+    @media (max-width:640px) { .nav-links { display:none !important; } .burger { display:flex !important; } .footer-links { display:none !important; } }
+    .page-wrap { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:48px 5% 80px; display:grid; grid-template-columns:1fr 280px; gap:64px; align-items:start; }
+    article { min-width:0; }
+    .breadcrumb { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); margin-bottom:28px; flex-wrap:wrap; }
+    .breadcrumb a { color:var(--muted); text-decoration:none; }
+    .breadcrumb a:hover { color:white; }
+    .breadcrumb svg { width:12px; height:12px; color:#3a5070; flex:0 0 auto; }
+    .article-tag { display:inline-block; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:5px 12px; border-radius:20px; background:rgba(255,184,48,.12); color:var(--gold); margin-bottom:18px; }
+    h1 { font-size:clamp(28px,4vw,44px); font-weight:800; letter-spacing:-1.5px; line-height:1.08; margin-bottom:18px; }
+    .article-meta { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:32px; padding-bottom:28px; border-bottom:1px solid var(--border); }
+    .meta-item { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--muted); }
+    .meta-item svg { width:14px; height:14px; }
+    .lead { font-size:17px; line-height:1.7; color:var(--text); margin-bottom:32px; font-weight:500; }
+    .article-body h2 { font-size:clamp(18px,2.5vw,24px); font-weight:800; letter-spacing:-0.5px; margin:40px 0 12px; color:white; padding-top:40px; border-top:1px solid var(--border); }
+    .article-body h2:first-child { margin-top:0; padding-top:0; border-top:none; }
+    .article-body p { font-size:15px; line-height:1.8; color:var(--text); margin-bottom:16px; }
+    .article-body a { color:var(--blue); text-decoration:underline; text-underline-offset:3px; }
+    .article-body .cta-btn { color:white !important; text-decoration:none !important; }
+    .article-body ul { margin:0 0 20px; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .article-body ul li { display:flex; align-items:flex-start; gap:12px; font-size:15px; line-height:1.65; color:var(--text); }
+    .article-body ul li::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--green); flex:0 0 auto; margin-top:8px; }
+    .callout { padding:18px 22px; border-radius:14px; margin:20px 0; font-size:14px; line-height:1.7; }
+    .callout-blue { background:rgba(59,158,255,.08); border:1px solid rgba(59,158,255,.2); color:var(--text); }
+    .callout-gold { background:rgba(255,184,48,.07); border:1px solid rgba(255,184,48,.2); color:var(--text); }
+    .callout-red  { background:rgba(255,107,107,.07); border:1px solid rgba(255,107,107,.2); color:var(--text); }
+    .callout-green { background:rgba(29,189,107,.08); border:1px solid rgba(29,189,107,.2); color:var(--text); }
+    .callout strong { color:white; }
+    .callout-title { display:flex; align-items:center; gap:8px; font-weight:700; margin-bottom:6px; }
+    .callout-title svg { width:15px; height:15px; flex:0 0 auto; }
+    /* Example box */
+    .example { padding:20px 24px; border-radius:14px; background:rgba(255,255,255,.04); border:1px solid var(--border); margin:20px 0; }
+    .example-label { font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+    .example p { font-size:14px; line-height:1.7; color:var(--text); margin:0; }
+    .example p + p { margin-top:8px; }
+    /* Rule cards */
+    .rule-cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:20px 0; }
+    .rule-card { padding:20px; border-radius:14px; background:var(--surface); border:1px solid var(--border); }
+    .rule-card-num { font-size:28px; font-weight:800; color:var(--blue); letter-spacing:-1px; margin-bottom:6px; }
+    .rule-card-title { font-size:14px; font-weight:700; color:white; margin-bottom:6px; }
+    .rule-card p { font-size:13px; color:var(--muted); line-height:1.6; }
+    .article-cta { margin-top:48px; padding:28px; border-radius:20px; background:rgba(29,189,107,.07); border:1px solid rgba(29,189,107,.2); text-align:center; }
+    .article-cta h3 { font-size:19px; font-weight:800; margin-bottom:8px; }
+    .article-cta p { font-size:14px; color:var(--muted); margin-bottom:18px; line-height:1.6; }
+    .cta-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:12px; background:linear-gradient(135deg,#1dbd6b,#12a55c); color:white; font-size:14px; font-weight:700; text-decoration:none; box-shadow:0 6px 20px rgba(29,189,107,.25); transition:opacity .2s,transform .15s; }
+    .cta-btn:hover { opacity:.9; transform:translateY(-1px); }
+    .cta-btn svg { width:15px; height:15px; }
+    .guide-nav { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:36px; }
+    .guide-nav-card { padding:16px 20px; border-radius:14px; background:var(--surface); border:1px solid var(--border); text-decoration:none; transition:border-color .2s,background .2s; }
+    .guide-nav-card:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.2); }
+    .guide-nav-card.next { text-align:right; }
+    .gnc-label { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+    .gnc-title { font-size:13px; font-weight:700; color:white; line-height:1.35; }
+    .sidebar { position:sticky; top:32px; }
+    .toc { padding:22px; border-radius:18px; background:var(--surface); border:1px solid var(--border); margin-bottom:18px; }
+    .toc-title { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+    .toc-list { list-style:none; display:flex; flex-direction:column; gap:2px; }
+    .toc-list li a { display:block; padding:7px 10px; border-radius:8px; font-size:13px; font-weight:500; color:var(--muted); text-decoration:none; line-height:1.4; transition:background .2s,color .2s; }
+    .toc-list li a:hover { background:rgba(255,255,255,.07); color:white; }
+    .sidebar-cta { padding:20px; border-radius:18px; background:rgba(59,158,255,.08); border:1px solid rgba(59,158,255,.2); text-align:center; }
+    .sidebar-cta p { font-size:13px; color:var(--muted); line-height:1.55; margin-bottom:14px; }
+    .sidebar-cta strong { color:white; }
+    .sidebar-btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; width:100%; padding:11px 16px; border-radius:11px; background:linear-gradient(135deg,#1dbd6b,#12a55c); color:white; font-size:13px; font-weight:700; text-decoration:none; transition:opacity .2s; }
+    .sidebar-btn:hover { opacity:.9; }
+    footer { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:24px 5% 40px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--border); }
+    .footer-brand { font-size:14px; color:var(--muted); }
+    .footer-brand strong { color:white; }
+    .footer-links { display:flex; gap:20px; }
+    .footer-links a { font-size:13px; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .footer-links a:hover { color:white; }
+    @media (max-width:900px) { .page-wrap { grid-template-columns:1fr; gap:40px; } .sidebar { position:static; } .rule-cards { grid-template-columns:1fr; } }
+    @media (max-width:600px) { .guide-nav { grid-template-columns:1fr; } footer { flex-direction:column; gap:16px; text-align:center; } }
+  </style>
+</head>
+<body>
+  <div class="bg-canvas"></div>
+  <nav>
+    <a class="nav-logo" href="../index.html"><img src="../assets/images/app-icon.png" alt="easySED logo" /><span class="nav-brand">easy<span>SED</span></span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../index.html">Home</a>
+      <a class="nav-link" href="../about.html">About</a>
+      <a class="nav-link active" href="../guides.html">Guides</a>
+      <a class="nav-link" href="../contact.html">Contact</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../guides.html" class="active">Guides</a>
+    <a href="../contact.html">Contact</a>
+    <a href="../index.html#signup" class="mobile-cta">Get My Free Year</a>
+  </div>
+
+  <div class="page-wrap">
+    <article>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        <a href="../guides.html">Guides</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        <span>The 365-Day Rule</span>
+      </nav>
+
+      <span class="article-tag">HMRC Rules</span>
+      <h1>How the SED 365-Day Eligible Period Works</h1>
+      <div class="article-meta">
+        <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min read</span>
+        <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Based on HMRC guidance</span>
+      </div>
+
+      <p class="lead">To claim SED you need a valid "eligible period" of at least 365 days. But it's not as simple as counting 365 days away from home. Here's exactly how it works.</p>
+
+      <div class="article-body">
+
+        <h2 id="eligible-period">What is an eligible period?</h2>
+        <p>An eligible period is a stretch of time made up mainly of days when you were <strong>absent from the UK</strong>. It must last at least 365 days. The period doesn't need to be 365 consecutive days spent entirely abroad — you can return to the UK during it — but there are strict rules about how long those visits can last.</p>
+
+        <h2 id="midnight-rule">The midnight rule — how days are counted</h2>
+        <p>HMRC uses a simple rule to decide whether a day counts as a UK day or a non-UK day: <strong>where are you at midnight?</strong></p>
+        <p>If you are outside the UK at midnight at the end of a day, that day counts as a day of absence. If you're in the UK at midnight, it counts as a UK day. That's it.</p>
+
+        <div class="example">
+          <p class="example-label">Example</p>
+          <p>You fly out of the UK on Monday morning and return the following Saturday evening. You are outside the UK at midnight on Monday, Tuesday, Wednesday, Thursday and Friday — that's <strong>5 days of absence</strong>. Saturday doesn't count because you're back in the UK by midnight.</p>
+        </div>
+
+        <div class="callout callout-blue">
+          <div class="callout-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--blue)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><strong>Days off count too</strong></div>
+          You don't have to be working for a day to count as absent. If you spend a rest day, holiday, or standby day outside the UK, it still counts toward your eligible period.
+        </div>
+
+        <h2 id="return-visits">Return visits to the UK</h2>
+        <p>You can come back to the UK during your eligible period and still maintain your claim. But two limits apply — break either one and your eligible period is cut short at that point.</p>
+
+        <div class="rule-cards">
+          <div class="rule-card">
+            <div class="rule-card-num">183</div>
+            <div class="rule-card-title">Maximum consecutive days in the UK</div>
+            <p>No single return visit to the UK can last more than 183 consecutive days. Exceed this and your eligible period breaks at that point.</p>
+          </div>
+          <div class="rule-card">
+            <div class="rule-card-num">½</div>
+            <div class="rule-card-title">Maximum total UK days</div>
+            <p>The total days spent in the UK must not exceed half the total days in your eligible period. More UK days than abroad days and your claim fails.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-gold">
+          <div class="callout-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gold)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><strong>UK days must fall between periods abroad</strong></div>
+          UK days only count toward your eligible period if they sit between periods of absence. You cannot build a valid period by doing all your time abroad first, then spending the rest in the UK.
+        </div>
+
+        <h2 id="common-mistakes">The most common mistake</h2>
+        <p>The most frequent error seafarers make is assuming any 365-day stretch that includes mostly non-UK days will qualify. It won't if the UK days come at the end.</p>
+
+        <div class="example">
+          <p class="example-label">Invalid example</p>
+          <p>183 days outside the UK, followed by 182 days in the UK = <strong>does not qualify</strong>, even though the total is 365 days and you spent more time abroad.</p>
+          <p>The UK days must be sandwiched between periods of absence — not tacked on at the end.</p>
+        </div>
+
+        <div class="callout callout-green">
+          <div class="callout-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--green)"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><strong>Valid example</strong></div>
+          200 days abroad → 60 days in UK → 130 days abroad → 40 days in UK → 80 days abroad = <strong>510 days total, 410 days absent.</strong> Both UK visit limits are satisfied. Valid eligible period.
+        </div>
+
+        <h2 id="multiple-periods">Can you have more than one eligible period?</h2>
+        <p>Yes. If your first eligible period ends (because you stayed in the UK too long, for example), a new one can start the next time you leave the UK. Each period needs its own 365 days to qualify. easySED tracks each period separately so you always know where you stand.</p>
+
+        <div class="article-cta">
+          <h3>Stop counting days manually.</h3>
+          <p>easySED applies the midnight rule automatically and tracks every return visit in real time — alerting you before a UK stay puts your claim at risk.</p>
+          <a class="cta-btn" href="../index.html#signup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Get My Free Year</a>
+        </div>
+
+        <div class="guide-nav">
+          <a class="guide-nav-card" href="sed-explained.html">
+            <p class="gnc-label">← Previous</p>
+            <p class="gnc-title">What is SED?</p>
+          </a>
+          <a class="guide-nav-card next" href="how-to-claim.html">
+            <p class="gnc-label">Next guide →</p>
+            <p class="gnc-title">How to claim SED — Self Assessment, NT code & time limits</p>
+          </a>
+        </div>
+
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <div class="toc">
+        <p class="toc-title">In this guide</p>
+        <ul class="toc-list">
+          <li><a href="#eligible-period">What is an eligible period?</a></li>
+          <li><a href="#midnight-rule">The midnight rule</a></li>
+          <li><a href="#return-visits">Return visits to the UK</a></li>
+          <li><a href="#common-mistakes">The most common mistake</a></li>
+          <li><a href="#multiple-periods">Multiple eligible periods</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-cta">
+        <p><strong>easySED</strong> applies the midnight rule automatically and alerts you before a UK stay breaks your claim.</p>
+        <a class="sidebar-btn" href="../index.html#signup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Get My Free Year</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <p class="footer-brand">© <span id="y"></span> <strong>easySED.</strong> Built for clarity, compliance, and speed.</p>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../guides.html">Guides</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const burger = document.getElementById("burger");
+    const mobileNav = document.getElementById("mobile-nav");
+    burger.addEventListener("click", () => { burger.classList.toggle("open"); mobileNav.classList.toggle("open"); document.body.style.overflow = mobileNav.classList.contains("open") ? "hidden" : ""; });
+    mobileNav.querySelectorAll("a").forEach(a => { a.addEventListener("click", () => { burger.classList.remove("open"); mobileNav.classList.remove("open"); document.body.style.overflow = ""; }); });
+  </script>
+</body>
+</html>
