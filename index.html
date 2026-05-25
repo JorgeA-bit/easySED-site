@@ -677,22 +677,6 @@
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-    (function () {
-      const launch = new Date();
-      launch.setDate(launch.getDate() + 30);
-      const pad = n => String(n).padStart(2, '0');
-      function tick() {
-        const diff = launch - Date.now();
-        if (diff <= 0) return;
-        document.getElementById('days').textContent  = Math.floor(diff / 864e5);
-        document.getElementById('hours').textContent = pad(Math.floor((diff % 864e5) / 36e5));
-        document.getElementById('mins').textContent  = pad(Math.floor((diff % 36e5) / 6e4));
-        document.getElementById('secs').textContent  = pad(Math.floor((diff % 6e4) / 1e3));
-      }
-      tick(); setInterval(tick, 1000);
-    })();
-
     const video   = document.getElementById('app-video');
     const overlay = document.getElementById('play-overlay');
     overlay.addEventListener('click', () => { video.play(); overlay.classList.add('hidden'); });
