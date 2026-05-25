@@ -154,18 +154,6 @@
     .disclaimer { padding: 20px 24px; border-radius: 14px; background: rgba(255,184,48,.06); border: 1px solid rgba(255,184,48,.2); font-size: 14px; line-height: 1.6; color: var(--muted); }
     .disclaimer strong { color: white; }
 
-    .burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; padding: 8px; border-radius: 10px; border: 1px solid var(--border-strong); background: rgba(255,255,255,.08); cursor: pointer; z-index: 100; flex-shrink: 0; }
-    .burger span { display: block; height: 2px; border-radius: 2px; background: white; transition: transform .3s, opacity .3s, width .3s; }
-    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .burger.open span:nth-child(2) { opacity: 0; width: 0; }
-    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-nav { display: none; position: fixed; inset: 0; z-index: 50; background: rgba(3,11,30,.97); backdrop-filter: blur(16px); flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a { font-size: 22px; font-weight: 700; color: var(--muted); text-decoration: none; padding: 14px 32px; border-radius: 14px; transition: color .2s, background .2s; width: 240px; text-align: center; }
-    .mobile-nav a:hover, .mobile-nav a.active { color: white; background: rgba(255,255,255,.08); }
-    .mobile-nav .mobile-cta { margin-top: 12px; font-size: 16px; font-weight: 800; background: linear-gradient(135deg, #1dbd6b, #12a55c) !important; color: white !important; box-shadow: 0 6px 20px rgba(29,189,107,.3); }
-    @media (max-width: 640px) { .nav-links { display: none; } .burger { display: flex; } }
-
     /* Footer */
     footer { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 24px 5% 40px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); }
     .footer-brand { font-size: 14px; color: var(--muted); }
@@ -197,16 +185,7 @@
       <a class="nav-link" href="guides.html">Guides</a>
       <a class="nav-link" href="contact.html">Contact</a>
     </div>
-    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
-
-  <div class="mobile-nav" id="mobile-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html" class="active">About</a>
-    <a href="guides.html">Guides</a>
-    <a href="contact.html">Contact</a>
-    <a href="index.html#signup" class="mobile-cta">Get My Free Year</a>
-  </div>
 
   <div class="page-header">
     <span class="page-eyebrow">About easySED</span>
@@ -394,12 +373,6 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-    const burger = document.getElementById("burger");
-    const mobileNav = document.getElementById("mobile-nav");
-    burger.addEventListener("click", () => { burger.classList.toggle("open"); mobileNav.classList.toggle("open"); document.body.style.overflow = mobileNav.classList.contains("open") ? "hidden" : ""; });
-    mobileNav.querySelectorAll("a").forEach(a => { a.addEventListener("click", () => { burger.classList.remove("open"); mobileNav.classList.remove("open"); document.body.style.overflow = ""; }); });
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
