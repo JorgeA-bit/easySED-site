@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're on the list — easySED</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="assets/images/sitelogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #081630;
+      --surface: rgba(255,255,255,.07);
+      --border: rgba(255,255,255,.11);
+      --border-strong: rgba(255,255,255,.22);
+      --blue: #3b9eff;
+      --gold: #ffb830;
+      --green: #1dbd6b;
+      --muted: #a8bdd8;
+      --font: 'Manrope', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bg-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .bg-canvas::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13,80,220,.2), transparent),
+        radial-gradient(ellipse 50% 50% at 90% 50%, rgba(0,120,255,.12), transparent),
+        radial-gradient(ellipse 50% 40% at 10% 80%, rgba(29,189,107,.08), transparent);
+    }
+    .bg-canvas::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.09) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse 100% 60% at 50% 0%, black 20%, transparent 80%);
+    }
+
+    /* Nav */
+    nav {
+      position: relative; z-index: 10;
+      max-width: 1200px; margin: 0 auto;
+      padding: 20px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { width: 42px; height: 42px; border-radius: 11px; box-shadow: 0 6px 20px rgba(0,0,0,.4); }
+    .nav-brand { font-size: 21px; font-weight: 800; letter-spacing: -0.5px; color: white; }
+    .nav-brand span { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-link { padding: 9px 14px; border-radius: 50px; color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none; transition: color .2s; }
+    .nav-link:hover { color: white; }
+    .burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; padding: 8px; border-radius: 10px; border: 1px solid var(--border-strong); background: rgba(255,255,255,.08); cursor: pointer; z-index: 100; flex-shrink: 0; }
+    .burger span { display: block; height: 2px; border-radius: 2px; background: white; transition: transform .3s, opacity .3s, width .3s; }
+    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav { display: none; position: fixed; inset: 0; z-index: 50; background: rgba(3,11,30,.97); backdrop-filter: blur(16px); flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 22px; font-weight: 700; color: var(--muted); text-decoration: none; padding: 14px 32px; border-radius: 14px; transition: color .2s, background .2s; width: 240px; text-align: center; }
+    .mobile-nav a:hover, .mobile-nav a.active { color: white; background: rgba(255,255,255,.08); }
+    @media (max-width: 640px) { .nav-links { display: none !important; } .burger { display: flex !important; } .footer-links { display: none !important; } }
+
+    /* Main content */
+    main {
+      position: relative; z-index: 2;
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px 5%;
+    }
+
+    .confirmation-card {
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Animated tick */
+    .tick-wrap {
+      width: 80px; height: 80px;
+      margin: 0 auto 28px;
+      position: relative;
+    }
+    .tick-circle {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(29,189,107,.12);
+      border: 2px solid rgba(29,189,107,.35);
+      display: grid; place-items: center;
+      animation: popIn .4s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    .tick-circle svg {
+      width: 36px; height: 36px;
+      color: var(--green);
+      animation: drawTick .4s .3s ease both;
+      stroke-dasharray: 50;
+      stroke-dashoffset: 50;
+    }
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    @keyframes drawTick {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 14px;
+      animation: fadeUp .5s .2s ease both;
+    }
+
+    .conf-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800; letter-spacing: -1.5px; line-height: 1.08;
+      margin-bottom: 14px;
+      animation: fadeUp .5s .25s ease both;
+    }
+
+    .conf-sub {
+      font-size: 16px; line-height: 1.7; color: var(--muted);
+      margin-bottom: 36px;
+      animation: fadeUp .5s .3s ease both;
+    }
+    .conf-sub strong { color: white; }
+
+    /* What happens next */
+    .next-steps {
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 32px;
+      text-align: left;
+      animation: fadeUp .5s .35s ease both;
+    }
+    .next-steps-title {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .next-step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px; }
+    .next-step:last-child { margin-bottom: 0; }
+    .next-num {
+      width: 24px; height: 24px; border-radius: 50%; flex: 0 0 auto;
+      background: rgba(29,189,107,.15); border: 1px solid rgba(29,189,107,.3);
+      display: grid; place-items: center;
+      font-size: 11px; font-weight: 800; color: var(--green);
+      margin-top: 1px;
+    }
+    .next-text { font-size: 14px; line-height: 1.6; color: var(--muted); }
+    .next-text strong { color: white; font-weight: 600; }
+
+    /* CTAs */
+    .conf-actions {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp .5s .4s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 22px; border-radius: 12px;
+      background: linear-gradient(135deg, #1dbd6b, #12a55c);
+      color: white; font-size: 14px; font-weight: 700;
+      text-decoration: none; box-shadow: 0 6px 20px rgba(29,189,107,.25);
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-primary:hover { opacity: .9; transform: translateY(-1px); }
+    .btn-primary svg { width: 15px; height: 15px; }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 22px; border-radius: 12px;
+      background: rgba(255,255,255,.08); border: 1px solid var(--border-strong);
+      color: white; font-size: 14px; font-weight: 600;
+      text-decoration: none; transition: background .2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.13); }
+    .btn-secondary svg { width: 15px; height: 15px; color: var(--muted); }
+
+    /* Footer */
+    footer {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 24px 5% 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .footer-brand { font-size: 14px; color: var(--muted); }
+    .footer-brand strong { color: white; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: white; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .conf-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-canvas"></div>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="assets/images/app-icon.png" alt="easySED logo" />
+      <span class="nav-brand">easy<span>SED</span></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link" href="guides.html">Guides</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="guides.html">Guides</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+    <div class="confirmation-card">
+
+      <div class="tick-wrap">
+        <div class="tick-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+      </div>
+
+      <p class="eyebrow">Founding Member Access</p>
+      <h1 class="conf-title">You're on the list.</h1>
+      <p class="conf-sub">Thanks for signing up. Your founding member spot is reserved — we'll be in touch the moment easySED goes live.</p>
+
+      <div class="next-steps">
+        <p class="next-steps-title">What happens next</p>
+        <div class="next-step">
+          <div class="next-num">1</div>
+          <p class="next-text"><strong>Check your inbox.</strong> You'll receive a confirmation email from us shortly. If you don't see it, check your spam folder.</p>
+        </div>
+        <div class="next-step">
+          <div class="next-num">2</div>
+          <p class="next-text"><strong>Launch day email.</strong> When easySED goes live you'll get a direct download link straight to your inbox.</p>
+        </div>
+        <div class="next-step">
+          <div class="next-num">3</div>
+          <p class="next-text"><strong>Your first year free.</strong> As a founding member your first year is on us — no card, no catch.</p>
+        </div>
+      </div>
+
+      <div class="conf-actions">
+        <a class="btn-primary" href="guides.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Read our SED guides
+        </a>
+        <a class="btn-secondary" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          Back to home
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer-brand">© <span id="y"></span> <strong>easySED.</strong> Built for clarity, compliance, and speed.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="guides.html">Guides</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const burger = document.getElementById("burger");
+    const mobileNav = document.getElementById("mobile-nav");
+    burger.addEventListener("click", () => { burger.classList.toggle("open"); mobileNav.classList.toggle("open"); document.body.style.overflow = mobileNav.classList.contains("open") ? "hidden" : ""; });
+    mobileNav.querySelectorAll("a").forEach(a => { a.addEventListener("click", () => { burger.classList.remove("open"); mobileNav.classList.remove("open"); document.body.style.overflow = ""; }); });
+  </script>
+</body>
+</html>
