@@ -2,252 +2,231 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Contact — easySED</title>
   <meta name="description" content="Get in touch with the easySED team. Questions, feedback or early access requests — we'd love to hear from you." />
+  <meta name="theme-color" content="#f2f2f7" />
   <link rel="icon" type="image/png" href="assets/images/sitelogo.png" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #030b1e;
-      --surface: rgba(255,255,255,.07);
-      --border: rgba(255,255,255,.11);
-      --border-strong: rgba(255,255,255,.22);
-      --blue: #3b9eff;
-      --gold: #ffb830;
-      --green: #1dbd6b;
-      --muted: #a8bdd8;
-      --font: 'Manrope', sans-serif;
+      --bg: #f2f2f7; --card: #ffffff; --label: #000000; --label-2: #3c3c43;
+      --muted: #8a8a8e; --muted-2: #aeaeb2; --sep: rgba(60,60,67,.14); --fill: #e9e9ee;
+      --teal: #467a86; --teal-dark: #3d6d78; --teal-soft: rgba(70,122,134,.12);
+      --green: #34c759; --orange: #f5a043; --blue: #0a7cff; --purple: #af52de;
+      --radius-card: 28px;
+      --shadow-float: 0 10px 30px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.06);
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
     }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      background: var(--bg); color: #fff;
-      overflow-x: hidden; min-height: 100vh;
-    }
-
-    .bg-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .bg-canvas::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13,80,220,.2), transparent),
-        radial-gradient(ellipse 50% 50% at 90% 50%, rgba(0,120,255,.12), transparent);
-    }
-    .bg-canvas::after {
-      content: ''; position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,.09) 1px, transparent 1px);
-      background-size: 36px 36px;
-      mask-image: radial-gradient(ellipse 100% 60% at 50% 0%, black 20%, transparent 80%);
-    }
+    body { font-family: var(--font); background: var(--bg); color: var(--label); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; line-height: 1.4; }
+    a { color: inherit; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 
     /* Nav */
-    nav {
-      position: relative; z-index: 10;
-      max-width: 1200px; margin: 0 auto;
-      padding: 20px 5%;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo img { width: 42px; height: 42px; border-radius: 11px; box-shadow: 0 6px 20px rgba(0,0,0,.4); }
-    .nav-brand { font-size: 21px; font-weight: 800; letter-spacing: -0.5px; color: white; }
-    .nav-brand span { color: var(--blue); }
-    .nav-links { display: flex; align-items: center; gap: 8px; }
-    .nav-link {
-      padding: 9px 14px; border-radius: 50px; color: var(--muted);
-      font-size: 14px; font-weight: 600; text-decoration: none; transition: color .2s;
-    }
-    .nav-link:hover { color: white; }
-    .nav-link.active { color: white; }
-    .nav-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 9px 18px; border-radius: 50px;
-      background: rgba(255,255,255,.1); border: 1px solid var(--border-strong);
-      color: white; font-size: 13px; font-weight: 600;
-      text-decoration: none; transition: background .2s;
-    }
-    .nav-cta:hover { background: rgba(255,255,255,.16); }
+    nav { position: sticky; top: 0; z-index: 40; background: rgba(242,242,247,.82); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); }
+    .nav-inner { max-width: 1120px; margin: 0 auto; padding: 14px 20px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+    .round-btn { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--card); border: none; cursor: pointer; box-shadow: var(--shadow-float); transition: transform .15s; color: var(--label); }
+    .round-btn:active { transform: scale(.94); }
+    .logo-btn { padding: 0; overflow: hidden; background: linear-gradient(180deg, #2b8bff, #0a6cf0); box-shadow: 0 0 0 5px rgba(10,124,255,.18), var(--shadow-float); }
+    .logo-btn img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .nav-title { font-size: 21px; font-weight: 700; letter-spacing: -.3px; text-decoration: none; color: var(--label); }
+    .nav-right { display: flex; justify-content: flex-end; align-items: center; gap: 10px; }
+    .nav-links { display: flex; gap: 2px; padding: 5px; background: var(--card); border-radius: 999px; box-shadow: var(--shadow-float); }
+    .nav-links a { padding: 9px 16px; border-radius: 999px; font-size: 15px; font-weight: 500; text-decoration: none; color: var(--label-2); transition: background .15s, color .15s; }
+    .nav-links a:hover { background: var(--bg); color: var(--label); }
+    .nav-links a.active { background: var(--teal-soft); color: var(--teal); font-weight: 600; }
+    .burger { display: none; }
+    .burger svg { width: 24px; height: 24px; }
+
+    /* Sheet menu */
+    .sheet-backdrop { position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,.28); opacity: 0; pointer-events: none; transition: opacity .25s; }
+    .sheet { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 61; background: var(--bg); border-radius: 30px; padding: 10px 16px 18px; transform: translateY(110%); visibility: hidden; transition: transform .32s cubic-bezier(.2,.8,.2,1), visibility 0s .32s; }
+    .sheet-grabber { width: 38px; height: 5px; border-radius: 3px; background: var(--muted-2); margin: 0 auto 14px; }
+    .sheet-title { font-size: 22px; font-weight: 700; margin: 0 6px 12px; }
+    .menu-open .sheet-backdrop { opacity: 1; pointer-events: auto; }
+    .menu-open .sheet { transform: translateY(0); visibility: visible; transition-delay: 0s; }
+    .sheet .list a.row { text-decoration: none; }
+    .sheet .list a.row.active .row-title { color: var(--teal); font-weight: 600; }
+    .sheet-cta { margin-top: 14px; width: 100%; }
+
+    /* Lists & cards */
+    .card { background: var(--card); border-radius: var(--radius-card); }
+    .list { background: var(--card); border-radius: var(--radius-card); overflow: hidden; }
+    .row { display: flex; align-items: center; gap: 16px; padding: 18px 22px; position: relative; color: var(--label); }
+    a.row { text-decoration: none; transition: background .15s; }
+    a.row:hover { background: #f7f7fa; }
+    .row + .row::before { content: ''; position: absolute; top: 0; right: 0; left: var(--inset, 22px); border-top: 1px solid var(--sep); }
+    .row-body { flex: 1; min-width: 0; }
+    .row-title { font-size: 19px; font-weight: 500; letter-spacing: -.2px; }
+    .row-title.teal { color: var(--teal); }
+    .row-sub { font-size: 16px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+    .row-value { font-size: 18px; color: var(--muted); white-space: nowrap; }
+    .chev { width: 10px; height: 16px; color: #c4c4c7; flex: 0 0 auto; }
+    .check { width: 30px; height: 30px; border-radius: 50%; flex: 0 0 auto; background: var(--green); display: grid; place-items: center; }
+    .check svg { width: 16px; height: 16px; }
+    .icon-tile { width: 40px; height: 40px; border-radius: 11px; flex: 0 0 auto; display: grid; place-items: center; color: #fff; background: var(--tile, var(--teal)); }
+    .icon-tile svg { width: 21px; height: 21px; }
+
+    .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0 8px 14px; }
+    .section-head h2 { font-size: clamp(28px, 4vw, 36px); font-weight: 800; letter-spacing: -.8px; line-height: 1.1; }
+    .section-head span { font-size: 18px; color: var(--muted); white-space: nowrap; }
+    .lead { font-size: 18px; color: var(--muted); line-height: 1.5; margin: -4px 8px 20px; max-width: 620px; }
+    .footnote { font-size: 13px; color: var(--muted); line-height: 1.55; margin: 12px 22px 0; }
+    section { padding-bottom: 64px; }
+
+    .pill { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 30px; border-radius: 999px; background: var(--teal); color: #fff; text-decoration: none; font-size: 19px; font-weight: 600; letter-spacing: -.2px; box-shadow: 0 0 0 2px rgba(255,255,255,.55) inset, 0 10px 26px rgba(70,122,134,.35); transition: transform .15s, background .15s; border: none; cursor: pointer; font-family: inherit; white-space: nowrap; }
+    .pill:hover { background: var(--teal-dark); }
+    .pill:active { transform: scale(.97); }
+    .pill svg { width: 20px; height: 20px; }
 
     /* Page header */
-    .page-header {
-      position: relative; z-index: 2;
-      max-width: 1200px; margin: 0 auto;
-      padding: 56px 5% 48px;
-      text-align: center;
-    }
-    .page-eyebrow {
-      display: inline-block; font-size: 11px; font-weight: 700;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: var(--blue); margin-bottom: 16px;
-    }
-    .page-title {
-      font-size: clamp(36px, 4.5vw, 58px); font-weight: 800;
-      letter-spacing: -2px; line-height: 1.05; margin-bottom: 18px;
-    }
-    .page-sub {
-      font-size: clamp(15px, 1.3vw, 18px); line-height: 1.65;
-      color: var(--muted); max-width: 520px; margin: 0 auto;
-    }
-
-    /* Content */
-    .content {
-      position: relative; z-index: 2;
-      max-width: 1200px; margin: 0 auto;
-      padding: 0 5% 80px;
-    }
-
-    /* Contact cards */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 56px;
-    }
-
-    .contact-card {
-      padding: 28px; border-radius: 20px;
-      background: var(--surface); border: 1px solid var(--border);
-      display: flex; flex-direction: column;
-    }
-
-    .contact-icon {
-      width: 40px; height: 40px; border-radius: 11px;
-      display: grid; place-items: center; margin-bottom: 16px;
-    }
-    .contact-icon.blue { background: rgba(59,158,255,.14); border: 1px solid rgba(59,158,255,.2); color: var(--blue); }
-    .contact-icon.green { background: rgba(29,189,107,.14); border: 1px solid rgba(29,189,107,.2); color: var(--green); }
-    .contact-icon svg { width: 20px; height: 20px; }
-
-    .contact-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-    .contact-card p { font-size: 14px; line-height: 1.6; color: var(--muted); flex: 1; margin-bottom: 20px; }
-
-    .contact-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 11px 18px; border-radius: 11px;
-      background: rgba(255,255,255,.08); border: 1px solid var(--border-strong);
-      color: white; font-size: 13px; font-weight: 600;
-      text-decoration: none; transition: background .2s; width: fit-content;
-    }
-    .contact-btn:hover { background: rgba(255,255,255,.14); }
-    .contact-btn svg { width: 15px; height: 15px; color: var(--muted); }
-
-    .burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; padding: 8px; border-radius: 10px; border: 1px solid var(--border-strong); background: rgba(255,255,255,.08); cursor: pointer; z-index: 100; flex-shrink: 0; }
-    .burger span { display: block; height: 2px; border-radius: 2px; background: white; transition: transform .3s, opacity .3s, width .3s; }
-    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .burger.open span:nth-child(2) { opacity: 0; width: 0; }
-    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-nav { display: none; position: fixed; inset: 0; z-index: 50; background: rgba(3,11,30,.97); backdrop-filter: blur(16px); flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a { font-size: 22px; font-weight: 700; color: var(--muted); text-decoration: none; padding: 14px 32px; border-radius: 14px; transition: color .2s, background .2s; width: 240px; text-align: center; }
-    .mobile-nav a:hover, .mobile-nav a.active { color: white; background: rgba(255,255,255,.08); }
-    .mobile-nav .mobile-cta { margin-top: 12px; font-size: 16px; font-weight: 800; background: linear-gradient(135deg, #1dbd6b, #12a55c) !important; color: white !important; box-shadow: 0 6px 20px rgba(29,189,107,.3); }
-    @media (max-width: 640px) { .nav-links { display: none; } .burger { display: flex; } }
+    .page-head { padding: 40px 0 48px; max-width: 760px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 10px; border-radius: 999px; background: var(--card); font-size: 14px; font-weight: 500; color: var(--label-2); margin-bottom: 22px; }
+    .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+    .page-head h1 { font-size: clamp(36px, 5vw, 58px); font-weight: 800; line-height: 1.04; letter-spacing: -1.8px; margin-bottom: 18px; }
+    .page-head h1 .teal { color: var(--teal); }
+    .page-head p { font-size: 19px; color: var(--muted); line-height: 1.5; max-width: 600px; }
 
     /* Footer */
-    footer {
-      position: relative; z-index: 2;
-      max-width: 1200px; margin: 0 auto;
-      padding: 24px 5% 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      border-top: 1px solid var(--border);
-    }
-    .footer-brand { font-size: 14px; color: var(--muted); }
-    .footer-brand strong { color: white; }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: white; }
+    footer { padding: 8px 0 60px; }
+    .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 0 8px; }
+    .foot-inner p { font-size: 14px; color: var(--muted); }
+    .foot-inner p strong { color: var(--label); font-weight: 600; }
+    .foot-links { display: flex; gap: 20px; }
+    .foot-links a { font-size: 14px; color: var(--muted); text-decoration: none; }
+    .foot-links a:hover { color: var(--teal); }
 
-    @media (max-width: 640px) { .nav-links { display: none !important; } .burger { display: flex !important; } .footer-links { display: none !important; } }
+    .rise { animation: rise .55s ease both; }
+    .d1 { animation-delay: .06s; } .d2 { animation-delay: .12s; } .d3 { animation-delay: .18s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .rise { animation: none; } html { scroll-behavior: auto; } }
 
-    @media (max-width: 720px) {
-      .contact-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .form-card { padding: 24px 18px; }
-      footer { flex-direction: column; gap: 16px; text-align: center; }
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .burger { display: grid; }
+      .nav-title { font-size: 19px; }
+      .round-btn { width: 48px; height: 48px; }
+      .page-head { padding: 24px 0 36px; }
+      .page-head p { font-size: 17px; }
+      .row { padding: 16px 18px; gap: 14px; }
+      .row-title { font-size: 17px; }
+      .row-sub { font-size: 15px; }
+      .lead { font-size: 17px; }
+      .foot-links { display: none; }
     }
+
+    /* ── Page ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+    .contact .row:first-child { align-items: flex-start; padding-top: 22px; padding-bottom: 22px; }
+    .contact .icon-tile { width: 48px; height: 48px; border-radius: 14px; }
+    .contact .icon-tile svg { width: 24px; height: 24px; }
+    .contact .row-title { font-size: 21px; font-weight: 600; }
+    .contact a.row .row-title { font-size: 18px; font-weight: 500; overflow-wrap: anywhere; }
+    .contact a.row .icon-sm { width: 20px; height: 20px; color: var(--teal); flex: 0 0 auto; }
+    .contact a.row .icon-sm svg { width: 20px; height: 20px; }
+    .quick .row { --inset: 78px; }
+    @media (max-width: 760px) { .two-col { grid-template-columns: 1fr; } .contact .row-title { font-size: 19px; } }
+
   </style>
 </head>
 <body>
-  <div class="bg-canvas"></div>
 
   <nav>
-    <a class="nav-logo" href="index.html">
-      <img src="assets/images/app-icon.png" alt="easySED logo" />
-      <span class="nav-brand">easy<span>SED</span></span>
-    </a>
-    <div class="nav-links">
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="about.html">About</a>
-      <a class="nav-link" href="guides.html">Guides</a>
-      <a class="nav-link active" href="contact.html">Contact</a>
+    <div class="nav-inner">
+      <div>
+        <a class="round-btn logo-btn" href="index.html" aria-label="easySED home">
+          <img src="assets/images/app-icon.png" alt="easySED logo" />
+        </a>
+      </div>
+      <a class="nav-title" href="index.html">easySED</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="guides.html">Guides</a>
+          <a href="contact.html" class="active" aria-current="page">Contact</a>
+        </div>
+        <button class="round-btn burger" id="burger" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+        </button>
+      </div>
     </div>
-    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
 
-  <div class="mobile-nav" id="mobile-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="guides.html">Guides</a>
-    <a href="contact.html" class="active">Contact</a>
-    <a href="index.html#signup" class="mobile-cta">Get My Free Year</a>
-  </div>
-
-  <div class="page-header">
-    <span class="page-eyebrow">Get in touch</span>
-    <h1 class="page-title">Questions, feedback,<br>or early access?</h1>
-    <p class="page-sub">We'd love to hear from you. Choose how you'd like to reach out below.</p>
-  </div>
-
-  <div class="content">
-
-    <!-- Email cards -->
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-icon blue">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        </div>
-        <h3>Support</h3>
-        <p>Need help with easySED or have a technical question? Our support team is here to assist you.</p>
-        <a class="contact-btn" href="mailto:support@easySED.co.uk">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          support@easySED.co.uk
-        </a>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon green">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h3>Feedback</h3>
-        <p>Share your thoughts, suggestions, or request early access to new features.</p>
-        <a class="contact-btn" href="mailto:feedback@easySED.co.uk">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          feedback@easySED.co.uk
-        </a>
-      </div>
+  <div class="sheet-backdrop" id="sheet-backdrop"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-label="Menu">
+    <div class="sheet-grabber"></div>
+    <p class="sheet-title">Menu</p>
+    <div class="list">
+      <a class="row" href="index.html"><div class="row-body"><div class="row-title">Home</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 2 8 8 2 14"/></svg></a>
+      <a class="row" href="about.html"><div class="row-body"><div class="row-title">About</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 2 8 8 2 14"/></svg></a>
+      <a class="row" href="guides.html"><div class="row-body"><div class="row-title">Guides</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 2 8 8 2 14"/></svg></a>
+      <a class="row active" href="contact.html"><div class="row-body"><div class="row-title">Contact</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 2 8 8 2 14"/></svg></a>
     </div>
-
+    <a class="pill sheet-cta" href="index.html#pricing">First year free</a>
   </div>
 
-  <footer>
-    <p class="footer-brand">© <span id="y"></span> <strong>easySED.</strong> Built for clarity, compliance, and speed.</p>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="guides.html">Guides</a>
-      <a href="contact.html">Contact</a>
+  <main class="wrap">
+    <header class="page-head">
+      <span class="eyebrow rise"><span class="dot"></span>Get in touch</span>
+      <h1 class="rise d1">Questions, feedback, or <span class="teal">early access?</span></h1>
+      <p class="rise d2">We’d love to hear from you. Choose how you’d like to reach out below.</p>
+    </header>
+
+    <section>
+      <div class="two-col">
+        <div class="list contact">
+          <div class="row"><span class="icon-tile" style="--tile:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><div class="row-body"><div class="row-title">Support</div><div class="row-sub">Need help with easySED or have a technical question? Our support team is here to assist you.</div></div></div>
+          <a class="row" href="mailto:support@easySED.co.uk"><span class="icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><div class="row-body"><div class="row-title teal">support@easySED.co.uk</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 2 8 8 2 14"/></svg></a>
+        </div>
+        <div class="list contact">
+          <div class="row"><span class="icon-tile" style="--tile:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div class="row-body"><div class="row-title">Feedback</div><div class="row-sub">Share your thoughts, suggestions, or request early access to new features.</div></div></div>
+          <a class="row" href="mailto:feedback@easySED.co.uk"><span class="icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><div class="row-body"><div class="row-title teal">feedback@easySED.co.uk</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 2 8 8 2 14"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>Quick answers</h2></div>
+      <p class="lead">You might find what you’re looking for here first.</p>
+      <div class="list quick">
+        <a class="row" href="guides.html"><span class="icon-tile" style="--tile:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><div class="row-body"><div class="row-title">Guides</div><div class="row-sub">Plain-English guides to the SED rules and making a claim.</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 2 8 8 2 14"/></svg></a>
+        <a class="row" href="about.html#faq"><span class="icon-tile" style="--tile:var(--orange)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span><div class="row-body"><div class="row-title">FAQ</div><div class="row-sub">Common questions about PAYE, provisional claims and offline use.</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 2 8 8 2 14"/></svg></a>
+        <a class="row" href="privacypolicy.html"><span class="icon-tile" style="--tile:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div class="row-body"><div class="row-title">Privacy policy</div><div class="row-sub">How easySED handles your data. Your records stay on your phone.</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 2 8 8 2 14"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="foot-inner">
+      <p>© <span id="y"></span> <strong>easySED.</strong> Built for clarity, compliance, and speed.</p>
+      <div class="foot-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="guides.html">Guides</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacypolicy.html">Privacy</a>
+      </div>
     </div>
   </footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-    const burger = document.getElementById("burger");
-    const mobileNav = document.getElementById("mobile-nav");
-    burger.addEventListener("click", () => { burger.classList.toggle("open"); mobileNav.classList.toggle("open"); document.body.style.overflow = mobileNav.classList.contains("open") ? "hidden" : ""; });
-    mobileNav.querySelectorAll("a").forEach(a => { a.addEventListener("click", () => { burger.classList.remove("open"); mobileNav.classList.remove("open"); document.body.style.overflow = ""; }); });
+    const burger = document.getElementById('burger');
+    const backdrop = document.getElementById('sheet-backdrop');
+    const setMenu = open => {
+      document.body.classList.toggle('menu-open', open);
+      burger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    burger.addEventListener('click', () => setMenu(true));
+    backdrop.addEventListener('click', () => setMenu(false));
+    document.querySelectorAll('#sheet a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
   </script>
 </body>
 </html>
