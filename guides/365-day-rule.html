@@ -104,7 +104,8 @@
     .sidebar-cta strong { color:white; }
     .sidebar-btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; width:100%; padding:11px 16px; border-radius:11px; background:linear-gradient(135deg,#1dbd6b,#12a55c); color:white; font-size:13px; font-weight:700; text-decoration:none; transition:opacity .2s; }
     .sidebar-btn:hover { opacity:.9; }
-    footer { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:24px 5% 40px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--border); }
+    footer { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:24px 5% 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; border-top:1px solid var(--border); }
+    .foot-disclaimer { flex-basis:100%; font-size:13px; color:var(--muted); line-height:1.55; margin:0 0 16px; max-width:720px; }
     .footer-brand { font-size:14px; color:var(--muted); }
     .footer-brand strong { color:white; }
     .footer-links { display:flex; gap:20px; }
@@ -151,7 +152,7 @@
         <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Based on HMRC guidance</span>
       </div>
 
-      <p class="lead">To claim SED you need a valid "eligible period" of at least 365 days. But it's not as simple as counting 365 days away from home. Here's exactly how it works.</p>
+      <p class="lead">To claim SED you need a valid "eligible period" of at least 365 days. But it's not as simple as counting 365 days away from home. Here's how it works.</p>
 
       <div class="article-body">
 
@@ -160,7 +161,7 @@
 
         <h2 id="midnight-rule">The midnight rule — how days are counted</h2>
         <p>HMRC uses a simple rule to decide whether a day counts as a UK day or a non-UK day: <strong>where are you at midnight?</strong></p>
-        <p>If you are outside the UK at midnight at the end of a day, that day counts as a day of absence. If you're in the UK at midnight, it counts as a UK day. That's it.</p>
+        <p>If you are outside the UK at midnight at the end of a day, that day counts as a day of absence. If you're in the UK at midnight, it counts as a UK day.</p>
 
         <div class="example">
           <p class="example-label">Example</p>
@@ -208,11 +209,11 @@
         </div>
 
         <h2 id="multiple-periods">Can you have more than one eligible period?</h2>
-        <p>Yes. If your first eligible period ends (because you stayed in the UK too long, for example), a new one can start the next time you leave the UK. Each period needs its own 365 days to qualify. easySED tracks each period separately so you always know where you stand.</p>
+        <p>Yes. If your first eligible period ends (because you stayed in the UK too long, for example), a new one can start the next time you leave the UK. Each period needs its own 365 days to qualify. easySED tracks each period separately, based on the trips you log.</p>
 
         <div class="article-cta">
           <h3>Stop counting days manually.</h3>
-          <p>easySED applies the midnight rule automatically and tracks every return visit in real time — alerting you before a UK stay puts your claim at risk.</p>
+          <p>easySED applies the midnight rule to the trips you log and tracks every return visit, and warns you if a UK stay could put your claim at risk.</p>
           <a class="cta-btn" href="../index.html#signup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Get My Free Year</a>
         </div>
 
@@ -249,6 +250,7 @@
   </div>
 
   <footer>
+    <p class="foot-disclaimer">easySED is a record-keeping tool, not tax, legal or financial advice. Its results depend on the information you enter and aren’t a guarantee that HMRC will accept your claim. Check your figures and speak to a qualified tax adviser before you claim.</p>
     <p class="footer-brand">© <span id="y"></span> <strong>easySED.</strong> Built for clarity, compliance, and speed.</p>
     <div class="footer-links">
       <a href="../index.html">Home</a>

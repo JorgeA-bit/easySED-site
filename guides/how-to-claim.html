@@ -110,7 +110,8 @@
     .sidebar-cta strong { color:white; }
     .sidebar-btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; width:100%; padding:11px 16px; border-radius:11px; background:linear-gradient(135deg,#1dbd6b,#12a55c); color:white; font-size:13px; font-weight:700; text-decoration:none; transition:opacity .2s; }
     .sidebar-btn:hover { opacity:.9; }
-    footer { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:24px 5% 40px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--border); }
+    footer { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:24px 5% 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; border-top:1px solid var(--border); }
+    .foot-disclaimer { flex-basis:100%; font-size:13px; color:var(--muted); line-height:1.55; margin:0 0 16px; max-width:720px; }
     .footer-brand { font-size:14px; color:var(--muted); }
     .footer-brand strong { color:white; }
     .footer-links { display:flex; gap:20px; }
@@ -190,7 +191,7 @@
             <div class="step-spine"><div class="step-dot">4</div><div class="step-line"></div></div>
             <div class="step-content">
               <p class="step-title">Keep your evidence — don't send it</p>
-              <p class="step-body">Do <strong>not</strong> send your supporting documents with the return. Keep them safe — discharge book, travel tickets, payslips, passports — and produce them only if HMRC asks. easySED stores all of this for you.</p>
+              <p class="step-body">Do <strong>not</strong> send your supporting documents with the return. Keep them safe — discharge book, travel tickets, payslips, passports — and produce them only if HMRC asks. easySED lets you keep copies on your phone, but also keep the originals and a backup.</p>
             </div>
           </div>
         </div>
@@ -208,7 +209,7 @@
 
         <div class="callout callout-gold">
           <div class="callout-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gold)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><strong>HMRC won't issue NT until your first claim is processed</strong></div>
-          You can only apply for an NT code after HMRC has processed your first successful SED claim. Use <strong>form R44</strong> to request it. If your circumstances change and you no longer qualify, tell HMRC immediately — any underpaid tax is repaid in one lump sum.
+          You can only apply for an NT code after HMRC has processed your first successful SED claim. Use <strong>form R44</strong> to request it. If your circumstances change and you no longer qualify, tell HMRC immediately — you’ll have to pay back any tax that should have been deducted.
         </div>
 
         <h2 id="eea-residents">EEA residents — a different process</h2>
@@ -235,11 +236,10 @@
         <table class="limits-table">
           <thead><tr><th>Tax year</th><th>Ending</th><th>Claim by</th></tr></thead>
           <tbody>
-            <tr><td>2020 to 2021</td><td>5 April 2021</td><td>5 April 2025</td></tr>
-            <tr><td>2021 to 2022</td><td>5 April 2022</td><td>5 April 2026</td></tr>
             <tr><td>2022 to 2023</td><td>5 April 2023</td><td>5 April 2027</td></tr>
             <tr><td>2023 to 2024</td><td>5 April 2024</td><td>5 April 2028</td></tr>
             <tr><td>2024 to 2025</td><td>5 April 2025</td><td>5 April 2029</td></tr>
+            <tr><td>2025 to 2026</td><td>5 April 2026</td><td>5 April 2030</td></tr>
           </tbody>
         </table>
 
@@ -250,7 +250,7 @@
 
         <div class="article-cta">
           <h3>Build your evidence as you go.</h3>
-          <p>easySED captures everything HMRC needs — discharge book photos, travel records, day counts — automatically, trip by trip.</p>
+          <p>easySED helps you keep the records HMRC may ask for — discharge book photos, travel records, day counts — trip by trip.</p>
           <a class="cta-btn" href="../index.html#signup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Get My Free Year</a>
         </div>
 
@@ -277,13 +277,14 @@
         </ul>
       </div>
       <div class="sidebar-cta">
-        <p><strong>easySED</strong> generates your HS205 and evidence pack automatically — ready for your accountant or HMRC.</p>
+        <p><strong>easySED</strong> prepares your HS205 working-sheet figures and evidence pack — ready to check with your accountant.</p>
         <a class="sidebar-btn" href="../index.html#signup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Get My Free Year</a>
       </div>
     </aside>
   </div>
 
   <footer>
+    <p class="foot-disclaimer">easySED is a record-keeping tool, not tax, legal or financial advice. Its results depend on the information you enter and aren’t a guarantee that HMRC will accept your claim. Check your figures and speak to a qualified tax adviser before you claim.</p>
     <p class="footer-brand">© <span id="y"></span> <strong>easySED.</strong> Built for clarity, compliance, and speed.</p>
     <div class="footer-links">
       <a href="../index.html">Home</a>

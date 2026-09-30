@@ -194,9 +194,10 @@
       position: relative; z-index: 2;
       max-width: 1200px; margin: 0 auto;
       padding: 24px 5% 32px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
       border-top: 1px solid var(--border);
     }
+    .foot-disclaimer { flex-basis:100%; font-size:13px; color:var(--muted); line-height:1.55; margin:0 0 16px; max-width:720px; }
     .footer-brand { font-size: 14px; color: var(--muted); }
     .footer-brand strong { color: white; }
     .footer-links { display: flex; gap: 20px; }
@@ -285,6 +286,7 @@
   </main>
 
   <footer>
+    <p class="foot-disclaimer">easySED is a record-keeping tool, not tax, legal or financial advice. Its results depend on the information you enter and aren’t a guarantee that HMRC will accept your claim. Check your figures and speak to a qualified tax adviser before you claim.</p>
     <p class="footer-brand">© <span id="y"></span> <strong>easySED.</strong> Built for clarity, compliance, and speed.</p>
     <div class="footer-links">
       <a href="about.html">About</a>

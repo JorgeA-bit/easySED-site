@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>easySED — SED Compliance Made Easy</title>
-  <meta name="description" content="Track your UK and non-UK days, follow HMRC rules, attach evidence and build your audit trail automatically. Built for seafarers." />
+  <meta name="description" content="Track your UK and non-UK days against the SED rules, attach evidence and keep your records organised as you go. Built for seafarers." />
   <meta name="theme-color" content="#f2f2f7" />
   <link rel="icon" type="image/png" href="assets/images/app-icon-square.png" />
   <link rel="apple-touch-icon" href="assets/images/app-icon-square.png" />
@@ -319,6 +319,7 @@
     /* Footer */
     footer { padding: 8px 0 140px; }
     .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 0 8px; }
+    .foot-disclaimer { font-size: 13px; color: var(--muted); line-height: 1.55; margin: 0 8px 16px; max-width: 720px; }
     .foot-inner p { font-size: 14px; color: var(--muted); }
     .foot-inner p strong { color: var(--label); font-weight: 600; }
     .foot-links { display: flex; gap: 20px; }
@@ -415,7 +416,7 @@
     <div class="hero">
       <div>
         <h1 class="rise d1">Take the guesswork<br>out of your <span class="teal">SED claim.</span></h1>
-        <p class="hero-sub rise d2">The only app built specifically for UK seafarers navigating HMRC’s SED rules.</p>
+        <p class="hero-sub rise d2">An app built specifically for UK seafarers navigating HMRC’s SED rules.</p>
         <div class="hero-ctas rise d3">
           <a class="pill" href="#pricing">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -464,8 +465,8 @@
     <section id="rules">
       <div class="two-col">
         <div>
-          <div class="section-head"><h2>Every rule, checked</h2></div>
-          <p class="lead">easySED checks your days against each SED test as you log a trip, and tells you in plain English where you stand.</p>
+          <div class="section-head"><h2>The day-count rules, checked</h2></div>
+          <p class="lead">easySED checks your logged days against the SED day-count tests as you log a trip, and shows you in plain English where you stand.</p>
           <div class="list">
             <div class="row" style="--inset:68px">
               <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -486,7 +487,7 @@
         <!-- Features -->
         <div id="features">
           <div class="section-head"><h2>Features</h2><span>HS205</span></div>
-          <p class="lead">Everything you need to make and defend a claim, in one place.</p>
+          <p class="lead">The records and figures you need to prepare and support a claim, in one place.</p>
           <div class="list">
             <div class="row" style="--inset:78px">
               <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
@@ -515,10 +516,10 @@
         <div class="feature-text">
           <span class="badge">Feature 1</span>
           <h3>Attach evidence the moment it happens.</h3>
-          <p class="feature-body">Photograph your boarding pass, discharge book entry or payslip and attach it directly to the trip. By the time HMRC asks, your evidence pack is already complete.</p>
+          <p class="feature-body">Photograph your boarding pass, discharge book entry or payslip and attach it directly to the trip. If HMRC asks, your evidence is already organised trip by trip.</p>
           <div class="list inclusions">
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Attach photos or PDFs to each trip</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Stored locally — never leaves your device</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Stored on your device — only shared when you choose</div></div></div>
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Instant export for your accountant or HMRC</div></div></div>
           </div>
         </div>
@@ -535,12 +536,12 @@
       <article class="feature reverse">
         <div class="feature-text">
           <span class="badge">Feature 2</span>
-          <h3>Know if a trip home will break your claim — before you book.</h3>
-          <p class="feature-body">EasySED warns you the moment a planned UK stay puts your qualifying period at risk. It’s the question every seafarer asks — answered in real time.</p>
+          <h3>See how a trip home affects your claim — before you book.</h3>
+          <p class="feature-body">Add a planned UK stay and EasySED warns you if, based on the trips you’ve logged, it could put your qualifying period at risk. It’s the question every seafarer asks — answered as you plan.</p>
           <div class="list inclusions">
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Live 183-day and half-day rule status</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Risk warning before you exceed limits</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Safe return date always visible on the dashboard</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Warnings when a UK stay gets close to a limit</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Estimated safe return date on the dashboard</div></div></div>
           </div>
         </div>
         <div class="feature-media">
@@ -552,15 +553,15 @@
         <div class="feature-text">
           <span class="badge">Feature 3</span>
           <h3>Your audit pack, ready when HMRC asks.</h3>
-          <p class="feature-body">Once you qualify, EasySED compiles your HS205 figures, trip log and all attached evidence into a single export — ready to share with your accountant or submit to HMRC.</p>
+          <p class="feature-body">Once you qualify, EasySED compiles your HS205 figures, trip log and all attached evidence into a single export — ready to review with your accountant, or to share with HMRC if they ask.</p>
           <div class="list inclusions">
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">HS205 figures calculated automatically</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">HS205 working-sheet figures calculated from your trips</div></div></div>
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Full evidence pack in one tap</div></div></div>
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Completed periods archived in the Tax Vault</div></div></div>
           </div>
         </div>
         <div class="feature-media">
-          <div class="phone"><div class="phone-screen"><img src="assets/images/screenshots/attach-evidence.webp" alt="EasySED audit pack export screen" loading="lazy" /></div></div>
+          <div class="phone"><div class="phone-screen"><img src="assets/video/create-audit-pack.mp4" alt="EasySED audit pack export screen" loading="lazy" /></div></div>
         </div>
       </article>
     </section>
@@ -569,7 +570,7 @@
     <section class="cta-section">
       <div class="cta-banner">
         <h2>Stop guessing. Start knowing.</h2>
-        <p>Download EasySED free and know exactly where you stand from your first trip.</p>
+        <p>Download EasySED free and see where you stand from your first trip.</p>
         <div class="store-badges">
           <a href="#" aria-label="Download on the App Store"><img src="assets/images/apple_store.png" alt="Download on the App Store" /></a>
           <a href="#" aria-label="Get it on Google Play"><img src="assets/images/google_play.png" alt="Get it on Google Play" /></a>
@@ -590,7 +591,7 @@
           <div class="inclusions">
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Log trips one at a time or on the calendar</div></div></div>
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">183-day and half-day rule checks</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Safe return and leave-by dates</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Estimated safe return and leave-by dates</div></div></div>
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Evidence capture for every trip</div></div></div>
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Audit pack and accountant export</div></div></div>
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Tax-year claims archive</div></div></div>
@@ -603,7 +604,7 @@
             <div class="price-hero">
               <span class="badge">After your free year</span>
               <p class="price">£20<small>/ year</small></p>
-              <p class="price-note">Less than £1.70 per month. A qualified SED claim saves you thousands. EasySED Pro keeps every feature running with no interruption.</p>
+              <p class="price-note">Less than £1.70 per month. A successful SED claim can save thousands. EasySED Pro keeps every feature running with no interruption.</p>
             </div>
             <div class="inclusions">
               <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Everything in the free year</div></div></div>
@@ -617,7 +618,7 @@
             <div class="row"><div class="row-body"><div class="row-title">Reminder before it ends</div></div><span class="row-value teal">Yes</span></div>
             <div class="row"><div class="row-body"><div class="row-title">If you don’t renew</div><div class="row-sub">Your trips and evidence stay on your phone. You can still view and export them.</div></div></div>
           </div>
-          <p class="footnote">Paid annually through your App Store or Google Play account. Renews automatically — cancel any time in your device settings. Prices include VAT. EasySED is a record-keeping tool, not tax advice.</p>
+          <p class="footnote">Paid annually through your App Store or Google Play account. Renews automatically — cancel any time in your device settings. Prices include VAT. EasySED is a record-keeping tool, not tax advice, and can’t guarantee your claim will be accepted.</p>
         </div>
       </div>
     </section>
@@ -632,19 +633,19 @@
         </details>
         <details>
           <summary>Which rules does EasySED check?<svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></summary>
-          <p>EasySED checks all three key tests: the 183-day rule, the half-day rule and the foreign port rule. All three are updated automatically every time you log a trip.</p>
+          <p>EasySED checks the three day-count tests: the 183-day rule, the half-day rule and the foreign port rule, and updates them every time you log a trip. It can’t check other conditions, such as whether your vessel counts as a ship for SED or whether you’re resident, so read our <a href="guides/sed-explained.html">guide to who qualifies</a> or ask a tax adviser.</p>
         </details>
         <details>
           <summary>Does it work without an internet connection?<svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></summary>
-          <p>Yes — EasySED is fully offline. Log trips, attach evidence and check your status at sea with no signal at all. Your data never leaves your device.</p>
+          <p>Yes — EasySED is fully offline. Log trips, attach evidence and check your status at sea with no signal at all. Your data stays on your device unless you choose to share or export it.</p>
         </details>
         <details>
           <summary>Is my data private?<svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></summary>
-          <p>Completely. Everything is stored locally on your phone. EasySED never sends your trip data or evidence to any server.</p>
+          <p>Yes. Everything is stored locally on your phone. EasySED never sends your trip data or evidence to any server. Because it’s only on your phone, keep a backup in case your phone is lost or replaced.</p>
         </details>
         <details>
           <summary>Can I claim if I’m taxed at source (PAYE)?<svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></summary>
-          <p>Yes. EasySED generates the reports you need to reclaim tax through Self Assessment, and gives you the data to apply for an NT (No Tax) code.</p>
+          <p>Yes, if you meet the SED conditions you can reclaim PAYE tax through Self Assessment. EasySED prepares the figures and evidence to support your claim, and the records you’ll need when you apply for an NT (No Tax) code.</p>
         </details>
         <details>
           <summary>What happens after my free year?<svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></summary>
@@ -666,6 +667,7 @@
   </main>
 
   <footer class="wrap">
+    <p class="foot-disclaimer">easySED is a record-keeping tool, not tax, legal or financial advice. Its results depend on the information you enter and aren’t a guarantee that HMRC will accept your claim. Check your figures and speak to a qualified tax adviser before you claim.</p>
     <div class="foot-inner">
       <p>© <span id="y"></span> <strong>easySED.</strong> Built for clarity, compliance, and speed.</p>
       <div class="foot-links">
