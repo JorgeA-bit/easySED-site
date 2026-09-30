@@ -1,4 +1,4 @@
-<!DOCTYPE html><!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,6 +6,8 @@
   <title>easySED — SED Compliance Made Easy</title>
   <meta name="description" content="Track your UK and non-UK days, follow HMRC rules, attach evidence and build your audit trail automatically. Built for seafarers." />
   <meta name="theme-color" content="#f2f2f7" />
+  <link rel="icon" type="image/png" href="assets/images/app-icon-square.png" />
+  <link rel="apple-touch-icon" href="assets/images/app-icon-square.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -264,1119 +266,55 @@
     .inclusions .row-title { font-size: 17px; font-weight: 400; }
     .save { color: var(--orange); }
 
-    /* Footer */
-    footer { padding: 8px 0 140px; }
-    .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 0 8px; }
-    .foot-inner p { font-size: 14px; color: var(--muted); }
-    .foot-inner p strong { color: var(--label); font-weight: 600; }
-    .foot-links { display: flex; gap: 20px; }
-    .foot-links a { font-size: 14px; color: var(--muted); text-decoration: none; }
-    .foot-links a:hover { color: var(--teal); }
+    /* Hero footnote + status eyebrow */
+    .hero-note { font-size: 13px; color: var(--muted); margin: 12px 8px 0; }
+    .status-eyebrow { font-size: 13px; color: var(--muted); margin: 32px 8px 10px; }
+    .status-eyebrow + .status { margin-top: 0; }
 
-    /* Floating CTA — the app's "Log a trip" pill */
-    .fab {
-      position: fixed; left: 50%; bottom: max(22px, env(safe-area-inset-bottom)); z-index: 30;
-      transform: translate(-50%, 140%); opacity: 0; white-space: nowrap;
-      transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .25s;
-    }
-    .fab.show { transform: translate(-50%, 0); opacity: 1; }
-
-    /* Entrance */
-    .rise { animation: rise .55s ease both; }
-    .d1 { animation-delay: .06s; } .d2 { animation-delay: .12s; } .d3 { animation-delay: .18s; }
-    @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-    @media (prefers-reduced-motion: reduce) { .rise, .eyebrow .dot { animation: none; } }
-
-    /* ── Responsive ── */
-    @media (max-width: 920px) {
-      .hero { grid-template-columns: 1fr; gap: 44px; padding-top: 24px; }
-      .two-col { grid-template-columns: 1fr; }
-      .status { max-width: none; }
-    }
-    @media (max-width: 700px) {
-      .nav-links { display: none; }
-      .burger { display: grid; }
-      .nav-title { font-size: 20px; }
-      .round-btn { width: 48px; height: 48px; border-radius: 12px; }
-      .hero-sub { font-size: 17px; }
-      .hero-ctas .pill { flex: 1 1 auto; padding: 15px 18px; font-size: 16px; white-space: nowrap; }
-      .row { padding: 16px 18px; gap: 14px; }
-      .row-title { font-size: 17px; }
-      .row-sub { font-size: 15px; }
-      .row-value { font-size: 16px; }
-      .status { padding: 20px 18px; }
-      .status-since { font-size: 13px; }
-      .legend { gap: 16px; font-size: 14px; }
-      .phone { max-width: 280px; }
-      .foot-links { display: none; }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- Nav -->
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-brand" href="index.html" aria-label="EasySED home">
-        <span class="round-btn logo-btn">
-          <img src="assets/images/app-icon.jpeg" alt="EasySED logo" />
-        </span>
-        <span class="nav-title">EasySED</span>
-      </a>
-      <div class="nav-right">
-        <div class="nav-links">
-          <a href="about.html">About</a>
-          <a href="guides.html">Guides</a>
-          <a href="contact.html">Contact</a>
-        </div>
-        <button class="round-btn burger" id="burger" aria-label="Open menu" aria-expanded="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Mobile sheet -->
-  <div class="sheet-backdrop" id="sheet-backdrop"></div>
-  <div class="sheet" id="sheet" role="dialog" aria-label="Menu">
-    <div class="sheet-grabber"></div>
-    <p class="sheet-title">Menu</p>
-    <div class="list">
-      <a class="row active" href="index.html"><div class="row-body"><div class="row-title">Home</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></a>
-      <a class="row" href="about.html"><div class="row-body"><div class="row-title">About</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></a>
-      <a class="row" href="guides.html"><div class="row-body"><div class="row-title">Guides</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></a>
-      <a class="row" href="contact.html"><div class="row-body"><div class="row-title">Contact</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></a>
-    </div>
-    <a class="pill sheet-cta" href="#pricing">First year free</a>
-  </div>
-
-  <main class="wrap">
-
-    <!-- ═══ Hero ═══ -->
-    <div class="hero">
-      <div>
-        <h1 class="rise d1">Take the guesswork<br>out of your <span class="teal">SED claim.</span></h1>
-        <p class="hero-sub rise d2">Log trips and attach evidence on the go. EasySED organises all your evidence and trips, and will warn you before a UK stay puts your claim at risk.</p>
-        <div class="hero-ctas rise d3">
-          <a class="pill" href="#pricing">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            Start your free year
-          </a>
-          <a class="pill ghost" href="#features">See how it works</a>
-        </div>
-
-        <!-- Status widget -->
-        <div class="card status rise d3" aria-label="Example of the easySED status card">
-          <div class="status-top">
-            <span class="status-where">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:var(--orange)"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-              Home
-            </span>
-            <span class="status-badge">
-              Qualified
-              <span class="check" style="width:22px;height:22px;"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            </span>
-          </div>
-          <div class="bar" aria-hidden="true">
-            <i class="u" style="width:4%"></i><i class="a" style="width:11%"></i><i class="u" style="width:3%"></i><i class="a" style="width:9%"></i><i class="u" style="width:3%"></i><i class="a" style="width:6%"></i><i class="u" style="width:3%"></i>
-            <span class="now" style="left:39%"></span>
-          </div>
-          <div class="legend">
-            <b style="--c:var(--teal-dark)">Away</b>
-            <b style="--c:var(--orange)">In the UK</b>
-            <svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:auto"><polyline points="2 2 8 8 2 14"/></svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Phone -->
-      <div class="phone-col rise d2">
-        <div class="phone">
-          <div class="phone-screen">
-            <video id="app-video" src="assets/video/Log a trip.mp4" playsinline loop muted autoplay preload="auto"></video>
-            <div class="play-overlay hidden" id="play-overlay">
-              <div class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg></div>
-            </div>
-          </div>
-        </div>
-        <p class="phone-label">Watch <strong>easySED</strong> track your days in real time</p>
-      </div>
-    </div>
-
-    <!-- ═══ Rules ═══ -->
-    <section id="rules">
-      <div class="two-col">
-        <div>
-          <div class="section-head"><h2>Every rule, checked</h2></div>
-          <p class="lead">easySED checks your days against each SED test as you log a trip, and tells you in plain English where you stand.</p>
-          <div class="list">
-            <div class="row" style="--inset:68px">
-              <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              <div class="row-body"><div class="row-title">182-day rule</div><div class="row-sub">You’re away now</div></div>
-            </div>
-            <div class="row" style="--inset:68px">
-              <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              <div class="row-body"><div class="row-title">Half-day rule</div><div class="row-sub">12 days in hand</div></div>
-            </div>
-            <div class="row" style="--inset:68px">
-              <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              <div class="row-body"><div class="row-title">Foreign port rule</div><div class="row-sub">Covered for all 2 employers</div></div>
-            </div>
-          </div>
-          <p class="footnote">Example status. Your own dates update automatically as you log trips.</p>
-        </div>
-
-        <!-- Features -->
-        <div id="features">
-          <div class="section-head"><h2>Features</h2><span>HS205</span></div>
-          <p class="lead">Everything you need to make and defend a claim, in one place.</p>
-          <div class="list">
-            <div class="row" style="--inset:78px">
-              <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
-              <div class="row-body"><div class="row-title">Day tracking</div><div class="row-sub">Qualifying period, 182-day and half-day rules checked as you log each trip.</div></div>
-            </div>
-            <div class="row" style="--inset:78px">
-              <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></span>
-              <div class="row-body"><div class="row-title">Evidence capture</div><div class="row-sub">Attach boarding passes, discharge book, payslips or crew agreements to each trip.</div></div>
-            </div>
-            <div class="row" style="--inset:78px">
-              <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg></span>
-              <div class="row-body"><div class="row-title">Audit pack export</div><div class="row-sub">HS205 working-sheet figures, trip log and evidence in one tap.</div></div>
-            </div>
-            <div class="row" style="--inset:78px">
-              <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></span>
-              <div class="row-body"><div class="row-title">Works offline</div><div class="row-sub">Log trips at sea with no signal. Your data stays on your device.</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ Pricing ═══ -->
-    <section id="pricing">
-      <div class="section-head"><h2>Pricing</h2><span>Incl. VAT</span></div>
-      <div class="two-col">
-        <div class="list">
-          <div class="price-hero">
-            <span class="badge">First 12 months</span>
-            <p class="price">£0<small>every feature</small></p>
-            <p class="price-note"><strong>Every feature free for 12 months</strong> from the day you start using easySED. No card needed, and nothing is charged automatically.</p>
-          </div>
-          <div class="inclusions">
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Log trips one at a time or on the calendar</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Qualifying period, 182-day and half-day rule checks</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Safe return and leave-by dates</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Evidence for every trip</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Audit pack and accountant export</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Tax-year claims archive</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Reminders</div></div></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="list">
-            <div class="row">
-              <div class="row-body"><div class="row-title">easySED Pro · Yearly</div><div class="row-sub save">Just £1.67 per month (Save 44%)</div></div>
-              <span class="row-value teal">£20 / year</span>
-            </div>
-            <div class="row">
-              <div class="row-body"><div class="row-title">easySED Pro · Monthly</div><div class="row-sub">£36 over a year</div></div>
-              <span class="row-value">£3 / month</span>
-            </div>
-          </div>
-          <p class="footnote">After your free year, subscribe yearly or monthly to carry on logging trips.</p>
-
-          <div class="list" style="margin-top:22px">
-            <div class="row"><div class="row-body"><div class="row-title">Free year starts</div></div><span class="row-value">First open</span></div>
-            <div class="row"><div class="row-body"><div class="row-title">Reminder before it ends</div></div><span class="row-value teal">Yes</span></div>
-            <div class="row"><div class="row-body"><div class="row-title">If you don’t subscribe</div><div class="row-sub">Your trips and evidence stay on your phone. You can still view them and make a backup.</div></div></div>
-          </div>
-          <p class="footnote">Prices include VAT. Subscriptions are paid through your Apple ID and renew automatically until you cancel in Settings. easySED is a record-keeping tool, not tax advice.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="wrap">
-    <div class="foot-inner">
-      <p>© <span id="y"></span> <strong>easySED.</strong> Built for clarity, compliance, and speed.</p>
-      <div class="foot-links">
-        <a href="about.html">About</a>
-        <a href="guides.html">Guides</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacypolicy.html">Privacy</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating CTA -->
-  <a class="pill fab" id="fab" href="#pricing">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    First year free
-  </a>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Video play/pause
-    const video = document.getElementById('app-video');
-    const overlay = document.getElementById('play-overlay');
-    overlay.addEventListener('click', () => { video.play(); overlay.classList.add('hidden'); });
-    video.addEventListener('click', () => {
-      if (video.paused) { video.play(); overlay.classList.add('hidden'); }
-      else { video.pause(); overlay.classList.remove('hidden'); }
-    });
-    video.play().catch(() => overlay.classList.remove('hidden'));
-
-    // Sheet menu
-    const burger = document.getElementById('burger');
-    const backdrop = document.getElementById('sheet-backdrop');
-    const setMenu = open => {
-      document.body.classList.toggle('menu-open', open);
-      burger.setAttribute('aria-expanded', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    };
-    burger.addEventListener('click', () => setMenu(true));
-    backdrop.addEventListener('click', () => setMenu(false));
-    document.querySelectorAll('#sheet a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-
-    // Floating CTA: show after the hero, hide over the pricing section
-    const fab = document.getElementById('fab');
-    const pricing = document.getElementById('pricing');
-    const onScroll = () => {
-      const pastHero = window.scrollY > 520;
-      const r = pricing.getBoundingClientRect();
-      const onPricing = r.top < window.innerHeight * .8 && r.bottom > 0;
-      fab.classList.toggle('show', pastHero && !onPricing);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  </script>
-</body>
-</html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>easySED — SED Compliance Made Easy</title>
-  <meta name="description" content="Track your UK and non-UK days, follow HMRC rules, attach evidence and build your audit trail automatically. Built for seafarers." />
-  <meta name="theme-color" content="#f2f2f7" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      /* iOS grouped-list palette, matched to the app */
-      --bg: #f2f2f7;
-      --card: #ffffff;
-      --label: #000000;
-      --label-2: #3c3c43;
-      --muted: #8a8a8e;
-      --muted-2: #aeaeb2;
-      --sep: rgba(60,60,67,.14);
-      --fill: #e9e9ee;
-
-      --teal: #467a86;        /* Log a trip / In progress */
-      --teal-dark: #3d6d78;   /* progress bar */
-      --teal-soft: rgba(70,122,134,.12);
-      --green: #34c759;
-      --orange: #f5a043;
-      --blue: #0a7cff;
-
-      --radius-card: 28px;
-      --radius-row: 18px;
-      --shadow-float: 0 10px 30px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.06);
-      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--label);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      min-height: 100vh;
-      line-height: 1.4;
-    }
-    a { color: inherit; }
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-
-    /* ── Nav: floating round buttons + centred title, like the app header ── */
-    nav {
-      position: sticky; top: 0; z-index: 40;
-      background: rgba(242,242,247,.82);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-    }
-    .nav-inner {
-      max-width: 1120px; margin: 0 auto; padding: 14px 20px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    }
-    .nav-brand {
-      display: flex; align-items: center; gap: 14px; text-decoration: none; flex-shrink: 0;
-    }
-    .round-btn {
-      width: 52px; height: 52px; border-radius: 14px;
-      display: grid; place-items: center;
-      background: var(--card); border: none; cursor: pointer;
-      box-shadow: var(--shadow-float);
-      transition: transform .15s; overflow: hidden; flex-shrink: 0;
-    }
-    .round-btn:active { transform: scale(.94); }
-    .logo-btn {
-      padding: 0; background: none; box-shadow: var(--shadow-float);
-    }
-    .logo-btn img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 14px; }
-    .nav-title {
-      font-size: 26px; font-weight: 800; letter-spacing: -.5px;
-      text-decoration: none; color: var(--label);
-    }
-    .nav-right { display: flex; justify-content: flex-end; align-items: center; gap: 10px; }
-    .nav-links {
-      display: flex; gap: 2px; padding: 5px;
-      background: var(--card); border-radius: 999px; box-shadow: var(--shadow-float);
-    }
-    .nav-links a {
-      padding: 9px 16px; border-radius: 999px;
-      font-size: 15px; font-weight: 500; text-decoration: none; color: var(--label-2);
-      transition: background .15s, color .15s;
-    }
-    .nav-links a:hover { background: var(--bg); color: var(--label); }
-    .burger { display: none; }
-    .burger svg { width: 24px; height: 24px; }
-
-    /* ── Mobile sheet menu ── */
-    .sheet-backdrop {
-      position: fixed; inset: 0; z-index: 60;
-      background: rgba(0,0,0,.28);
-      opacity: 0; pointer-events: none; transition: opacity .25s;
-    }
-    .sheet {
-      position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 61;
-      background: var(--bg); border-radius: 30px; padding: 10px 16px 18px;
-      transform: translateY(110%); visibility: hidden;
-      transition: transform .32s cubic-bezier(.2,.8,.2,1), visibility 0s .32s;
-    }
-    .sheet-grabber { width: 38px; height: 5px; border-radius: 3px; background: var(--muted-2); margin: 0 auto 14px; }
-    .sheet-title { font-size: 22px; font-weight: 700; margin: 0 6px 12px; }
-    .menu-open .sheet-backdrop { opacity: 1; pointer-events: auto; }
-    .menu-open .sheet { transform: translateY(0); visibility: visible; transition-delay: 0s; }
-    .sheet .list a.row { text-decoration: none; }
-    .sheet .list a.row.active .row-title { color: var(--teal); font-weight: 600; }
-    .sheet-cta { margin-top: 14px; width: 100%; }
-
-    /* ── Shared list / card primitives ── */
-    .card {
+    /* Feature showcase — alternating text / media rows */
+    .showcase { display: flex; flex-direction: column; gap: 24px; }
+    .feature {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
       background: var(--card); border-radius: var(--radius-card);
+      box-shadow: var(--shadow-float); padding: 36px;
     }
-    .list { background: var(--card); border-radius: var(--radius-card); overflow: hidden; }
-    .row {
-      display: flex; align-items: center; gap: 16px;
-      padding: 18px 22px; position: relative; color: var(--label);
+    .feature.reverse .feature-text { order: 2; }
+    .feature h3 { font-size: clamp(26px, 3vw, 32px); font-weight: 800; letter-spacing: -.6px; line-height: 1.12; margin-bottom: 12px; }
+    .feature-body { font-size: 17px; color: var(--muted); line-height: 1.5; margin-bottom: 16px; }
+    .feature .inclusions { padding: 0; }
+    .feature .inclusions .row { padding-left: 0; padding-right: 0; --inset: 40px; }
+    .feature-media { display: flex; justify-content: center; }
+    .feature-media .phone { max-width: 300px; }
+    .phone-screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Teal CTA banners */
+    .cta-banner {
+      background: var(--teal); color: #fff; text-align: center;
+      border-radius: var(--radius-card); box-shadow: var(--shadow-float);
+      padding: 48px 24px;
     }
-    .row + .row::before {
-      content: ''; position: absolute; top: 0; right: 0; left: var(--inset, 22px);
-      border-top: 1px solid var(--sep);
-    }
-    .row-body { flex: 1; min-width: 0; }
-    .row-title { font-size: 19px; font-weight: 500; letter-spacing: -.2px; }
-    .row-sub { font-size: 16px; color: var(--muted); margin-top: 2px; line-height: 1.35; }
-    .row-sub.orange { color: var(--orange); }
-    .row-sub.teal { color: var(--teal); }
-    .row-value { font-size: 18px; color: var(--muted); white-space: nowrap; }
-    .row-value.teal { color: var(--teal); }
-    .chev { width: 10px; height: 16px; color: #c4c4c7; flex: 0 0 auto; }
-    .info { width: 26px; height: 26px; color: var(--teal); flex: 0 0 auto; }
+    .cta-banner h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -.8px; line-height: 1.1; }
+    .cta-banner p { font-size: 18px; opacity: .88; margin: 12px auto 0; max-width: 520px; line-height: 1.5; }
+    .cta-final { padding: 64px 24px; }
+    .cta-final h2 { font-size: clamp(32px, 5vw, 52px); letter-spacing: -1.4px; }
+    .store-badges { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .store-badges img { height: 48px; width: auto; display: block; }
 
-    .check {
-      width: 30px; height: 30px; border-radius: 50%; flex: 0 0 auto;
-      background: var(--green); display: grid; place-items: center;
-    }
-    .check svg { width: 16px; height: 16px; }
-
-    .icon-tile {
-      width: 40px; height: 40px; border-radius: 11px; flex: 0 0 auto;
-      display: grid; place-items: center; color: #fff; background: var(--teal);
-    }
-    .icon-tile svg { width: 21px; height: 21px; }
-
-    .section-head {
-      display: flex; align-items: baseline; justify-content: space-between;
-      margin: 0 8px 14px;
-    }
-    .section-head h2 { font-size: clamp(30px, 4vw, 36px); font-weight: 800; letter-spacing: -.8px; }
-    .section-head span { font-size: 18px; color: var(--muted); }
-    .footnote { font-size: 13px; color: var(--muted); line-height: 1.55; margin: 12px 22px 0; }
-
-    .pill {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 16px 30px; border-radius: 999px;
-      background: var(--teal); color: #fff; text-decoration: none;
-      font-size: 19px; font-weight: 600; letter-spacing: -.2px;
-      box-shadow: 0 0 0 2px rgba(255,255,255,.55) inset, 0 10px 26px rgba(70,122,134,.35);
-      transition: transform .15s, background .15s; border: none; cursor: pointer; font-family: inherit;
-    }
-    .pill:hover { background: var(--teal-dark); }
-    .pill:active { transform: scale(.97); }
-    .pill svg { width: 20px; height: 20px; }
-    .pill.ghost {
-      background: var(--card); color: var(--teal);
-      box-shadow: var(--shadow-float);
-    }
-
-    /* ── Hero ── */
-    .hero {
-      display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center;
-      padding: 40px 0 72px;
-    }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 7px 14px 7px 10px; border-radius: 999px; background: var(--card);
-      font-size: 14px; font-weight: 500; color: var(--label-2); margin-bottom: 22px;
-    }
-    .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
-    .hero h1 {
-      font-size: clamp(38px, 5.4vw, 62px); font-weight: 800;
-      line-height: 1.02; letter-spacing: -2px; margin-bottom: 18px;
-    }
-    .hero h1 .teal { color: var(--teal); }
-    .hero-sub { font-size: 19px; color: var(--muted); max-width: 520px; line-height: 1.5; margin-bottom: 30px; }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-
-    /* Status widget — mirrors the app's "At sea" card */
-    .status { padding: 24px 26px 22px; margin-top: 36px; max-width: 520px; }
-    .status-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .status-where { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 600; }
-    .status-where svg { width: 22px; height: 22px; color: var(--teal-dark); }
-    .status-since { font-size: 15px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
-    .status-since svg { width: 20px; height: 20px; color: var(--teal); }
-    .status-badge { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: var(--label); }
-    .bar {
-      position: relative; height: 10px; border-radius: 5px; background: var(--fill);
-      margin: 22px 0 18px; display: flex; overflow: visible;
-    }
-    .bar i { display: block; height: 100%; }
-    .bar i:first-child { border-radius: 5px 0 0 5px; }
-    .bar .a { background: var(--teal-dark); }
-    .bar .u { background: var(--orange); }
-    .bar .g { width: 2px; background: #fff; opacity: .6; }
-    .bar .now { position: absolute; top: -4px; width: 2px; height: 18px; background: #1c1c1e; border-radius: 1px; }
-    .legend { display: flex; align-items: center; gap: 22px; font-size: 15px; color: var(--muted); flex-wrap: wrap; }
-    .legend b { font-weight: 400; display: inline-flex; align-items: center; gap: 8px; }
-    .legend b::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
-    .legend .left { margin-left: auto; }
-
-    /* ── Phone ── */
-    .phone-col { display: flex; flex-direction: column; align-items: center; }
-    .phone {
-      position: relative; width: 100%; max-width: 330px;
-      border-radius: 54px; padding: 12px;
-      background: #1c1c1e;
-      box-shadow: 0 0 0 1.5px #3a3a3c, 0 50px 90px rgba(30,40,60,.28), 0 18px 36px rgba(30,40,60,.18);
-    }
-    .phone::before {
-      content: ''; position: absolute; top: 24px; left: 50%; transform: translateX(-50%);
-      width: 96px; height: 28px; border-radius: 20px; background: #000; z-index: 3;
-    }
-    .phone-screen { border-radius: 42px; overflow: hidden; background: var(--bg); aspect-ratio: 9/19.5; position: relative; }
-    .phone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .play-overlay {
-      position: absolute; inset: 0; display: grid; place-items: center;
-      background: rgba(242,242,247,.35); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-      cursor: pointer; transition: opacity .25s;
-    }
-    .play-overlay.hidden { opacity: 0; pointer-events: none; }
-    .play-btn { width: 68px; height: 68px; border-radius: 50%; background: var(--card); display: grid; place-items: center; box-shadow: var(--shadow-float); }
-    .play-btn svg { width: 24px; height: 24px; fill: var(--teal); margin-left: 4px; }
-    .phone-label { margin-top: 22px; font-size: 15px; color: var(--muted); text-align: center; }
-    .phone-label strong { color: var(--label); font-weight: 600; }
-
-    /* ── Sections ── */
-    section { padding-bottom: 64px; }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
-    .lead { font-size: 18px; color: var(--muted); line-height: 1.5; margin: -4px 8px 20px; max-width: 560px; }
-
-    /* Pricing */
-    .price-hero { padding: 26px 24px 8px; position: relative; }
-    .badge {
-      display: inline-block; font-size: 13px; font-weight: 600; color: var(--teal);
-      background: var(--teal-soft); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px;
-    }
-    .price { font-size: 52px; font-weight: 800; letter-spacing: -2px; line-height: 1; }
-    .price small { font-size: 18px; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-left: 4px; }
-    .price-note { font-size: 16px; color: var(--muted); margin-top: 10px; line-height: 1.45; }
-    .price-note strong { color: var(--label); font-weight: 600; }
-    .inclusions { padding: 8px 0 6px; }
-    .inclusions .row { padding: 13px 24px; gap: 14px; --inset: 68px; }
-    .inclusions .check { width: 26px; height: 26px; }
-    .inclusions .check svg { width: 14px; height: 14px; }
-    .inclusions .row-title { font-size: 17px; font-weight: 400; }
-    .save { color: var(--orange); }
-
-    /* Footer */
-    footer { padding: 8px 0 140px; }
-    .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 0 8px; }
-    .foot-inner p { font-size: 14px; color: var(--muted); }
-    .foot-inner p strong { color: var(--label); font-weight: 600; }
-    .foot-links { display: flex; gap: 20px; }
-    .foot-links a { font-size: 14px; color: var(--muted); text-decoration: none; }
-    .foot-links a:hover { color: var(--teal); }
-
-    /* Floating CTA — the app's "Log a trip" pill */
-    .fab {
-      position: fixed; left: 50%; bottom: max(22px, env(safe-area-inset-bottom)); z-index: 30;
-      transform: translate(-50%, 140%); opacity: 0; white-space: nowrap;
-      transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .25s;
-    }
-    .fab.show { transform: translate(-50%, 0); opacity: 1; }
-
-    /* Entrance */
-    .rise { animation: rise .55s ease both; }
-    .d1 { animation-delay: .06s; } .d2 { animation-delay: .12s; } .d3 { animation-delay: .18s; }
-    @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-    @media (prefers-reduced-motion: reduce) { .rise, .eyebrow .dot { animation: none; } }
-
-    /* ── Responsive ── */
-    @media (max-width: 920px) {
-      .hero { grid-template-columns: 1fr; gap: 44px; padding-top: 24px; }
-      .two-col { grid-template-columns: 1fr; }
-      .status { max-width: none; }
-    }
-    @media (max-width: 700px) {
-      .nav-links { display: none; }
-      .burger { display: grid; }
-      .nav-title { font-size: 20px; }
-      .round-btn { width: 48px; height: 48px; border-radius: 12px; }
-      .hero-sub { font-size: 17px; }
-      .hero-ctas .pill { flex: 1 1 auto; padding: 15px 18px; font-size: 16px; white-space: nowrap; }
-      .row { padding: 16px 18px; gap: 14px; }
-      .row-title { font-size: 17px; }
-      .row-sub { font-size: 15px; }
-      .row-value { font-size: 16px; }
-      .status { padding: 20px 18px; }
-      .status-since { font-size: 13px; }
-      .legend { gap: 16px; font-size: 14px; }
-      .phone { max-width: 280px; }
-      .foot-links { display: none; }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- Nav -->
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-brand" href="index.html" aria-label="EasySED home">
-        <span class="round-btn logo-btn">
-          <img src="assets/images/app-icon.jpeg" alt="EasySED logo" />
-        </span>
-        <span class="nav-title">EasySED</span>
-      </a>
-      <div class="nav-right">
-        <div class="nav-links">
-          <a href="about.html">About</a>
-          <a href="guides.html">Guides</a>
-          <a href="contact.html">Contact</a>
-        </div>
-        <button class="round-btn burger" id="burger" aria-label="Open menu" aria-expanded="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Mobile sheet -->
-  <div class="sheet-backdrop" id="sheet-backdrop"></div>
-  <div class="sheet" id="sheet" role="dialog" aria-label="Menu">
-    <div class="sheet-grabber"></div>
-    <p class="sheet-title">Menu</p>
-    <div class="list">
-      <a class="row active" href="index.html"><div class="row-body"><div class="row-title">Home</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></a>
-      <a class="row" href="about.html"><div class="row-body"><div class="row-title">About</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></a>
-      <a class="row" href="guides.html"><div class="row-body"><div class="row-title">Guides</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></a>
-      <a class="row" href="contact.html"><div class="row-body"><div class="row-title">Contact</div></div><svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></a>
-    </div>
-    <a class="pill sheet-cta" href="#pricing">First year free</a>
-  </div>
-
-  <main class="wrap">
-
-    <!-- ═══ Hero ═══ -->
-    <div class="hero">
-      <div>
-        <h1 class="rise d1">Take the guesswork<br>out of your <span class="teal">SED claim.</span></h1>
-        <p class="hero-sub rise d2">Log trips and attach evidence on the go. EasySED organises all your evidence and trips, and will warn you before a UK stay puts your claim at risk.</p>
-        <div class="hero-ctas rise d3">
-          <a class="pill" href="#pricing">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            Start your free year
-          </a>
-          <a class="pill ghost" href="#features">See how it works</a>
-        </div>
-
-        <!-- Status widget -->
-        <div class="card status rise d3" aria-label="Example of the easySED status card">
-          <div class="status-top">
-            <span class="status-where">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:var(--orange)"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-              Home
-            </span>
-            <span class="status-badge">
-              Qualified
-              <span class="check" style="width:22px;height:22px;"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            </span>
-          </div>
-          <div class="bar" aria-hidden="true">
-            <i class="u" style="width:4%"></i><i class="a" style="width:11%"></i><i class="u" style="width:3%"></i><i class="a" style="width:9%"></i><i class="u" style="width:3%"></i><i class="a" style="width:6%"></i><i class="u" style="width:3%"></i>
-            <span class="now" style="left:39%"></span>
-          </div>
-          <div class="legend">
-            <b style="--c:var(--teal-dark)">Away</b>
-            <b style="--c:var(--orange)">In the UK</b>
-            <svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:auto"><polyline points="2 2 8 8 2 14"/></svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Phone -->
-      <div class="phone-col rise d2">
-        <div class="phone">
-          <div class="phone-screen">
-            <video id="app-video" src="assets/video/Log a trip.mp4" playsinline loop muted autoplay preload="auto"></video>
-            <div class="play-overlay hidden" id="play-overlay">
-              <div class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg></div>
-            </div>
-          </div>
-        </div>
-        <p class="phone-label">Watch <strong>easySED</strong> track your days in real time</p>
-      </div>
-    </div>
-
-    <!-- ═══ Rules ═══ -->
-    <section id="rules">
-      <div class="two-col">
-        <div>
-          <div class="section-head"><h2>Every rule, checked</h2></div>
-          <p class="lead">easySED checks your days against each SED test as you log a trip, and tells you in plain English where you stand.</p>
-          <div class="list">
-            <div class="row" style="--inset:68px">
-              <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              <div class="row-body"><div class="row-title">182-day rule</div><div class="row-sub">You’re away now</div></div>
-            </div>
-            <div class="row" style="--inset:68px">
-              <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              <div class="row-body"><div class="row-title">Half-day rule</div><div class="row-sub">12 days in hand</div></div>
-            </div>
-            <div class="row" style="--inset:68px">
-              <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              <div class="row-body"><div class="row-title">Foreign port rule</div><div class="row-sub">Covered for all 2 employers</div></div>
-            </div>
-          </div>
-          <p class="footnote">Example status. Your own dates update automatically as you log trips.</p>
-        </div>
-
-        <!-- Features -->
-        <div id="features">
-          <div class="section-head"><h2>Features</h2><span>HS205</span></div>
-          <p class="lead">Everything you need to make and defend a claim, in one place.</p>
-          <div class="list">
-            <div class="row" style="--inset:78px">
-              <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
-              <div class="row-body"><div class="row-title">Day tracking</div><div class="row-sub">Qualifying period, 182-day and half-day rules checked as you log each trip.</div></div>
-            </div>
-            <div class="row" style="--inset:78px">
-              <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></span>
-              <div class="row-body"><div class="row-title">Evidence capture</div><div class="row-sub">Attach boarding passes, discharge book, payslips or crew agreements to each trip.</div></div>
-            </div>
-            <div class="row" style="--inset:78px">
-              <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg></span>
-              <div class="row-body"><div class="row-title">Audit pack export</div><div class="row-sub">HS205 working-sheet figures, trip log and evidence in one tap.</div></div>
-            </div>
-            <div class="row" style="--inset:78px">
-              <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></span>
-              <div class="row-body"><div class="row-title">Works offline</div><div class="row-sub">Log trips at sea with no signal. Your data stays on your device.</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ Pricing ═══ -->
-    <section id="pricing">
-      <div class="section-head"><h2>Pricing</h2><span>Incl. VAT</span></div>
-      <div class="two-col">
-        <div class="list">
-          <div class="price-hero">
-            <span class="badge">First 12 months</span>
-            <p class="price">£0<small>every feature</small></p>
-            <p class="price-note"><strong>Every feature free for 12 months</strong> from the day you start using easySED. No card needed, and nothing is charged automatically.</p>
-          </div>
-          <div class="inclusions">
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Log trips one at a time or on the calendar</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Qualifying period, 182-day and half-day rule checks</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Safe return and leave-by dates</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Evidence for every trip</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Audit pack and accountant export</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Tax-year claims archive</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Reminders</div></div></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="list">
-            <div class="row">
-              <div class="row-body"><div class="row-title">easySED Pro · Yearly</div><div class="row-sub save">Just £1.67 per month (Save 44%)</div></div>
-              <span class="row-value teal">£20 / year</span>
-            </div>
-            <div class="row">
-              <div class="row-body"><div class="row-title">easySED Pro · Monthly</div><div class="row-sub">£36 over a year</div></div>
-              <span class="row-value">£3 / month</span>
-            </div>
-          </div>
-          <p class="footnote">After your free year, subscribe yearly or monthly to carry on logging trips.</p>
-
-          <div class="list" style="margin-top:22px">
-            <div class="row"><div class="row-body"><div class="row-title">Free year starts</div></div><span class="row-value">First open</span></div>
-            <div class="row"><div class="row-body"><div class="row-title">Reminder before it ends</div></div><span class="row-value teal">Yes</span></div>
-            <div class="row"><div class="row-body"><div class="row-title">If you don’t subscribe</div><div class="row-sub">Your trips and evidence stay on your phone. You can still view them and make a backup.</div></div></div>
-          </div>
-          <p class="footnote">Prices include VAT. Subscriptions are paid through your Apple ID and renew automatically until you cancel in Settings. easySED is a record-keeping tool, not tax advice.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="wrap">
-    <div class="foot-inner">
-      <p>© <span id="y"></span> <strong>easySED.</strong> Built for clarity, compliance, and speed.</p>
-      <div class="foot-links">
-        <a href="about.html">About</a>
-        <a href="guides.html">Guides</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacypolicy.html">Privacy</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating CTA -->
-  <a class="pill fab" id="fab" href="#pricing">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    First year free
-  </a>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Video play/pause
-    const video = document.getElementById('app-video');
-    const overlay = document.getElementById('play-overlay');
-    overlay.addEventListener('click', () => { video.play(); overlay.classList.add('hidden'); });
-    video.addEventListener('click', () => {
-      if (video.paused) { video.play(); overlay.classList.add('hidden'); }
-      else { video.pause(); overlay.classList.remove('hidden'); }
-    });
-    video.play().catch(() => overlay.classList.remove('hidden'));
-
-    // Sheet menu
-    const burger = document.getElementById('burger');
-    const backdrop = document.getElementById('sheet-backdrop');
-    const setMenu = open => {
-      document.body.classList.toggle('menu-open', open);
-      burger.setAttribute('aria-expanded', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    };
-    burger.addEventListener('click', () => setMenu(true));
-    backdrop.addEventListener('click', () => setMenu(false));
-    document.querySelectorAll('#sheet a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-
-    // Floating CTA: show after the hero, hide over the pricing section
-    const fab = document.getElementById('fab');
-    const pricing = document.getElementById('pricing');
-    const onScroll = () => {
-      const pastHero = window.scrollY > 520;
-      const r = pricing.getBoundingClientRect();
-      const onPricing = r.top < window.innerHeight * .8 && r.bottom > 0;
-      fab.classList.toggle('show', pastHero && !onPricing);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  </script>
-</body>
-</html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>easySED — SED Compliance Made Easy</title>
-  <meta name="description" content="Track your UK and non-UK days, follow HMRC rules, attach evidence and build your audit trail automatically. Built for seafarers." />
-  <meta name="theme-color" content="#f2f2f7" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      /* iOS grouped-list palette, matched to the app */
-      --bg: #f2f2f7;
-      --card: #ffffff;
-      --label: #000000;
-      --label-2: #3c3c43;
-      --muted: #8a8a8e;
-      --muted-2: #aeaeb2;
-      --sep: rgba(60,60,67,.14);
-      --fill: #e9e9ee;
-
-      --teal: #467a86;        /* Log a trip / In progress */
-      --teal-dark: #3d6d78;   /* progress bar */
-      --teal-soft: rgba(70,122,134,.12);
-      --green: #34c759;
-      --orange: #f5a043;
-      --blue: #0a7cff;
-
-      --radius-card: 28px;
-      --radius-row: 18px;
-      --shadow-float: 0 10px 30px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.06);
-      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--label);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      min-height: 100vh;
-      line-height: 1.4;
-    }
-    a { color: inherit; }
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-
-    /* ── Nav: floating round buttons + centred title, like the app header ── */
-    nav {
-      position: sticky; top: 0; z-index: 40;
-      background: rgba(242,242,247,.82);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-    }
-    .nav-inner {
-      max-width: 1120px; margin: 0 auto; padding: 14px 20px;
+    /* FAQ */
+    .faq { display: flex; flex-direction: column; gap: 12px; }
+    .faq details { background: var(--card); border-radius: var(--radius-row); }
+    .faq summary {
+      list-style: none; cursor: pointer;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 18px 22px; font-size: 19px; font-weight: 500; letter-spacing: -.2px;
     }
-    .nav-brand {
-      display: flex; align-items: center; gap: 14px; text-decoration: none; flex-shrink: 0;
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary .chev { transition: transform .2s; }
+    .faq details[open] summary .chev { transform: rotate(90deg); }
+    .faq details p {
+      margin: 0 22px; padding: 14px 0 18px; border-top: 1px solid var(--sep);
+      font-size: 16px; color: var(--muted); line-height: 1.5;
     }
-    .round-btn {
-      width: 52px; height: 52px; border-radius: 14px;
-      display: grid; place-items: center;
-      background: var(--card); border: none; cursor: pointer;
-      box-shadow: var(--shadow-float);
-      transition: transform .15s; overflow: hidden; flex-shrink: 0;
-    }
-    .round-btn:active { transform: scale(.94); }
-    .logo-btn {
-      padding: 0; background: none; box-shadow: var(--shadow-float);
-    }
-    .logo-btn img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 14px; }
-    .nav-title {
-      font-size: 26px; font-weight: 800; letter-spacing: -.5px;
-      text-decoration: none; color: var(--label);
-    }
-    .nav-right { display: flex; justify-content: flex-end; align-items: center; gap: 10px; }
-    .nav-links {
-      display: flex; gap: 2px; padding: 5px;
-      background: var(--card); border-radius: 999px; box-shadow: var(--shadow-float);
-    }
-    .nav-links a {
-      padding: 9px 16px; border-radius: 999px;
-      font-size: 15px; font-weight: 500; text-decoration: none; color: var(--label-2);
-      transition: background .15s, color .15s;
-    }
-    .nav-links a:hover { background: var(--bg); color: var(--label); }
-    .burger { display: none; }
-    .burger svg { width: 24px; height: 24px; }
-
-    /* ── Mobile sheet menu ── */
-    .sheet-backdrop {
-      position: fixed; inset: 0; z-index: 60;
-      background: rgba(0,0,0,.28);
-      opacity: 0; pointer-events: none; transition: opacity .25s;
-    }
-    .sheet {
-      position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 61;
-      background: var(--bg); border-radius: 30px; padding: 10px 16px 18px;
-      transform: translateY(110%); visibility: hidden;
-      transition: transform .32s cubic-bezier(.2,.8,.2,1), visibility 0s .32s;
-    }
-    .sheet-grabber { width: 38px; height: 5px; border-radius: 3px; background: var(--muted-2); margin: 0 auto 14px; }
-    .sheet-title { font-size: 22px; font-weight: 700; margin: 0 6px 12px; }
-    .menu-open .sheet-backdrop { opacity: 1; pointer-events: auto; }
-    .menu-open .sheet { transform: translateY(0); visibility: visible; transition-delay: 0s; }
-    .sheet .list a.row { text-decoration: none; }
-    .sheet .list a.row.active .row-title { color: var(--teal); font-weight: 600; }
-    .sheet-cta { margin-top: 14px; width: 100%; }
-
-    /* ── Shared list / card primitives ── */
-    .card {
-      background: var(--card); border-radius: var(--radius-card);
-    }
-    .list { background: var(--card); border-radius: var(--radius-card); overflow: hidden; }
-    .row {
-      display: flex; align-items: center; gap: 16px;
-      padding: 18px 22px; position: relative; color: var(--label);
-    }
-    .row + .row::before {
-      content: ''; position: absolute; top: 0; right: 0; left: var(--inset, 22px);
-      border-top: 1px solid var(--sep);
-    }
-    .row-body { flex: 1; min-width: 0; }
-    .row-title { font-size: 19px; font-weight: 500; letter-spacing: -.2px; }
-    .row-sub { font-size: 16px; color: var(--muted); margin-top: 2px; line-height: 1.35; }
-    .row-sub.orange { color: var(--orange); }
-    .row-sub.teal { color: var(--teal); }
-    .row-value { font-size: 18px; color: var(--muted); white-space: nowrap; }
-    .row-value.teal { color: var(--teal); }
-    .chev { width: 10px; height: 16px; color: #c4c4c7; flex: 0 0 auto; }
-    .info { width: 26px; height: 26px; color: var(--teal); flex: 0 0 auto; }
-
-    .check {
-      width: 30px; height: 30px; border-radius: 50%; flex: 0 0 auto;
-      background: var(--green); display: grid; place-items: center;
-    }
-    .check svg { width: 16px; height: 16px; }
-
-    .icon-tile {
-      width: 40px; height: 40px; border-radius: 11px; flex: 0 0 auto;
-      display: grid; place-items: center; color: #fff; background: var(--teal);
-    }
-    .icon-tile svg { width: 21px; height: 21px; }
-
-    .section-head {
-      display: flex; align-items: baseline; justify-content: space-between;
-      margin: 0 8px 14px;
-    }
-    .section-head h2 { font-size: clamp(30px, 4vw, 36px); font-weight: 800; letter-spacing: -.8px; }
-    .section-head span { font-size: 18px; color: var(--muted); }
-    .footnote { font-size: 13px; color: var(--muted); line-height: 1.55; margin: 12px 22px 0; }
-
-    .pill {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 16px 30px; border-radius: 999px;
-      background: var(--teal); color: #fff; text-decoration: none;
-      font-size: 19px; font-weight: 600; letter-spacing: -.2px;
-      box-shadow: 0 0 0 2px rgba(255,255,255,.55) inset, 0 10px 26px rgba(70,122,134,.35);
-      transition: transform .15s, background .15s; border: none; cursor: pointer; font-family: inherit;
-    }
-    .pill:hover { background: var(--teal-dark); }
-    .pill:active { transform: scale(.97); }
-    .pill svg { width: 20px; height: 20px; }
-    .pill.ghost {
-      background: var(--card); color: var(--teal);
-      box-shadow: var(--shadow-float);
-    }
-
-    /* ── Hero ── */
-    .hero {
-      display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center;
-      padding: 40px 0 72px;
-    }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 7px 14px 7px 10px; border-radius: 999px; background: var(--card);
-      font-size: 14px; font-weight: 500; color: var(--label-2); margin-bottom: 22px;
-    }
-    .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
-    .hero h1 {
-      font-size: clamp(38px, 5.4vw, 62px); font-weight: 800;
-      line-height: 1.02; letter-spacing: -2px; margin-bottom: 18px;
-    }
-    .hero h1 .teal { color: var(--teal); }
-    .hero-sub { font-size: 19px; color: var(--muted); max-width: 520px; line-height: 1.5; margin-bottom: 30px; }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-
-    /* Status widget — mirrors the app's "At sea" card */
-    .status { padding: 24px 26px 22px; margin-top: 36px; max-width: 520px; }
-    .status-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .status-where { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 600; }
-    .status-where svg { width: 22px; height: 22px; color: var(--teal-dark); }
-    .status-since { font-size: 15px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
-    .status-since svg { width: 20px; height: 20px; color: var(--teal); }
-    .status-badge { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: var(--label); }
-    .bar {
-      position: relative; height: 10px; border-radius: 5px; background: var(--fill);
-      margin: 22px 0 18px; display: flex; overflow: visible;
-    }
-    .bar i { display: block; height: 100%; }
-    .bar i:first-child { border-radius: 5px 0 0 5px; }
-    .bar .a { background: var(--teal-dark); }
-    .bar .u { background: var(--orange); }
-    .bar .g { width: 2px; background: #fff; opacity: .6; }
-    .bar .now { position: absolute; top: -4px; width: 2px; height: 18px; background: #1c1c1e; border-radius: 1px; }
-    .legend { display: flex; align-items: center; gap: 22px; font-size: 15px; color: var(--muted); flex-wrap: wrap; }
-    .legend b { font-weight: 400; display: inline-flex; align-items: center; gap: 8px; }
-    .legend b::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
-    .legend .left { margin-left: auto; }
-
-    /* ── Phone ── */
-    .phone-col { display: flex; flex-direction: column; align-items: center; }
-    .phone {
-      position: relative; width: 100%; max-width: 330px;
-      border-radius: 54px; padding: 12px;
-      background: #1c1c1e;
-      box-shadow: 0 0 0 1.5px #3a3a3c, 0 50px 90px rgba(30,40,60,.28), 0 18px 36px rgba(30,40,60,.18);
-    }
-    .phone::before {
-      content: ''; position: absolute; top: 24px; left: 50%; transform: translateX(-50%);
-      width: 96px; height: 28px; border-radius: 20px; background: #000; z-index: 3;
-    }
-    .phone-screen { border-radius: 42px; overflow: hidden; background: var(--bg); aspect-ratio: 9/19.5; position: relative; }
-    .phone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .play-overlay {
-      position: absolute; inset: 0; display: grid; place-items: center;
-      background: rgba(242,242,247,.35); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-      cursor: pointer; transition: opacity .25s;
-    }
-    .play-overlay.hidden { opacity: 0; pointer-events: none; }
-    .play-btn { width: 68px; height: 68px; border-radius: 50%; background: var(--card); display: grid; place-items: center; box-shadow: var(--shadow-float); }
-    .play-btn svg { width: 24px; height: 24px; fill: var(--teal); margin-left: 4px; }
-    .phone-label { margin-top: 22px; font-size: 15px; color: var(--muted); text-align: center; }
-    .phone-label strong { color: var(--label); font-weight: 600; }
-
-    /* ── Sections ── */
-    section { padding-bottom: 64px; }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
-    .lead { font-size: 18px; color: var(--muted); line-height: 1.5; margin: -4px 8px 20px; max-width: 560px; }
-
-    /* Pricing */
-    .price-hero { padding: 26px 24px 8px; position: relative; }
-    .badge {
-      display: inline-block; font-size: 13px; font-weight: 600; color: var(--teal);
-      background: var(--teal-soft); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px;
-    }
-    .price { font-size: 52px; font-weight: 800; letter-spacing: -2px; line-height: 1; }
-    .price small { font-size: 18px; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-left: 4px; }
-    .price-note { font-size: 16px; color: var(--muted); margin-top: 10px; line-height: 1.45; }
-    .price-note strong { color: var(--label); font-weight: 600; }
-    .inclusions { padding: 8px 0 6px; }
-    .inclusions .row { padding: 13px 24px; gap: 14px; --inset: 68px; }
-    .inclusions .check { width: 26px; height: 26px; }
-    .inclusions .check svg { width: 14px; height: 14px; }
-    .inclusions .row-title { font-size: 17px; font-weight: 400; }
-    .save { color: var(--orange); }
 
     /* Footer */
     footer { padding: 8px 0 140px; }
@@ -1406,6 +344,8 @@
       .hero { grid-template-columns: 1fr; gap: 44px; padding-top: 24px; }
       .two-col { grid-template-columns: 1fr; }
       .status { max-width: none; }
+      .feature { grid-template-columns: 1fr; gap: 28px; padding: 28px 22px; }
+      .feature.reverse .feature-text { order: 0; }
     }
     @media (max-width: 700px) {
       .nav-links { display: none; }
@@ -1423,6 +363,10 @@
       .legend { gap: 16px; font-size: 14px; }
       .phone { max-width: 280px; }
       .foot-links { display: none; }
+      .faq summary { padding: 16px 18px; font-size: 17px; }
+      .faq details p { margin: 0 18px; font-size: 15px; }
+      .cta-banner p { font-size: 16px; }
+      .store-badges img { height: 44px; }
     }
   </style>
 </head>
@@ -1434,7 +378,7 @@
     <div class="nav-inner">
       <a class="nav-brand" href="index.html" aria-label="EasySED home">
         <span class="round-btn logo-btn">
-          <img src="assets/images/app-icon.png" alt="EasySED logo" />
+          <img src="assets/images/app-icon-square.png" alt="EasySED logo" />
         </span>
         <span class="nav-title">EasySED</span>
       </a>
@@ -1471,16 +415,17 @@
     <div class="hero">
       <div>
         <h1 class="rise d1">Take the guesswork<br>out of your <span class="teal">SED claim.</span></h1>
-        <p class="hero-sub rise d2">Log trips and attach evidence on the go. EasySED organises all your evidence and trips, and will warn you before a UK stay puts your claim at risk.</p>
+        <p class="hero-sub rise d2">The only app built specifically for UK seafarers navigating HMRC’s SED rules.</p>
         <div class="hero-ctas rise d3">
           <a class="pill" href="#pricing">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             Start your free year
           </a>
-          <a class="pill ghost" href="#features">See how it works</a>
         </div>
+        <p class="hero-note rise d3">No card needed. Free for a full year.</p>
 
         <!-- Status widget -->
+        <p class="status-eyebrow rise d3">Your dashboard, live</p>
         <div class="card status rise d3" aria-label="Example of the easySED status card">
           <div class="status-top">
             <span class="status-where">
@@ -1514,7 +459,7 @@
             </div>
           </div>
         </div>
-        <p class="phone-label">Watch <strong>easySED</strong> track your days in real time</p>
+        <p class="phone-label">See a trip being logged.</p>
       </div>
     </div>
 
@@ -1527,7 +472,7 @@
           <div class="list">
             <div class="row" style="--inset:68px">
               <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              <div class="row-body"><div class="row-title">182-day rule</div><div class="row-sub">You’re away now</div></div>
+              <div class="row-body"><div class="row-title">183-day rule</div><div class="row-sub">You’re away now</div></div>
             </div>
             <div class="row" style="--inset:68px">
               <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -1548,7 +493,7 @@
           <div class="list">
             <div class="row" style="--inset:78px">
               <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
-              <div class="row-body"><div class="row-title">Day tracking</div><div class="row-sub">Qualifying period, 182-day and half-day rules checked as you log each trip.</div></div>
+              <div class="row-body"><div class="row-title">Day tracking</div><div class="row-sub">Qualifying period, 183-day and half-day rules checked as you log each trip.</div></div>
             </div>
             <div class="row" style="--inset:78px">
               <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></span>
@@ -1567,6 +512,69 @@
       </div>
     </section>
 
+    <!-- ═══ Feature showcase ═══ -->
+    <section id="showcase" class="showcase">
+      <article class="feature">
+        <div class="feature-text">
+          <span class="badge">Feature 1</span>
+          <h3>Attach evidence the moment it happens.</h3>
+          <p class="feature-body">Photograph your boarding pass, discharge book entry or payslip and attach it directly to the trip. By the time HMRC asks, your evidence pack is already complete.</p>
+          <div class="list inclusions">
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Attach photos or PDFs to each trip</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Stored locally — never leaves your device</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Instant export for your accountant or HMRC</div></div></div>
+          </div>
+        </div>
+        <div class="feature-media">
+          <div class="phone"><div class="phone-screen"><img src="assets/images/capture-evidence.png" alt="EasySED attaching a boarding pass photo to a trip" loading="lazy" /></div></div>
+        </div>
+      </article>
+
+      <article class="feature reverse">
+        <div class="feature-text">
+          <span class="badge">Feature 2</span>
+          <h3>Know if a trip home will break your claim — before you book.</h3>
+          <p class="feature-body">EasySED warns you the moment a planned UK stay puts your qualifying period at risk. It’s the question every seafarer asks — answered in real time.</p>
+          <div class="list inclusions">
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Live 183-day and half-day rule status</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Risk warning before you exceed limits</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Safe return date always visible on the dashboard</div></div></div>
+          </div>
+        </div>
+        <div class="feature-media">
+          <div class="phone"><div class="phone-screen"><video src="assets/video/Log a trip.mp4" playsinline loop muted autoplay preload="metadata" aria-label="EasySED checking eligibility as a trip is logged"></video></div></div>
+        </div>
+      </article>
+
+      <article class="feature">
+        <div class="feature-text">
+          <span class="badge">Feature 3</span>
+          <h3>Your audit pack, ready when HMRC asks.</h3>
+          <p class="feature-body">Once you qualify, EasySED compiles your HS205 figures, trip log and all attached evidence into a single export — ready to share with your accountant or submit to HMRC.</p>
+          <div class="list inclusions">
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">HS205 figures calculated automatically</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Full evidence pack in one tap</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Completed periods archived in the Tax Vault</div></div></div>
+          </div>
+        </div>
+        <div class="feature-media">
+          <div class="phone"><div class="phone-screen"><img src="assets/images/export-your-claim.png" alt="EasySED audit pack export screen" loading="lazy" /></div></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ═══ CTA banner ═══ -->
+    <section class="cta-section">
+      <div class="cta-banner">
+        <h2>Stop guessing. Start knowing.</h2>
+        <p>Download EasySED free and know exactly where you stand from your first trip.</p>
+        <div class="store-badges">
+          <a href="#" aria-label="Download on the App Store"><img src="assets/images/apple_store.png" alt="Download on the App Store" /></a>
+          <a href="#" aria-label="Get it on Google Play"><img src="assets/images/google_play.png" alt="Get it on Google Play" /></a>
+        </div>
+      </div>
+    </section>
+
     <!-- ═══ Pricing ═══ -->
     <section id="pricing">
       <div class="section-head"><h2>Pricing</h2><span>Incl. VAT</span></div>
@@ -1575,38 +583,81 @@
           <div class="price-hero">
             <span class="badge">First 12 months</span>
             <p class="price">£0<small>every feature</small></p>
-            <p class="price-note"><strong>Every feature free for 12 months</strong> from the day you start using easySED. No card needed, and nothing is charged automatically.</p>
+            <p class="price-note">Every feature, free for a full year from the day you first open EasySED. No card needed. Nothing charged automatically.</p>
           </div>
           <div class="inclusions">
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Log trips one at a time or on the calendar</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Qualifying period, 182-day and half-day rule checks</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">183-day and half-day rule checks</div></div></div>
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Safe return and leave-by dates</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Evidence for every trip</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Evidence capture for every trip</div></div></div>
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Audit pack and accountant export</div></div></div>
             <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Tax-year claims archive</div></div></div>
-            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Reminders</div></div></div>
+            <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Reminder before your free year ends</div></div></div>
           </div>
         </div>
 
         <div>
           <div class="list">
-            <div class="row">
-              <div class="row-body"><div class="row-title">easySED Pro · Yearly</div><div class="row-sub save">Just £1.67 per month (Save 44%)</div></div>
-              <span class="row-value teal">£20 / year</span>
+            <div class="price-hero">
+              <span class="badge">After your free year</span>
+              <p class="price">£20<small>/ year</small></p>
+              <p class="price-note">Less than a pint a year. A qualified SED claim saves you thousands. EasySED Pro keeps every feature running with no interruption.</p>
             </div>
-            <div class="row">
-              <div class="row-body"><div class="row-title">easySED Pro · Monthly</div><div class="row-sub">£36 over a year</div></div>
-              <span class="row-value">£3 / month</span>
+            <div class="inclusions">
+              <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Everything in the free year</div></div></div>
+              <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Unlimited trips and tax years</div></div></div>
+              <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="row-body"><div class="row-title">Priority support</div></div></div>
             </div>
           </div>
-          <p class="footnote">After your free year, subscribe yearly or monthly to carry on logging trips.</p>
 
           <div class="list" style="margin-top:22px">
             <div class="row"><div class="row-body"><div class="row-title">Free year starts</div></div><span class="row-value">First open</span></div>
             <div class="row"><div class="row-body"><div class="row-title">Reminder before it ends</div></div><span class="row-value teal">Yes</span></div>
-            <div class="row"><div class="row-body"><div class="row-title">If you don’t subscribe</div><div class="row-sub">Your trips and evidence stay on your phone. You can still view them and make a backup.</div></div></div>
+            <div class="row"><div class="row-body"><div class="row-title">If you don’t renew</div><div class="row-sub">Your trips and evidence stay on your phone. You can still view and export them.</div></div></div>
           </div>
-          <p class="footnote">Prices include VAT. Subscriptions are paid through your Apple ID and renew automatically until you cancel in Settings. easySED is a record-keeping tool, not tax advice.</p>
+          <p class="footnote">Paid annually through your App Store or Google Play account. Renews automatically — cancel any time in your device settings. Prices include VAT. EasySED is a record-keeping tool, not tax advice.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section id="faq">
+      <div class="section-head"><h2>FAQ</h2></div>
+      <div class="faq">
+        <details>
+          <summary>What is Seafarers’ Earnings Deduction?<svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></summary>
+          <p>SED is a UK tax relief that lets eligible seafarers deduct 100% of their seafaring earnings from their taxable income — meaning you pay no income tax on money earned at sea. You need to spend at least 365 days in a qualifying period mostly outside the UK.</p>
+        </details>
+        <details>
+          <summary>Which rules does EasySED check?<svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></summary>
+          <p>EasySED checks all three key tests: the 183-day rule, the half-day rule and the foreign port rule. All three are updated automatically every time you log a trip.</p>
+        </details>
+        <details>
+          <summary>Does it work without an internet connection?<svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></summary>
+          <p>Yes — EasySED is fully offline. Log trips, attach evidence and check your status at sea with no signal at all. Your data never leaves your device.</p>
+        </details>
+        <details>
+          <summary>Is my data private?<svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></summary>
+          <p>Completely. Everything is stored locally on your phone. EasySED never sends your trip data or evidence to any server.</p>
+        </details>
+        <details>
+          <summary>Can I claim if I’m taxed at source (PAYE)?<svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></summary>
+          <p>Yes. EasySED generates the reports you need to reclaim tax through Self Assessment, and gives you the data to apply for an NT (No Tax) code.</p>
+        </details>
+        <details>
+          <summary>What happens after my free year?<svg class="chev" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 2 8 8 2 14"/></svg></summary>
+          <p>You’ll get a reminder before it ends. If you don’t subscribe, your trips and evidence stay on your phone — nothing is deleted and nothing is charged automatically.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ═══ Final CTA ═══ -->
+    <section class="cta-section">
+      <div class="cta-banner cta-final">
+        <h2>Take the guesswork out of your SED claim.</h2>
+        <div class="store-badges">
+          <a href="#" aria-label="Download on the App Store"><img src="assets/images/apple_store.png" alt="Download on the App Store" /></a>
+          <a href="#" aria-label="Get it on Google Play"><img src="assets/images/google_play.png" alt="Get it on Google Play" /></a>
         </div>
       </div>
     </section>
