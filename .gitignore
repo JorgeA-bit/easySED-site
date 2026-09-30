@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+
+# Raw screen recordings
+*.mov
+recordings/

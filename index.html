@@ -234,7 +234,7 @@
     .phone-screen { border-radius: 42px; overflow: hidden; background: var(--bg); aspect-ratio: 9/19.5; position: relative; }
     .phone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
     .play-overlay {
-      position: absolute; inset: 0; display: grid; place-items: center;
+      position: absolute; inset: 0; display: grid; place-items: center; border: 0; padding: 0; width: 100%;
       background: rgba(242,242,247,.35); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
       cursor: pointer; transition: opacity .25s;
     }
@@ -453,13 +453,10 @@
       <div class="phone-col rise d2">
         <div class="phone">
           <div class="phone-screen">
-            <video id="app-video" src="assets/video/Log a trip.mp4" playsinline loop muted autoplay preload="auto"></video>
-            <div class="play-overlay hidden" id="play-overlay">
-              <div class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg></div>
-            </div>
+            <img src="assets/images/screenshots/dashboard.webp" width="900" height="1957" alt="EasySED dashboard showing qualifying period progress and UK day count" fetchpriority="high" />
           </div>
         </div>
-        <p class="phone-label">See a trip being logged.</p>
+        <p class="phone-label">Your SED status at a glance.</p>
       </div>
     </div>
 
@@ -526,7 +523,12 @@
           </div>
         </div>
         <div class="feature-media">
-          <div class="phone"><div class="phone-screen"><img src="assets/images/capture-evidence.png" alt="EasySED attaching a boarding pass photo to a trip" loading="lazy" /></div></div>
+          <div class="phone"><div class="phone-screen">
+            <video class="demo-video" src="assets/video/log-trip-&amp;-attach-evidence.mp4" poster="assets/video/log-trip-&amp;-attach-evidence-poster.jpg" width="720" height="1566" autoplay muted loop playsinline preload="metadata" aria-label="EasySED app demo"></video>
+            <button type="button" class="play-overlay hidden" aria-label="Play EasySED app demo">
+              <span class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg></span>
+            </button>
+          </div></div>
         </div>
       </article>
 
@@ -542,7 +544,7 @@
           </div>
         </div>
         <div class="feature-media">
-          <div class="phone"><div class="phone-screen"><video src="assets/video/Log a trip.mp4" playsinline loop muted autoplay preload="metadata" aria-label="EasySED checking eligibility as a trip is logged"></video></div></div>
+          <div class="phone"><div class="phone-screen"><img src="assets/images/screenshots/safe-to-return.webp" width="900" height="1957" alt="EasySED showing the safe date to return to the UK" loading="lazy" /></div></div>
         </div>
       </article>
 
@@ -684,15 +686,17 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Video play/pause
-    const video = document.getElementById('app-video');
-    const overlay = document.getElementById('play-overlay');
-    overlay.addEventListener('click', () => { video.play(); overlay.classList.add('hidden'); });
-    video.addEventListener('click', () => {
-      if (video.paused) { video.play(); overlay.classList.add('hidden'); }
-      else { video.pause(); overlay.classList.remove('hidden'); }
+    // Demo videos: loop like a GIF, but show the poster + play button under reduced motion
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.demo-video').forEach(video => {
+      const overlay = video.parentElement.querySelector('.play-overlay');
+      const showPlay = () => overlay.classList.remove('hidden');
+      overlay.addEventListener('click', () => video.play());
+      video.addEventListener('play', () => overlay.classList.add('hidden'));
+      video.addEventListener('click', () => { if (!video.paused) { video.pause(); showPlay(); } });
+      if (reduceMotion) { video.removeAttribute('autoplay'); video.pause(); video.load(); showPlay(); }
+      else video.play().catch(showPlay);
     });
-    video.play().catch(() => overlay.classList.remove('hidden'));
 
     // Sheet menu
     const burger = document.getElementById('burger');
